@@ -17,10 +17,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.mina.core.session.AttributeKey;
-import org.apache.mina.core.session.DummySession;
 import org.apache.mina.core.session.IoEvent;
 import org.apache.mina.core.session.IoEventType;
-import org.apache.mina.core.session.IoUser;
+import org.apache.mina.core.write.WriteRequest;
 import org.apache.mina.filter.executor.IoEventQueueHandler;
 import org.apache.mina.filter.executor.UnorderedThreadPoolExecutor;
 import org.slf4j.Logger;
@@ -28,13 +27,13 @@ import org.slf4j.LoggerFactory;
 
 import com.ray.communicate.message.IoHeader;
 import com.ray.communicate.message.IoMessage;
-import com.ray.communicate.server.bean.IoUser;
+import com.ray.communicate.server.bean.IoConnection;
 import com.ray.fire.util.Log;
 
 /**
  * A {@link ThreadPoolExecutor} that maintains the order of {@link IoEvent}s.
  * <p>
- * If you don't need to maintain the order of events per ioUser, please use
+ * If you don't need to maintain the order of events per ioConnection, please use
  * {@link UnorderedThreadPoolExecutor}.
 
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
@@ -53,13 +52,15 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
     /** A default value for the KeepAlive delay */
     private static final int DEFAULT_KEEP_ALIVE = 30;
 
-    private static final IoUser EXIT_SIGNAL = new IoUser(0, null);
+    private static final IoConnection EXIT_SIGNAL = new IoConnection(0, null);
+    /** 无法标记实际连接的数据 **/
+    private static final IoConnection full_connection = new IoConnection(0, null);//实际参数session在event里面
 
-    /** A key stored into the ioUser's attribute for the event tasks being queued */
+    /** A key stored into the ioConnection's attribute for the event tasks being queued */
     private final AttributeKey TASKS_QUEUE = new AttributeKey(getClass(), "tasksQueue");
 
-    /** A queue used to store the available ioUsers */
-    private final BlockingQueue<IoUser> waitingUsers = new LinkedBlockingQueue<IoUser>();
+    /** A queue used to store the available ioConnections */
+    private final BlockingQueue<IoConnection> waitingUsers = new LinkedBlockingQueue<IoConnection>();
 
     private final Set<Worker> workers = new HashSet<Worker>();
 
@@ -197,14 +198,14 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
     }
 
     /**
-     * Get the ioUser's tasks queue.
+     * Get the ioConnection's tasks queue.
      */
-    private IoUserTasksQueue getIoUserTasksQueue(IoUser ioUser) {
-        IoUserTasksQueue queue = (IoUserTasksQueue) ioUser.getAttribute(TASKS_QUEUE);
+    private IoConnectionTasksQueue getIoConnectionTasksQueue(IoConnection ioConnection) {
+        IoConnectionTasksQueue queue = (IoConnectionTasksQueue) ioConnection.getAttribute(TASKS_QUEUE);
 
         if (queue == null) {
-            queue = new IoUserTasksQueue();
-            IoUserTasksQueue oldQueue = (IoUserTasksQueue) ioUser.setAttributeIfAbsent(TASKS_QUEUE, queue);
+            queue = new IoConnectionTasksQueue();
+            IoConnectionTasksQueue oldQueue = (IoConnectionTasksQueue) ioConnection.setAttributeIfAbsent(TASKS_QUEUE, queue);
 
             if (oldQueue != null) {
                 queue = oldQueue;
@@ -374,25 +375,25 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
         shutdown();
 
         List<Runnable> answer = new ArrayList<Runnable>();
-        IoUser ioUser;
+        IoConnection ioConnection;
 
-        while ((ioUser = waitingUsers.poll()) != null) {
-            if (ioUser == EXIT_SIGNAL) {
+        while ((ioConnection = waitingUsers.poll()) != null) {
+            if (ioConnection == EXIT_SIGNAL) {
                 waitingUsers.offer(EXIT_SIGNAL);
                 Thread.yield(); // Let others take the signal.
                 continue;
             }
 
-            IoUserTasksQueue ioIoUserTasksQueue = (IoUserTasksQueue) ioUser.getAttribute(TASKS_QUEUE);
+            IoConnectionTasksQueue ioIoConnectionTasksQueue = (IoConnectionTasksQueue) ioConnection.getAttribute(TASKS_QUEUE);
 
-            synchronized (ioIoUserTasksQueue.tasksQueue) {
+            synchronized (ioIoConnectionTasksQueue.tasksQueue) {
 
-                for (Runnable task : ioIoUserTasksQueue.tasksQueue) {
+                for (Runnable task : ioIoConnectionTasksQueue.tasksQueue) {
                     getQueueHandler().polled(this, (IoEvent) task);
                     answer.add(task);
                 }
 
-                ioIoUserTasksQueue.tasksQueue.clear();
+                ioIoConnectionTasksQueue.tasksQueue.clear();
             }
         }
 
@@ -404,7 +405,7 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
      */
     private void print(Queue<Runnable> queue, IoEvent event) {
         StringBuilder sb = new StringBuilder();
-        sb.append("Adding event ").append(event.getType()).append(" to ioUser ").append(event.getSession().getId());
+        sb.append("Adding event ").append(event.getType()).append(" to ioConnection ").append(event.getSession().getId());
         boolean first = true;
         sb.append("\nQueue : [");
         for (Runnable elem : queue) {
@@ -434,17 +435,28 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
 
         IoEvent event = (IoEvent) task;
 
-        if(event.getType()==IoEventType.MESSAGE_RECEIVED){
+//      如果有中转，将接收和发送的消息按实际连接提交先后线程同步顺序执行，其余无法辨别实际连接的统一按提交顺序执行
+        IoHeader header = null;
+        if(event.getType() == IoEventType.MESSAGE_RECEIVED){
         	IoMessage message = (IoMessage)event.getParameter();
-    		IoHeader header = message.getHeader();
-    		Log.info("UserOrderedThreadPool: " + header.toString());
+    		header = message.getHeader();
+//    		Log.info("UserOrderedThreadPool.received: " + header.toString());
+        }else if(event.getType()==IoEventType.WRITE || event.getType()==IoEventType.MESSAGE_SENT){
+        	WriteRequest writeRequest = (WriteRequest)event.getParameter();
+        	IoMessage message = (IoMessage)writeRequest.getMessage();
+        	header = message.getHeader();
+//        	Log.info("UserOrderedThreadPool.sending: " + header.toString());
         }
-        // Get the associated ioUser
-        IoUser ioUser = event.getSession();
+        // Get the associated ioConnection
+        IoConnection ioConnection = null;
+        if(header != null){
+        	ioConnection = FireNioHandler.instance.getIoConnection(header.getSid(), event.getSession());
+        }
+        ioConnection = ioConnection==null ? full_connection : ioConnection;
 
-        // Get the ioUser's queue of events
-        IoUserTasksQueue ioIoUserTasksQueue = getIoUserTasksQueue(ioUser);
-        Queue<Runnable> tasksQueue = ioIoUserTasksQueue.tasksQueue;
+        // Get the ioConnection's queue of events
+        IoConnectionTasksQueue ioIoConnectionTasksQueue = getIoConnectionTasksQueue(ioConnection);
+        Queue<Runnable> tasksQueue = ioIoConnectionTasksQueue.tasksQueue;
 
         boolean offerSession;
 
@@ -459,8 +471,8 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
                 // Inject the event into the executor taskQueue
                 tasksQueue.offer(event);
 
-                if (ioIoUserTasksQueue.processingCompleted) {
-                    ioIoUserTasksQueue.processingCompleted = false;
+                if (ioIoConnectionTasksQueue.processingCompleted) {
+                    ioIoConnectionTasksQueue.processingCompleted = false;
                     offerSession = true;
                 } else {
                     offerSession = false;
@@ -476,9 +488,9 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
 
         if (offerSession) {
             // As the tasksQueue was empty, the task has been executed
-            // immediately, so we can move the ioUser to the queue
-            // of ioUsers waiting for completion.
-            waitingUsers.offer(ioUser);
+            // immediately, so we can move the ioConnection to the queue
+            // of ioConnections waiting for completion.
+            waitingUsers.offer(ioConnection);
         }
 
         addWorkerIfNecessary();
@@ -612,11 +624,26 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
     public boolean remove(Runnable task) {
         checkTaskType(task);
         IoEvent event = (IoEvent) task;
-        IoUser ioUser = event.getSession();
-        IoUserTasksQueue ioIoUserTasksQueue = (IoUserTasksQueue) ioUser.getAttribute(TASKS_QUEUE);
-        Queue<Runnable> tasksQueue = ioIoUserTasksQueue.tasksQueue;
+        
+        IoHeader header = null;
+        if(event.getType() == IoEventType.MESSAGE_RECEIVED){
+        	IoMessage message = (IoMessage)event.getParameter();
+    		header = message.getHeader();
+        }else if(event.getType()==IoEventType.WRITE || event.getType()==IoEventType.MESSAGE_SENT){
+        	WriteRequest writeRequest = (WriteRequest)event.getParameter();
+        	IoMessage message = (IoMessage)writeRequest.getMessage();
+        	header = message.getHeader();
+        }
+        // Get the associated ioConnection
+        IoConnection ioConnection = full_connection;
+        if(header != null){
+        	ioConnection = FireNioHandler.instance.getConnections().get(header.getSid());
+        }
+        
+        IoConnectionTasksQueue ioIoConnectionTasksQueue = (IoConnectionTasksQueue) ioConnection.getAttribute(TASKS_QUEUE);
+        Queue<Runnable> tasksQueue = ioIoConnectionTasksQueue.tasksQueue;
 
-        if (ioIoUserTasksQueue == null) {
+        if (ioIoConnectionTasksQueue == null) {
             return false;
         }
 
@@ -674,11 +701,11 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
 
             try {
                 for (;;) {
-                    IoUser ioUser = fetchSession();
+                    IoConnection ioConnection = fetchSession();
 
                     idleWorkers.decrementAndGet();
 
-                    if (ioUser == null) {
+                    if (ioConnection == null) {
                         synchronized (workers) {
                             if (workers.size() > getCorePoolSize()) {
                                 // Remove now to prevent duplicate exit.
@@ -688,13 +715,13 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
                         }
                     }
 
-                    if (ioUser == EXIT_SIGNAL) {
+                    if (ioConnection == EXIT_SIGNAL) {
                         break;
                     }
 
                     try {
-                        if (ioUser != null) {
-                            runTasks(getIoUserTasksQueue(ioUser));
+                        if (ioConnection != null) {
+                            runTasks(getIoConnectionTasksQueue(ioConnection));
                         }
                     } finally {
                         idleWorkers.incrementAndGet();
@@ -709,8 +736,8 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
             }
         }
 
-        private IoUser fetchSession() {
-            IoUser ioUser = null;
+        private IoConnection fetchSession() {
+            IoConnection ioConnection = null;
             long currentTime = System.currentTimeMillis();
             long deadline = currentTime + getKeepAliveTime(TimeUnit.MILLISECONDS);
             for (;;) {
@@ -721,10 +748,10 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
                     }
 
                     try {
-                        ioUser = waitingUsers.poll(waitTime, TimeUnit.MILLISECONDS);
+                        ioConnection = waitingUsers.poll(waitTime, TimeUnit.MILLISECONDS);
                         break;
                     } finally {
-                        if (ioUser == null) {
+                        if (ioConnection == null) {
                             currentTime = System.currentTimeMillis();
                         }
                     }
@@ -733,19 +760,19 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
                     continue;
                 }
             }
-            return ioUser;
+            return ioConnection;
         }
 
-        private void runTasks(IoUserTasksQueue ioIoUserTasksQueue) {
+        private void runTasks(IoConnectionTasksQueue ioIoConnectionTasksQueue) {
             for (;;) {
                 Runnable task;
-                Queue<Runnable> tasksQueue = ioIoUserTasksQueue.tasksQueue;
+                Queue<Runnable> tasksQueue = ioIoConnectionTasksQueue.tasksQueue;
 
                 synchronized (tasksQueue) {
                     task = tasksQueue.poll();
 
                     if (task == null) {
-                        ioIoUserTasksQueue.processingCompleted = true;
+                        ioIoConnectionTasksQueue.processingCompleted = true;
                         break;
                     }
                 }
@@ -775,9 +802,9 @@ public class UserOrderedThreadPoolExecutor extends ThreadPoolExecutor {
 
     /**
      * A class used to store the ordered list of events to be processed by the
-     * ioUser, and the current task state.
+     * ioConnection, and the current task state.
      */
-    private class IoUserTasksQueue {
+    private class IoConnectionTasksQueue {
         /**  A queue of ordered event waiting to be processed */
         private final Queue<Runnable> tasksQueue = new ConcurrentLinkedQueue<Runnable>();
 

@@ -24,7 +24,7 @@ public class TestClient {
 	private static AtomicInteger userIdGenerator = new AtomicInteger(0);
 	
 	public static void main(String[] args){
-		int count = 1;
+		int count = 5;
 		Thread[] threads = new Thread[count];
 		for (int i = 0; i < count; i++) {
 			threads[i] = new Thread() {
@@ -64,7 +64,7 @@ public class TestClient {
 													cl.write(req);
 												}
 
-												Thread.sleep(1000);
+												Thread.sleep(500);
 											}catch(Exception e){
 												e.printStackTrace();
 											}

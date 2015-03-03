@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import com.ray.communicate.server.BaseCommand;
+import com.ray.communicate.server.IFireNioCommand;
 import com.ray.fire.util.PropertiesUtil;
 
 public class CommandCache {
-	private final static Map<Integer, BaseCommand> cache = new HashMap<Integer, BaseCommand>();
+	private final static Map<Integer, IFireNioCommand> cache = new HashMap<Integer, IFireNioCommand>();
 	public static void init(String config) throws Exception{
 		Properties properties = PropertiesUtil.read(config);
 		String local = (String)properties.getProperty("local");
@@ -25,7 +25,7 @@ public class CommandCache {
 		for(Object key : properties.keySet()){
 			int id = Integer.parseInt((String)key);
 			String clazz = (String)properties.get(key);
-			cache.put(id, (BaseCommand)Class.forName(clazz).newInstance());
+			cache.put(id, (IFireNioCommand)Class.forName(clazz).newInstance());
 		}
 	}
 	

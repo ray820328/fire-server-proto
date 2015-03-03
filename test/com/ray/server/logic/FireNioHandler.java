@@ -8,8 +8,6 @@ package com.ray.server.logic;
  */
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
@@ -28,8 +26,8 @@ public class FireNioHandler extends IoHandlerAdapter {
 	private final Map<Long, IoConnection> connections = new ConcurrentHashMap<Long, IoConnection>();
 	//必须是account id，且账号验证不在此逻辑里
 	private final Map<Integer, IoUser> ioUsers = new ConcurrentHashMap<Integer, IoUser>();
-	private final UserOrderedThreadPoolExecutor executor = new UserOrderedThreadPoolExecutor(10, 100, 
-            1, TimeUnit.MINUTES, Executors.defaultThreadFactory(), null);
+//	private final UserOrderedThreadPoolExecutor executor = new UserOrderedThreadPoolExecutor(10, 100, 
+//            1, TimeUnit.MINUTES, Executors.defaultThreadFactory(), null);
 	
 	public FireNioHandler(){
 		instance = this;
@@ -42,26 +40,41 @@ public class FireNioHandler extends IoHandlerAdapter {
 		Log.debug(this.getClass().getName() + " Server Recived:" + msg.toString());
 		
 		IoHeader header = msg.getHeader();
+		IoConnection ioConnection = getIoConnection(header.getSid(), session);
 		final NioBaseCommand command = CommandCache.getCommand(header.getCmd());
-		final IoConnection connection = connections.get(session.getId());
+		
+//		final IoConnection connection = connections.get(session.getId());
+		
 		IoUser ioUser = ioUsers.get(header.getUid());
 		if(header.getUid()>0 && ioUser==null){//!ioUsers.containsKey(header.getUid())){//需要按user顺序执行
 			ioUser = new IoUser(header.getUid(), session);
 			ioUsers.put(ioUser.getId(), ioUser);
 		}
-		FireMessageTask task = new FireMessageTask(ioUser, msg){
-			public void run(){
-				{//除非按session顺序执行，session已经与玩家一一对应，否则必须按user消息顺序执行
-					try{
-						command.execute(connection, msg);
-					}catch(Exception ex){
-						Log.error("MessageExecuting", ex);
-					}
-				}
-			}
-		};
+		command.execute(ioConnection, msg);
 		
-		executor.execute(task);
+//		FireMessageTask task = new FireMessageTask(ioUser, msg){
+//			public void run(){
+//				{//除非按session顺序执行，session已经与玩家一一对应，否则必须按user消息顺序执行
+//					try{
+//						command.execute(connection, msg);
+//					}catch(Exception ex){
+//						Log.error("MessageExecuting", ex);
+//					}
+//				}
+//			}
+//		};
+//		
+//		executor.execute(task);
+	}
+	
+	public IoConnection getIoConnection(long sid, IoSession session){
+		IoConnection ioConnection = connections.get(sid);
+		if(ioConnection == null){
+//			session不一定与玩家一一对应，因为可能是中转过来的消息
+			ioConnection = new IoConnection(sid, session);
+			connections.put(sid, ioConnection);
+		}
+		return ioConnection;
 	}
 	
 	@Override
@@ -97,8 +110,6 @@ public class FireNioHandler extends IoHandlerAdapter {
 	public void sessionOpened(IoSession session) throws Exception {
 		Log.debug("sessionOpened: session.id=" + session.getId());
 		super.sessionOpened(session);
-		IoConnection ioUser = new IoConnection(0, session);
-		connections.put(session.getId(), ioUser);
 	}
 	 
 	@Override

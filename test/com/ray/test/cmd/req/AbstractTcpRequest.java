@@ -53,7 +53,7 @@ public abstract class AbstractTcpRequest extends NioBaseCommand {
 	}
 	protected void response(IoConnection ioUser, IoHeader sourceHeader, byte[] data, int[] uids){
 		IoMessage res = new IoMessage();
-		res.setHeader((IoHeader)sourceHeader.clone());
+		res.setHeader((IoHeader)sourceHeader.clone());//必须保证原始sid，值由与玩家直接连接的Gate session获得
 		res.setBody(data);
 		res.prepare();
 		if(uids != null){
@@ -63,6 +63,11 @@ public abstract class AbstractTcpRequest extends NioBaseCommand {
 		}
 		response(ioUser, res);
 	}
+	/**
+	 * 一定要设置原始sid，否则实际连接（玩家）可能会线程不同步导致无序发送
+	 * @param ioUser
+	 * @param message
+	 */
 	protected void response(IoConnection ioUser, IoMessage message){
 		ioUser.write(message);
 	}

@@ -8,15 +8,16 @@ import com.ray.communicate.message.IoMessage;
 
 public class IoUser {
 	private int id;
+	private long sid;
 	private IoSession session;//此session不一定与玩家连接一一对应，可能是个gate连接
-	private IoUserAttributeMap attributes;
+	private IoAttributeMap attributes;
 	
 	private IoUser(){}
 	public IoUser(int id, IoSession session){
 		this();
 		this.id = id;
-		this.session = session;
-		attributes = new IoUserAttributeMap();
+		attributes = new IoAttributeMap();
+		setSession(session);
 	}
 	public void write(IoMessage message){
 		session.write(message);
@@ -27,6 +28,15 @@ public class IoUser {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public long getSid() {
+		return sid;
+	}
+	public void setSession(IoSession session) {
+		this.session = session;
+		if(session != null){
+			this.sid = session.getId();
+		}
+	}
 	public IoSession getSession() {
 		return session;
 	}
@@ -36,87 +46,51 @@ public class IoUser {
         return getAttribute(key, null);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final Object getAttribute(Object key, Object defaultValue) {
         return attributes.getAttribute(this, key, defaultValue);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final Object setAttribute(Object key, Object value) {
         return attributes.setAttribute(this, key, value);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final Object setAttribute(Object key) {
         return setAttribute(key, Boolean.TRUE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final Object setAttributeIfAbsent(Object key, Object value) {
         return attributes.setAttributeIfAbsent(this, key, value);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final Object setAttributeIfAbsent(Object key) {
         return setAttributeIfAbsent(key, Boolean.TRUE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final Object removeAttribute(Object key) {
         return attributes.removeAttribute(this, key);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final boolean removeAttribute(Object key, Object value) {
         return attributes.removeAttribute(this, key, value);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final boolean replaceAttribute(Object key, Object oldValue, Object newValue) {
         return attributes.replaceAttribute(this, key, oldValue, newValue);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final boolean containsAttribute(Object key) {
         return attributes.containsAttribute(this, key);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public final Set<Object> getAttributeKeys() {
         return attributes.getAttributeKeys(this);
     }
 
-    /**
-     * TODO Add method documentation
-     */
-    public final IoUserAttributeMap getAttributeMap() {
+    public final IoAttributeMap getAttributeMap() {
         return attributes;
     }
 
-    /**
-     * TODO Add method documentation
-     */
-    public final void setAttributeMap(IoUserAttributeMap attributes) {
+    public final void setAttributeMap(IoAttributeMap attributes) {
         this.attributes = attributes;
     }
 }

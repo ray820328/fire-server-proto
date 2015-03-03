@@ -5,7 +5,7 @@ import com.ray.communicate.message.IoMessage;
 import com.ray.communicate.server.bean.IoConnection;
 import com.ray.fire.util.Log;
 
-public abstract class NioBaseCommand implements BaseCommand {
+public abstract class NioBaseCommand implements IFireNioCommand {
 	
 	public void execute(IoConnection user, Object message)
 			throws Exception {

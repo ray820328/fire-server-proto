@@ -9,15 +9,12 @@ package com.ray.server;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.executor.ExecutorFilter;
-import org.apache.mina.filter.executor.OrderedThreadPoolExecutor;
 import org.apache.mina.filter.logging.LoggingFilter;
-import org.apache.mina.filter.logging.MdcInjectionFilter;
 import org.apache.mina.filter.ssl.SslFilter;
 import org.apache.mina.transport.socket.SocketSessionConfig;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
@@ -27,6 +24,7 @@ import com.ray.communicate.server.ssl.BogusSslContextFactory;
 import com.ray.fire.util.Log;
 import com.ray.server.logic.CommandCache;
 import com.ray.server.logic.FireNioHandler;
+import com.ray.server.logic.UserOrderedThreadPoolExecutor;
 
 public class TestServer {
 
@@ -53,10 +51,10 @@ public class TestServer {
 			chain.addLast("codec", new ProtocolCodecFilter(new FireProtocolCodecFactory()));
 ////			日志信息
 //			addLogger(chain);
-//			executor = new OrderedThreadPoolExecutor(10, 100, 
-//		            10, TimeUnit.SECONDS, Executors.defaultThreadFactory(), null);//[10,200,5=1h=01]
+			executor = new UserOrderedThreadPoolExecutor(4, 100, 
+		            10, TimeUnit.SECONDS, Executors.defaultThreadFactory(), null);//[10,200,5=1h=01]
 //			executor = new ScheduledThreadPoolExecutor(4);//2 * Runtime.getRuntime().availableProcessors());
-//			chain.addLast("executorPool", new ExecutorFilter(executor));
+			chain.addLast("executorPool", new ExecutorFilter(executor));
 			 
 //			处理
 			acceptor.setHandler(new FireNioHandler());

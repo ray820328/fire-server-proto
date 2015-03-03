@@ -39,6 +39,9 @@ public class FireDecoder implements ProtocolDecoder {
 			IoMessage message = new IoMessage();
 			message.readHeader(bf);
 			IoHeader header = message.getHeader();
+			if(header.getSid() == 0){//注入原始连接id，被转发不会改变
+				header.setSid(session.getId());
+			}
 //			Log.info("Server Decoding:" + header.toString());
 			if(header.getBodyLength()>0 && header.getBodyLength()<=IoHeader.header_max_length){
 				if(header.getBodyLength() <= blen){

@@ -25,7 +25,7 @@ public class TestReq extends AbstractTcpRequest {
 		builder.setTime(msg.getTime());//时间一样
 		response(ioUser, sourceHeader, builder.build().toByteArray());
 		
-//		Thread.sleep((int)sleepTime);//随机x毫秒
+		Thread.sleep((int)sleepTime);//随机x毫秒
 		return 0;
 	}
 
