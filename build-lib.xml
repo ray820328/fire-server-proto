@@ -1,0 +1,212 @@
+<project name="fire-communicate" default="obfuscate">
+
+    <description>fire-communicate</description>
+
+	<property name="project.name.file" value="communicate"/>
+	<property name="auth" value="Ray"/>
+	<property name="entry" value="com.ray.communicate.server.FireSocketServerImp" />
+	
+    <!-- Global -->
+	<property name="debug" value="on"/>
+	<property name="optimize" value="off"/>
+	<property name="deprecation" value="off"/>
+	<property name="jarFile" value="fire-communicate"/>
+	<property name="base.dir" location="."/>
+    <property name="lib.dir" location="lib" />
+    <property name="mina.dir" location="mina"/>
+    <property name="src.fire.dir" location="fire"/>
+    <property name="src.test.dir" location="test"/>
+	<property name="build.dir" location="build"/>
+	<property name="build.classes.dir" location="${build.dir}/classes"/>
+	<property name="back.dir" location="back"/>
+	<tstamp><format property="today" pattern="yyyy-MM-dd HH:mm:ss" /></tstamp>
+
+	<target name="init"
+			description="init the build task...">
+		
+		<delete dir="${build.dir}"/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.classes.dir}"/>
+		<delete dir="${back.dir}"/>
+		<mkdir dir="${back.dir}"/>
+	</target>
+	
+	<target name="run"
+			description="the entry of the project."
+			depends="init,compile,back,makejar">
+		<echo>completly, run ok...</echo>
+	</target>
+	
+	<target name="back"
+			description="back up the source file to the ${back} folder.."
+			depends="init">
+		<copy todir="${back.dir}">
+			<fileset dir="${mina.dir}" >
+				<include name="**/*"/>
+			</fileset>
+			<fileset dir="${src.fire.dir}" >
+				<include name="**/*"/>
+			</fileset>
+			<fileset dir="${src.test.dir}" >
+				<include name="**/*"/>
+			</fileset>
+		</copy>	
+	</target>
+	
+    <target name="compile"
+            description="Compiles source files to build directory.">
+    		<javac srcdir="${mina.dir};${src.fire.dir};" destdir="${build.classes.dir}" encoding="utf-8">
+	            <classpath>            		
+					<fileset dir="${lib.dir}">
+					    <include name="**/*.jar"/>
+					</fileset>
+	            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="clean"
+            description="Removes build directory.">
+    	<echo>call clean...</echo>
+    	<delete dir="${build.dir}"/>
+    </target>
+
+	
+	<target name="makejar"
+				description="make .jar package  and make a .war delivery package..">
+
+		<copy todir="${build.classes.dir}">
+			<fileset dir="${mina.dir}">
+				<include name="**/*.properties"/>
+				<include name="**/*.xml"/>
+			</fileset>
+			<fileset dir="${src.fire.dir}">
+			 	<include name="**/*.properties"/>
+			 	<include name="**/*.ser"/>
+			</fileset>
+		</copy>
+		
+		<jar jarfile="${build.dir}/${jarFile}.jar">
+			<manifest>
+				<attribute name="BuildBy" value="${auth}" />
+			</manifest>
+			<fileset dir="${build.classes.dir}" />
+		</jar>
+	</target>
+	
+	<target name="obfuscate" depends="run" description="混淆引用到的子工程jar文件，并替换">  
+        <taskdef resource="proguard/ant/task.properties" classpath="lib/proguard.jar" />  
+        <proguard configuration="proguard.pro">  
+            <injar file="${build.dir}/${jarFile}.jar"/>  
+            <outjar file="fire-communicate-proguard.jar"/> 
+            <libraryjar dir="${lib.dir}"/>  
+        </proguard> 
+    </target>
+    
+	<target name="obfuscate_1" depends="run">
+			<taskdef resource="proguard/ant/task.properties" classpath="lib/proguard.jar" />
+			<!-- proguard configuration="applications.pro" / -->
+		
+			<proguard printseeds="on">
+
+				<!-- Specify the input jars, output jars, and library jars. -->
+		
+				<injar  file="${build.dir}/${jarFile}.jar" />
+				<outjar file="fire-communicate-proguard.jar" />
+		
+				<libraryjar file="${java.home}/lib/rt.jar" />
+				<libraryjar file="${java.home}/lib/jsse.jar" />
+				<libraryjar file="${java.home}/lib/jce.jar" />
+				<libraryjar file="${lib.dir}/slf4j-api-1.6.1.jar" />
+				<libraryjar file="${lib.dir}/slf4j-log4j12-1.6.1.jar" />
+				<libraryjar file="${lib.dir}/log4j-1.2.16.jar" />
+				<libraryjar file="${lib.dir}/commons-codec-1.4.jar" />
+		
+				<!-- Preserve all public applets. -->
+		
+				<!-- keep access="public" extends="java.awt.Applet" / -->
+				<!-- keep access="public" extends="com.ray.blacksea.domain.Fish" />
+				<keep access="public" extends="com.ray.gframe.domain.material.Goods" />
+				<keep access="public" name="${entry}" / -->
+				<keep access="public" name="com.ray.communicate.message.FireMessage" />
+				<keep access="public" name="com.ray.communicate.message.MessageFactory" />
+				<keep access="public" name="com.ray.communicate.GameClient" />
+		
+				<!-- Preserve all annotations. -->
+		
+				<keepattribute name="*Annotation*" />
+		
+				<!-- Preserve all native method names and the names of their classes. -->
+				
+				<!-- keepclasseswithmembers>
+					<method access="public static" 
+						type      ="void"
+						name      ="main"
+						parameters="java.lang.String[]" />
+				</keepclasseswithmembers -->
+				
+				<keepclasseswithmembernames>
+					<method access="native" />
+				</keepclasseswithmembernames>
+					    
+				<!-- Preserve the methods that are required in all enumeration classes. -->
+				<!-- keepclassmembers extends="com.ray.gframe.awt.FComponent">
+					<method access="public" type="void" name="setName" parameters="java.lang.String" />
+					<method access="public" type="java.lang.String" name="getName" parameters="" />
+					<method access="public" type="void" name="setValue" parameters="java.lang.String" />
+					<method access="public" type="java.lang.String" name="getValue" parameters="" />
+					<method access="public" type="void" name="setText" parameters="java.lang.String" />
+					<method access="public" type="java.lang.String" name="getText" parameters="" />
+				</keepclassmembers -->
+					
+				<keepclassmembers extends="java.lang.Enum">
+					<method access="public static"
+					    type="**[]"
+					    name="values"
+					    parameters="" />
+					<method access="public static"
+					    type="**"
+					    name="valueOf"
+					    parameters="java.lang.String" />
+					</keepclassmembers>
+		
+					<!-- Explicitly preserve all serialization members. The Serializable
+					    interface is only a marker interface, so it wouldn't save them.
+					    You can comment this out if your library doesn't use serialization.
+					    If your code contains serializable classes that have to be backward
+					    compatible, please refer to the manual. -->
+		
+				<keepclassmembers implements="java.io.Serializable">
+					<field  access    ="static final"
+					        type      ="long"
+					        name      ="serialVersionUID" />
+					<field  access    ="static final"
+					        type      ="java.io.ObjectStreamField[]"
+					        name      ="serialPersistentFields" />
+					<method access    ="public static"
+					    	type      ="void"
+					    	name      ="main"
+					    	parameters="java.lang.String[]" />
+					<method access    ="private"
+					        type      ="void"
+					        name      ="writeObject"
+					        parameters="java.io.ObjectOutputStream" />
+					<method access    ="private"
+					        type      ="void"
+					        name      ="readObject"
+					        parameters="java.io.ObjectInputStream" />
+					<method type      ="java.lang.Object"
+					        name      ="writeReplace"
+					        parameters="" />
+					<method type      ="java.lang.Object"
+					        name      ="readResolve"
+					        parameters="" />
+				</keepclassmembers>
+		
+				<!-- Your application may contain more items that need to be preserved;
+					 typically classes that are dynamically created using Class.forName -->
+			</proguard>
+			
+			<!-- delete  file="${build.dir}/${jarFile}.jar" / -->
+		</target>
+</project>

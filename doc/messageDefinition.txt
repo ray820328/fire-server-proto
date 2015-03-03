@@ -1,0 +1,23 @@
+
+消息组成：
+{begin} + {length} + {head} + {body}
+
+begin -- 以一个整数开始: 
+173173173
+
+length -- 消息长度一个整数四字节：
+length
+
+head:
+固定字段，位置，长度
+type -- 4字节整型
+command -- 4字节整型
+remain -- 4字节整型（保留）
+
+body:
+根据type 和 command 解析
+
+字段定义
+根据字段类型定义不同的读写方式
+数字：直接四byte读写，高位在前
+字符串：长度 (Integer) + 字符串内容

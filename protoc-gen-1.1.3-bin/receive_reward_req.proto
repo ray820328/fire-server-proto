@@ -1,0 +1,7 @@
+package com.proto.client.mission;
+
+option java_package = "com.java.client.mission";
+option java_outer_classname = "ReceiveRewardReqProto";
+message ReceiveRewardReq {
+	required int32 type = 1;//任务类型(3日常，4周常，5公会)
+}

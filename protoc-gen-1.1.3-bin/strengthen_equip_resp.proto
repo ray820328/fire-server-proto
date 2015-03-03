@@ -1,0 +1,9 @@
+package com.proto.client.item;
+
+option java_package = "com.java.client.item";
+option java_outer_classname = "StrengthenEquipRespProto";
+
+message StrengthenEquipResp{
+	required int32 expendCoin = 2;        //消耗
+	required int32 expendStone = 3;        //消耗强化石
+}

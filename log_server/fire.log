@@ -1,0 +1,975 @@
+2015-02-13 15:21:49,054 - main - Bind at 13000
+2015-02-13 15:21:53,911 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,911 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,912 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,912 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,916 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,935 - pool-4-thread-1 - TestMsg: uid=1, mid=1, sleepTime=2
+2015-02-13 15:21:53,940 - pool-4-thread-1 - 1|TestReq|100|1|0|24
+2015-02-13 15:21:53,940 - pool-4-thread-1 - TestMsg: uid=1, mid=2, sleepTime=25
+2015-02-13 15:21:53,941 - pool-4-thread-1 - 1|TestReq|100|2|0|1
+2015-02-13 15:21:53,941 - pool-4-thread-1 - TestMsg: uid=1, mid=3, sleepTime=149
+2015-02-13 15:21:53,942 - pool-4-thread-1 - 1|TestReq|100|3|0|1
+2015-02-13 15:21:53,942 - pool-4-thread-1 - TestMsg: uid=1, mid=4, sleepTime=136
+2015-02-13 15:21:53,942 - pool-4-thread-1 - 1|TestReq|100|4|0|0
+2015-02-13 15:21:53,942 - pool-4-thread-1 - TestMsg: uid=1, mid=5, sleepTime=47
+2015-02-13 15:21:53,942 - pool-4-thread-1 - 1|TestReq|100|5|0|0
+2015-02-13 15:21:53,943 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,943 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,944 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,944 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:53,944 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,907 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,907 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,908 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,908 - pool-4-thread-2 - TestMsg: uid=1, mid=6, sleepTime=176
+2015-02-13 15:21:54,908 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,908 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,908 - pool-4-thread-2 - 1|TestReq|100|6|0|0
+2015-02-13 15:21:54,908 - pool-4-thread-2 - TestMsg: uid=1, mid=7, sleepTime=51
+2015-02-13 15:21:54,909 - pool-4-thread-2 - 1|TestReq|100|7|0|1
+2015-02-13 15:21:54,909 - pool-4-thread-1 - TestMsg: uid=1, mid=8, sleepTime=123
+2015-02-13 15:21:54,909 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,909 - pool-4-thread-1 - 1|TestReq|100|8|0|0
+2015-02-13 15:21:54,909 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,910 - pool-4-thread-1 - TestMsg: uid=1, mid=9, sleepTime=81
+2015-02-13 15:21:54,910 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,910 - pool-4-thread-1 - 1|TestReq|100|9|0|0
+2015-02-13 15:21:54,910 - pool-4-thread-1 - TestMsg: uid=1, mid=10, sleepTime=144
+2015-02-13 15:21:54,911 - pool-4-thread-1 - 1|TestReq|100|10|0|1
+2015-02-13 15:21:54,911 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:54,911 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,907 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,907 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,908 - pool-4-thread-2 - TestMsg: uid=1, mid=11, sleepTime=136
+2015-02-13 15:21:55,908 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,909 - pool-4-thread-2 - 1|TestReq|100|11|0|1
+2015-02-13 15:21:55,909 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,909 - pool-4-thread-2 - TestMsg: uid=1, mid=12, sleepTime=49
+2015-02-13 15:21:55,909 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,909 - pool-4-thread-2 - 1|TestReq|100|12|0|0
+2015-02-13 15:21:55,910 - pool-4-thread-2 - TestMsg: uid=1, mid=14, sleepTime=105
+2015-02-13 15:21:55,910 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,910 - pool-4-thread-2 - 1|TestReq|100|14|0|0
+2015-02-13 15:21:55,910 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,910 - pool-4-thread-2 - TestMsg: uid=1, mid=13, sleepTime=78
+2015-02-13 15:21:55,911 - pool-4-thread-2 - 1|TestReq|100|13|0|1
+2015-02-13 15:21:55,911 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,924 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:55,924 - pool-4-thread-1 - TestMsg: uid=1, mid=15, sleepTime=104
+2015-02-13 15:21:55,924 - pool-4-thread-1 - 1|TestReq|100|15|0|0
+2015-02-13 15:21:55,925 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,923 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:16,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,924 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:17,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,924 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:18,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,924 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:19,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,924 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:20,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,925 - pool-4-thread-2 - TestMsg: uid=1, mid=16, sleepTime=132
+2015-02-13 15:21:56,925 - pool-4-thread-2 - 1|TestReq|100|16|0|0
+2015-02-13 15:21:56,925 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:16,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,925 - pool-4-thread-2 - TestMsg: uid=1, mid=17, sleepTime=186
+2015-02-13 15:21:56,926 - pool-4-thread-2 - 1|TestReq|100|17|0|1
+2015-02-13 15:21:56,926 - pool-4-thread-2 - TestMsg: uid=1, mid=18, sleepTime=194
+2015-02-13 15:21:56,926 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:17,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,926 - pool-4-thread-2 - 1|TestReq|100|18|0|0
+2015-02-13 15:21:56,927 - pool-4-thread-2 - TestMsg: uid=1, mid=19, sleepTime=186
+2015-02-13 15:21:56,927 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:18,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,927 - pool-4-thread-2 - 1|TestReq|100|19|0|0
+2015-02-13 15:21:56,927 - pool-4-thread-2 - TestMsg: uid=1, mid=20, sleepTime=163
+2015-02-13 15:21:56,928 - pool-4-thread-2 - 1|TestReq|100|20|0|1
+2015-02-13 15:21:56,928 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:19,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:56,928 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:20,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,923 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:21,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,923 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:22,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,924 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:23,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,924 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:24,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,924 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:25,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,924 - pool-4-thread-1 - TestMsg: uid=1, mid=21, sleepTime=84
+2015-02-13 15:21:57,925 - pool-4-thread-1 - 1|TestReq|100|21|0|1
+2015-02-13 15:21:57,925 - pool-4-thread-1 - TestMsg: uid=1, mid=22, sleepTime=18
+2015-02-13 15:21:57,925 - pool-4-thread-1 - 1|TestReq|100|22|0|0
+2015-02-13 15:21:57,925 - pool-4-thread-1 - TestMsg: uid=1, mid=23, sleepTime=9
+2015-02-13 15:21:57,925 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:21,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,925 - pool-4-thread-1 - 1|TestReq|100|23|0|0
+2015-02-13 15:21:57,925 - pool-4-thread-1 - TestMsg: uid=1, mid=24, sleepTime=193
+2015-02-13 15:21:57,926 - pool-4-thread-1 - 1|TestReq|100|24|0|1
+2015-02-13 15:21:57,926 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:22,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,926 - pool-4-thread-1 - TestMsg: uid=1, mid=25, sleepTime=48
+2015-02-13 15:21:57,926 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:23,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,926 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:24,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:57,926 - pool-4-thread-1 - 1|TestReq|100|25|0|0
+2015-02-13 15:21:57,927 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:25,cmd:100,check:0,bodyLength:40}
+2015-02-13 15:21:58,549 - pool-3-thread-1 - Error
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:273)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:1)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:690)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$10(AbstractPollingIoProcessor.java:650)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2015-02-28 16:05:11,751 - main - Bind at 13000
+2015-02-28 16:05:20,063 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,064 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,065 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,065 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,067 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,067 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,068 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,068 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,068 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,083 - pool-4-thread-1 - TestMsg: uid=1, mid=1, sleepTime=76
+2015-02-28 16:05:20,069 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,089 - pool-4-thread-1 - 1|TestReq|100|1|0|20
+2015-02-28 16:05:20,089 - pool-4-thread-1 - TestMsg: uid=1, mid=2, sleepTime=74
+2015-02-28 16:05:20,089 - pool-4-thread-1 - 1|TestReq|100|2|0|0
+2015-02-28 16:05:20,089 - pool-4-thread-1 - TestMsg: uid=1, mid=3, sleepTime=7
+2015-02-28 16:05:20,089 - pool-4-thread-1 - 1|TestReq|100|3|0|0
+2015-02-28 16:05:20,090 - pool-4-thread-1 - TestMsg: uid=1, mid=4, sleepTime=189
+2015-02-28 16:05:20,090 - pool-4-thread-1 - 1|TestReq|100|4|0|0
+2015-02-28 16:05:20,090 - pool-4-thread-1 - TestMsg: uid=1, mid=5, sleepTime=74
+2015-02-28 16:05:20,090 - pool-4-thread-1 - 1|TestReq|100|5|0|0
+2015-02-28 16:05:20,091 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,091 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,091 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,091 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:20,091 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,049 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,049 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,050 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,050 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,051 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,051 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,051 - pool-4-thread-2 - TestMsg: uid=1, mid=6, sleepTime=159
+2015-02-28 16:05:21,052 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,052 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,052 - pool-4-thread-2 - 1|TestReq|100|6|0|2
+2015-02-28 16:05:21,052 - pool-4-thread-2 - TestMsg: uid=1, mid=7, sleepTime=149
+2015-02-28 16:05:21,052 - pool-4-thread-2 - 1|TestReq|100|7|0|0
+2015-02-28 16:05:21,052 - pool-4-thread-2 - TestMsg: uid=1, mid=8, sleepTime=184
+2015-02-28 16:05:21,052 - pool-4-thread-2 - 1|TestReq|100|8|0|0
+2015-02-28 16:05:21,053 - pool-4-thread-2 - TestMsg: uid=1, mid=9, sleepTime=70
+2015-02-28 16:05:21,053 - pool-4-thread-2 - 1|TestReq|100|9|0|0
+2015-02-28 16:05:21,053 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,053 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,053 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,053 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,053 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,053 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:21,054 - pool-4-thread-1 - TestMsg: uid=1, mid=10, sleepTime=28
+2015-02-28 16:05:21,054 - pool-4-thread-1 - 1|TestReq|100|10|0|0
+2015-02-28 16:05:21,054 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,055 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,055 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,055 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,056 - pool-3-thread-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,056 - pool-4-thread-2 - TestMsg: uid=1, mid=11, sleepTime=106
+2015-02-28 16:05:22,057 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,058 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,058 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,059 - pool-4-thread-2 - 1|TestReq|100|11|0|3
+2015-02-28 16:05:22,059 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,059 - pool-4-thread-2 - TestMsg: uid=1, mid=13, sleepTime=91
+2015-02-28 16:05:22,059 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,056 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,060 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,060 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,059 - pool-4-thread-2 - 1|TestReq|100|13|0|0
+2015-02-28 16:05:22,062 - pool-4-thread-2 - TestMsg: uid=1, mid=14, sleepTime=169
+2015-02-28 16:05:22,062 - pool-4-thread-2 - 1|TestReq|100|14|0|0
+2015-02-28 16:05:22,063 - pool-4-thread-2 - TestMsg: uid=1, mid=15, sleepTime=197
+2015-02-28 16:05:22,063 - pool-4-thread-2 - 1|TestReq|100|15|0|0
+2015-02-28 16:05:22,063 - pool-4-thread-2 - TestMsg: uid=1, mid=12, sleepTime=153
+2015-02-28 16:05:22,063 - pool-4-thread-2 - 1|TestReq|100|12|0|0
+2015-02-28 16:05:22,065 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,066 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:22,066 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,059 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:16,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,060 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:17,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,060 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:18,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,061 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:19,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,061 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:20,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,061 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:16,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,061 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:17,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,062 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:18,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,062 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:19,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,062 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:20,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,062 - pool-4-thread-1 - TestMsg: uid=1, mid=16, sleepTime=128
+2015-02-28 16:05:23,062 - pool-4-thread-1 - 1|TestReq|100|16|0|0
+2015-02-28 16:05:23,062 - pool-4-thread-1 - TestMsg: uid=1, mid=17, sleepTime=172
+2015-02-28 16:05:23,062 - pool-4-thread-1 - 1|TestReq|100|17|0|0
+2015-02-28 16:05:23,063 - pool-4-thread-1 - TestMsg: uid=1, mid=18, sleepTime=86
+2015-02-28 16:05:23,063 - pool-4-thread-1 - 1|TestReq|100|18|0|0
+2015-02-28 16:05:23,063 - pool-4-thread-1 - TestMsg: uid=1, mid=19, sleepTime=16
+2015-02-28 16:05:23,063 - pool-4-thread-1 - 1|TestReq|100|19|0|0
+2015-02-28 16:05:23,063 - pool-4-thread-1 - TestMsg: uid=1, mid=20, sleepTime=64
+2015-02-28 16:05:23,063 - pool-4-thread-1 - 1|TestReq|100|20|0|0
+2015-02-28 16:05:23,071 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:16,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,071 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:17,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,072 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:18,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,072 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:19,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:23,072 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:20,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,059 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:21,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,060 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:22,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,060 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:23,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,061 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:24,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,061 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:25,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,061 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:21,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,062 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:22,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,062 - pool-4-thread-2 - TestMsg: uid=1, mid=21, sleepTime=181
+2015-02-28 16:05:24,063 - pool-4-thread-2 - 1|TestReq|100|21|0|1
+2015-02-28 16:05:24,063 - pool-4-thread-2 - TestMsg: uid=1, mid=22, sleepTime=161
+2015-02-28 16:05:24,063 - pool-4-thread-2 - 1|TestReq|100|22|0|0
+2015-02-28 16:05:24,064 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:23,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,064 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:24,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,064 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:25,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,064 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:21,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,064 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:22,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,065 - pool-4-thread-1 - TestMsg: uid=1, mid=23, sleepTime=128
+2015-02-28 16:05:24,067 - pool-4-thread-1 - 1|TestReq|100|23|0|2
+2015-02-28 16:05:24,067 - pool-4-thread-1 - TestMsg: uid=1, mid=24, sleepTime=79
+2015-02-28 16:05:24,068 - pool-4-thread-1 - 1|TestReq|100|24|0|1
+2015-02-28 16:05:24,068 - pool-4-thread-1 - TestMsg: uid=1, mid=25, sleepTime=64
+2015-02-28 16:05:24,069 - pool-4-thread-1 - 1|TestReq|100|25|0|1
+2015-02-28 16:05:24,070 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:23,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,070 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:24,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,070 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:25,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:05:24,544 - pool-3-thread-3 - Error
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:273)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:1)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:690)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$10(AbstractPollingIoProcessor.java:650)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2015-02-28 16:11:17,578 - main - Bind at 13000
+2015-02-28 16:11:20,977 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,978 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,978 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,978 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,980 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,980 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,980 - pool-3-thread-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,981 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,982 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,982 - pool-3-thread-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,995 - pool-4-thread-1 - TestMsg: uid=1, mid=1, sleepTime=196
+2015-02-28 16:11:20,998 - pool-4-thread-1 - 1|TestReq|100|1|0|17
+2015-02-28 16:11:20,998 - pool-4-thread-1 - TestMsg: uid=1, mid=2, sleepTime=91
+2015-02-28 16:11:20,998 - pool-4-thread-1 - 1|TestReq|100|2|0|0
+2015-02-28 16:11:20,999 - pool-4-thread-1 - TestMsg: uid=1, mid=3, sleepTime=130
+2015-02-28 16:11:20,999 - pool-4-thread-1 - 1|TestReq|100|3|0|0
+2015-02-28 16:11:20,999 - pool-4-thread-1 - TestMsg: uid=1, mid=4, sleepTime=132
+2015-02-28 16:11:20,999 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,000 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:20,999 - pool-4-thread-1 - 1|TestReq|100|4|0|0
+2015-02-28 16:11:21,000 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,000 - pool-4-thread-1 - TestMsg: uid=1, mid=5, sleepTime=93
+2015-02-28 16:11:21,000 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,000 - pool-4-thread-1 - 1|TestReq|100|5|0|0
+2015-02-28 16:11:21,000 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,974 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,975 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,976 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,976 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,976 - pool-4-thread-2 - TestMsg: uid=1, mid=6, sleepTime=1
+2015-02-28 16:11:21,977 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,978 - pool-4-thread-2 - 1|TestReq|100|6|0|2
+2015-02-28 16:11:21,978 - pool-4-thread-2 - TestMsg: uid=1, mid=7, sleepTime=110
+2015-02-28 16:11:21,978 - pool-4-thread-2 - 1|TestReq|100|7|0|0
+2015-02-28 16:11:21,979 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,979 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,979 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,980 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,980 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,980 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,979 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,981 - pool-4-thread-1 - TestMsg: uid=1, mid=9, sleepTime=13
+2015-02-28 16:11:21,981 - pool-4-thread-1 - 1|TestReq|100|9|0|1
+2015-02-28 16:11:21,981 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,982 - pool-4-thread-1 - TestMsg: uid=1, mid=10, sleepTime=111
+2015-02-28 16:11:21,983 - pool-4-thread-1 - 1|TestReq|100|10|0|1
+2015-02-28 16:11:21,983 - pool-4-thread-1 - TestMsg: uid=1, mid=8, sleepTime=135
+2015-02-28 16:11:21,984 - pool-4-thread-1 - 1|TestReq|100|8|0|1
+2015-02-28 16:11:21,985 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:21,986 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,980 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,981 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,982 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,982 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,982 - pool-4-thread-2 - TestMsg: uid=1, mid=11, sleepTime=115
+2015-02-28 16:11:22,983 - pool-4-thread-2 - 1|TestReq|100|11|0|1
+2015-02-28 16:11:22,983 - pool-4-thread-2 - TestMsg: uid=1, mid=12, sleepTime=196
+2015-02-28 16:11:22,983 - pool-4-thread-2 - 1|TestReq|100|12|0|0
+2015-02-28 16:11:22,983 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,984 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,983 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,985 - pool-4-thread-1 - TestMsg: uid=1, mid=13, sleepTime=172
+2015-02-28 16:11:22,985 - pool-4-thread-1 - 1|TestReq|100|13|0|0
+2015-02-28 16:11:22,986 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,986 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,989 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,990 - NioProcessor-2 - Server Decoding:com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,990 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,990 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,991 - pool-4-thread-2 - TestMsg: uid=1, mid=14, sleepTime=150
+2015-02-28 16:11:22,991 - pool-4-thread-2 - 1|TestReq|100|14|0|0
+2015-02-28 16:11:22,992 - pool-4-thread-2 - TestMsg: uid=1, mid=15, sleepTime=160
+2015-02-28 16:11:22,992 - pool-4-thread-2 - 1|TestReq|100|15|0|0
+2015-02-28 16:11:22,994 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:22,994 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:11:23,804 - pool-3-thread-3 - Error
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:273)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:1)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:690)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$10(AbstractPollingIoProcessor.java:650)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2015-02-28 16:32:03,693 - main - Bind at 13000
+2015-02-28 16:32:06,388 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,389 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,389 - pool-3-thread-3 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,389 - pool-3-thread-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,391 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,404 - pool-4-thread-1 - TestMsg: uid=1, mid=1, sleepTime=94
+2015-02-28 16:32:06,407 - pool-4-thread-1 - 1|TestReq|100|1|0|18
+2015-02-28 16:32:06,408 - pool-4-thread-1 - TestMsg: uid=1, mid=4, sleepTime=141
+2015-02-28 16:32:06,408 - pool-4-thread-1 - 1|TestReq|100|4|0|0
+2015-02-28 16:32:06,408 - pool-4-thread-1 - TestMsg: uid=1, mid=5, sleepTime=174
+2015-02-28 16:32:06,408 - pool-4-thread-1 - 1|TestReq|100|5|0|0
+2015-02-28 16:32:06,408 - pool-4-thread-1 - TestMsg: uid=1, mid=2, sleepTime=118
+2015-02-28 16:32:06,409 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,409 - pool-4-thread-1 - 1|TestReq|100|2|0|1
+2015-02-28 16:32:06,409 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,409 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,409 - pool-4-thread-1 - TestMsg: uid=1, mid=3, sleepTime=197
+2015-02-28 16:32:06,410 - pool-4-thread-1 - 1|TestReq|100|3|0|1
+2015-02-28 16:32:06,410 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:06,410 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,385 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,385 - pool-4-thread-2 - TestMsg: uid=1, mid=6, sleepTime=96
+2015-02-28 16:32:07,385 - pool-4-thread-2 - 1|TestReq|100|6|0|0
+2015-02-28 16:32:07,386 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,387 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,387 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,387 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,388 - pool-4-thread-1 - TestMsg: uid=1, mid=7, sleepTime=93
+2015-02-28 16:32:07,388 - pool-4-thread-1 - 1|TestReq|100|7|0|1
+2015-02-28 16:32:07,388 - pool-4-thread-1 - TestMsg: uid=1, mid=8, sleepTime=36
+2015-02-28 16:32:07,389 - pool-4-thread-1 - 1|TestReq|100|8|0|1
+2015-02-28 16:32:07,389 - pool-4-thread-1 - TestMsg: uid=1, mid=9, sleepTime=7
+2015-02-28 16:32:07,389 - pool-4-thread-1 - 1|TestReq|100|9|0|0
+2015-02-28 16:32:07,390 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,390 - pool-3-thread-4 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,390 - pool-3-thread-1 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,390 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:07,392 - pool-4-thread-2 - TestMsg: uid=1, mid=10, sleepTime=79
+2015-02-28 16:32:07,392 - pool-4-thread-2 - 1|TestReq|100|10|0|0
+2015-02-28 16:32:07,393 - pool-3-thread-3 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,386 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,386 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,386 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,387 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,387 - pool-3-thread-4 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,387 - pool-4-thread-1 - TestMsg: uid=1, mid=11, sleepTime=71
+2015-02-28 16:32:08,387 - pool-4-thread-1 - 1|TestReq|100|11|0|0
+2015-02-28 16:32:08,387 - pool-4-thread-1 - TestMsg: uid=1, mid=12, sleepTime=140
+2015-02-28 16:32:08,387 - pool-4-thread-1 - 1|TestReq|100|12|0|0
+2015-02-28 16:32:08,388 - pool-4-thread-1 - TestMsg: uid=1, mid=13, sleepTime=187
+2015-02-28 16:32:08,388 - pool-4-thread-1 - 1|TestReq|100|13|0|0
+2015-02-28 16:32:08,388 - pool-4-thread-1 - TestMsg: uid=1, mid=14, sleepTime=8
+2015-02-28 16:32:08,388 - pool-4-thread-1 - 1|TestReq|100|14|0|0
+2015-02-28 16:32:08,388 - pool-4-thread-1 - TestMsg: uid=1, mid=15, sleepTime=59
+2015-02-28 16:32:08,395 - pool-4-thread-1 - 1|TestReq|100|15|0|7
+2015-02-28 16:32:08,397 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,397 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,397 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,397 - pool-3-thread-1 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,397 - pool-3-thread-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 16:32:08,856 - pool-3-thread-3 - Error
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:273)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:1)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:690)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$10(AbstractPollingIoProcessor.java:650)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2015-02-28 17:41:09,204 - main - Bind at 13000
+2015-02-28 17:41:12,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,661 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,662 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,663 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,666 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,677 - pool-3-thread-1 - TestMsg: uid=1, mid=1, sleepTime=123
+2015-02-28 17:41:12,684 - pool-3-thread-1 - 1|TestReq|100|1|0|22
+2015-02-28 17:41:12,684 - pool-3-thread-1 - TestMsg: uid=1, mid=2, sleepTime=11
+2015-02-28 17:41:12,684 - pool-3-thread-1 - 1|TestReq|100|2|0|0
+2015-02-28 17:41:12,684 - pool-3-thread-1 - TestMsg: uid=1, mid=3, sleepTime=140
+2015-02-28 17:41:12,684 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:1,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,685 - pool-3-thread-1 - 1|TestReq|100|3|0|1
+2015-02-28 17:41:12,685 - pool-3-thread-1 - TestMsg: uid=1, mid=4, sleepTime=32
+2015-02-28 17:41:12,685 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:2,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,685 - pool-3-thread-1 - 1|TestReq|100|4|0|0
+2015-02-28 17:41:12,685 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:3,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,685 - pool-3-thread-1 - TestMsg: uid=1, mid=5, sleepTime=97
+2015-02-28 17:41:12,685 - pool-3-thread-1 - 1|TestReq|100|5|0|0
+2015-02-28 17:41:12,685 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:4,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:12,686 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:5,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,654 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,655 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,655 - pool-3-thread-2 - TestMsg: uid=1, mid=6, sleepTime=33
+2015-02-28 17:41:13,655 - pool-3-thread-2 - 1|TestReq|100|6|0|0
+2015-02-28 17:41:13,655 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,655 - pool-3-thread-2 - TestMsg: uid=1, mid=7, sleepTime=21
+2015-02-28 17:41:13,655 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,655 - pool-3-thread-2 - 1|TestReq|100|7|0|0
+2015-02-28 17:41:13,655 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,655 - pool-3-thread-2 - TestMsg: uid=1, mid=8, sleepTime=166
+2015-02-28 17:41:13,656 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:6,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,656 - pool-3-thread-2 - 1|TestReq|100|8|0|1
+2015-02-28 17:41:13,656 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:7,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,656 - pool-3-thread-2 - TestMsg: uid=1, mid=9, sleepTime=24
+2015-02-28 17:41:13,657 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:8,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,657 - pool-3-thread-2 - 1|TestReq|100|9|0|1
+2015-02-28 17:41:13,657 - pool-3-thread-2 - TestMsg: uid=1, mid=10, sleepTime=76
+2015-02-28 17:41:13,657 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:9,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:13,657 - pool-3-thread-2 - 1|TestReq|100|10|0|0
+2015-02-28 17:41:13,657 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:10,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,654 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,654 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,655 - pool-3-thread-1 - TestMsg: uid=1, mid=11, sleepTime=130
+2015-02-28 17:41:14,655 - pool-3-thread-1 - 1|TestReq|100|11|0|0
+2015-02-28 17:41:14,655 - pool-3-thread-1 - TestMsg: uid=1, mid=12, sleepTime=74
+2015-02-28 17:41:14,655 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:11,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,655 - pool-3-thread-1 - 1|TestReq|100|12|0|0
+2015-02-28 17:41:14,656 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:12,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,658 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,658 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,659 - pool-3-thread-2 - TestMsg: uid=1, mid=13, sleepTime=94
+2015-02-28 17:41:14,659 - pool-3-thread-2 - 1|TestReq|100|13|0|0
+2015-02-28 17:41:14,659 - pool-3-thread-2 - TestMsg: uid=1, mid=14, sleepTime=103
+2015-02-28 17:41:14,659 - pool-3-thread-2 - 1|TestReq|100|14|0|0
+2015-02-28 17:41:14,659 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,659 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:13,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,660 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:14,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:14,660 - pool-3-thread-1 - TestMsg: uid=1, mid=15, sleepTime=21
+2015-02-28 17:41:14,660 - pool-3-thread-1 - 1|TestReq|100|15|0|0
+2015-02-28 17:41:14,660 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:15,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,659 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:16,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:17,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,660 - pool-3-thread-2 - TestMsg: uid=1, mid=16, sleepTime=153
+2015-02-28 17:41:15,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:18,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,660 - pool-3-thread-2 - 1|TestReq|100|16|0|0
+2015-02-28 17:41:15,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:19,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,660 - pool-3-thread-2 - TestMsg: uid=1, mid=17, sleepTime=197
+2015-02-28 17:41:15,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:20,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,660 - pool-3-thread-2 - 1|TestReq|100|17|0|0
+2015-02-28 17:41:15,661 - pool-3-thread-2 - TestMsg: uid=1, mid=18, sleepTime=138
+2015-02-28 17:41:15,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:16,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,661 - pool-3-thread-2 - 1|TestReq|100|18|0|0
+2015-02-28 17:41:15,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:17,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,662 - pool-3-thread-2 - TestMsg: uid=1, mid=19, sleepTime=64
+2015-02-28 17:41:15,662 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:18,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,662 - pool-3-thread-2 - 1|TestReq|100|19|0|1
+2015-02-28 17:41:15,662 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:19,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:15,662 - pool-3-thread-2 - TestMsg: uid=1, mid=20, sleepTime=33
+2015-02-28 17:41:15,663 - pool-3-thread-2 - 1|TestReq|100|20|0|1
+2015-02-28 17:41:15,663 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:20,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,659 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:21,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:22,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,660 - pool-3-thread-1 - TestMsg: uid=1, mid=21, sleepTime=103
+2015-02-28 17:41:16,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:23,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,660 - pool-3-thread-1 - 1|TestReq|100|21|0|0
+2015-02-28 17:41:16,660 - pool-3-thread-1 - TestMsg: uid=1, mid=22, sleepTime=38
+2015-02-28 17:41:16,660 - pool-3-thread-1 - 1|TestReq|100|22|0|0
+2015-02-28 17:41:16,660 - pool-3-thread-1 - TestMsg: uid=1, mid=23, sleepTime=105
+2015-02-28 17:41:16,660 - pool-3-thread-1 - 1|TestReq|100|23|0|0
+2015-02-28 17:41:16,660 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:21,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:22,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,661 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:24,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,661 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:25,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,661 - pool-3-thread-2 - TestMsg: uid=1, mid=24, sleepTime=152
+2015-02-28 17:41:16,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:23,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,661 - pool-3-thread-2 - 1|TestReq|100|24|0|0
+2015-02-28 17:41:16,662 - pool-3-thread-2 - TestMsg: uid=1, mid=25, sleepTime=98
+2015-02-28 17:41:16,662 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:24,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:16,662 - pool-3-thread-2 - 1|TestReq|100|25|0|1
+2015-02-28 17:41:16,662 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:25,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,659 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:26,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:27,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:28,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:29,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,660 - pool-3-thread-1 - TestMsg: uid=1, mid=26, sleepTime=70
+2015-02-28 17:41:17,660 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:30,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,660 - pool-3-thread-1 - 1|TestReq|100|26|0|0
+2015-02-28 17:41:17,661 - pool-3-thread-1 - TestMsg: uid=1, mid=27, sleepTime=110
+2015-02-28 17:41:17,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:26,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,661 - pool-3-thread-1 - 1|TestReq|100|27|0|1
+2015-02-28 17:41:17,661 - pool-3-thread-1 - TestMsg: uid=1, mid=28, sleepTime=198
+2015-02-28 17:41:17,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:27,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,661 - pool-3-thread-1 - 1|TestReq|100|28|0|0
+2015-02-28 17:41:17,661 - pool-3-thread-1 - TestMsg: uid=1, mid=29, sleepTime=23
+2015-02-28 17:41:17,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:28,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,661 - pool-3-thread-1 - 1|TestReq|100|29|0|0
+2015-02-28 17:41:17,661 - pool-3-thread-1 - TestMsg: uid=1, mid=30, sleepTime=158
+2015-02-28 17:41:17,661 - pool-3-thread-1 - 1|TestReq|100|30|0|0
+2015-02-28 17:41:17,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:29,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:17,662 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:30,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,659 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:31,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,659 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:32,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,660 - pool-3-thread-2 - TestMsg: uid=1, mid=31, sleepTime=116
+2015-02-28 17:41:18,660 - pool-3-thread-2 - 1|TestReq|100|31|0|0
+2015-02-28 17:41:18,660 - pool-3-thread-2 - TestMsg: uid=1, mid=32, sleepTime=30
+2015-02-28 17:41:18,660 - pool-3-thread-2 - 1|TestReq|100|32|0|0
+2015-02-28 17:41:18,661 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:31,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,661 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:33,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,661 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:34,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,661 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:35,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,662 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:32,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,662 - pool-3-thread-1 - TestMsg: uid=1, mid=33, sleepTime=163
+2015-02-28 17:41:18,662 - pool-3-thread-1 - 1|TestReq|100|33|0|0
+2015-02-28 17:41:18,662 - pool-3-thread-1 - TestMsg: uid=1, mid=34, sleepTime=188
+2015-02-28 17:41:18,662 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:33,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,663 - pool-3-thread-1 - 1|TestReq|100|34|0|1
+2015-02-28 17:41:18,663 - pool-3-thread-1 - TestMsg: uid=1, mid=35, sleepTime=105
+2015-02-28 17:41:18,663 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:34,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:18,663 - pool-3-thread-1 - 1|TestReq|100|35|0|0
+2015-02-28 17:41:18,663 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:35,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,661 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:36,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,661 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:37,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,662 - pool-3-thread-2 - TestMsg: uid=1, mid=36, sleepTime=148
+2015-02-28 17:41:19,662 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:38,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,662 - pool-3-thread-2 - 1|TestReq|100|36|0|0
+2015-02-28 17:41:19,662 - pool-3-thread-2 - TestMsg: uid=1, mid=37, sleepTime=142
+2015-02-28 17:41:19,662 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:36,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,662 - pool-3-thread-2 - 1|TestReq|100|37|0|0
+2015-02-28 17:41:19,662 - pool-3-thread-2 - TestMsg: uid=1, mid=38, sleepTime=33
+2015-02-28 17:41:19,662 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:39,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,663 - pool-3-thread-2 - 1|TestReq|100|38|0|1
+2015-02-28 17:41:19,663 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:40,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,663 - pool-3-thread-2 - TestMsg: uid=1, mid=39, sleepTime=19
+2015-02-28 17:41:19,663 - pool-3-thread-2 - 1|TestReq|100|39|0|0
+2015-02-28 17:41:19,663 - pool-3-thread-2 - TestMsg: uid=1, mid=40, sleepTime=56
+2015-02-28 17:41:19,663 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:37,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,663 - pool-3-thread-2 - 1|TestReq|100|40|0|0
+2015-02-28 17:41:19,663 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:38,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,664 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:39,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:19,664 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:40,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,663 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:41,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:42,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,664 - pool-3-thread-1 - TestMsg: uid=1, mid=41, sleepTime=136
+2015-02-28 17:41:20,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:43,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,664 - pool-3-thread-1 - 1|TestReq|100|41|0|0
+2015-02-28 17:41:20,664 - pool-3-thread-1 - TestMsg: uid=1, mid=42, sleepTime=50
+2015-02-28 17:41:20,664 - pool-3-thread-1 - 1|TestReq|100|42|0|0
+2015-02-28 17:41:20,664 - pool-3-thread-1 - TestMsg: uid=1, mid=43, sleepTime=84
+2015-02-28 17:41:20,665 - pool-3-thread-1 - 1|TestReq|100|43|0|1
+2015-02-28 17:41:20,665 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:44,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,665 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:45,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,665 - pool-3-thread-2 - TestMsg: uid=1, mid=44, sleepTime=55
+2015-02-28 17:41:20,665 - pool-3-thread-2 - 1|TestReq|100|44|0|0
+2015-02-28 17:41:20,665 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:41,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,667 - pool-3-thread-2 - TestMsg: uid=1, mid=45, sleepTime=118
+2015-02-28 17:41:20,667 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:42,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,667 - pool-3-thread-2 - 1|TestReq|100|45|0|1
+2015-02-28 17:41:20,667 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:43,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,667 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:44,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:20,668 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:45,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:46,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:47,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:48,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:49,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,664 - pool-3-thread-1 - TestMsg: uid=1, mid=46, sleepTime=193
+2015-02-28 17:41:21,665 - pool-3-thread-1 - 1|TestReq|100|46|0|1
+2015-02-28 17:41:21,665 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:50,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,665 - pool-3-thread-1 - TestMsg: uid=1, mid=47, sleepTime=84
+2015-02-28 17:41:21,665 - pool-3-thread-1 - 1|TestReq|100|47|0|0
+2015-02-28 17:41:21,665 - pool-3-thread-1 - TestMsg: uid=1, mid=48, sleepTime=62
+2015-02-28 17:41:21,665 - pool-3-thread-1 - 1|TestReq|100|48|0|0
+2015-02-28 17:41:21,665 - pool-3-thread-1 - TestMsg: uid=1, mid=49, sleepTime=23
+2015-02-28 17:41:21,665 - pool-3-thread-1 - 1|TestReq|100|49|0|0
+2015-02-28 17:41:21,665 - pool-3-thread-1 - TestMsg: uid=1, mid=50, sleepTime=5
+2015-02-28 17:41:21,665 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:46,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,665 - pool-3-thread-1 - 1|TestReq|100|50|0|0
+2015-02-28 17:41:21,665 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:47,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,666 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:48,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,666 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:49,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:21,666 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:50,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:51,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,665 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:52,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,665 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:53,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,665 - pool-3-thread-2 - TestMsg: uid=1, mid=51, sleepTime=17
+2015-02-28 17:41:22,665 - pool-3-thread-2 - 1|TestReq|100|51|0|0
+2015-02-28 17:41:22,665 - pool-3-thread-2 - TestMsg: uid=1, mid=52, sleepTime=10
+2015-02-28 17:41:22,665 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:54,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,666 - pool-3-thread-2 - 1|TestReq|100|52|0|1
+2015-02-28 17:41:22,666 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:55,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,666 - pool-3-thread-2 - TestMsg: uid=1, mid=53, sleepTime=19
+2015-02-28 17:41:22,666 - pool-3-thread-2 - 1|TestReq|100|53|0|0
+2015-02-28 17:41:22,666 - pool-3-thread-2 - TestMsg: uid=1, mid=54, sleepTime=57
+2015-02-28 17:41:22,666 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:51,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,666 - pool-3-thread-2 - 1|TestReq|100|54|0|0
+2015-02-28 17:41:22,666 - pool-3-thread-2 - TestMsg: uid=1, mid=55, sleepTime=140
+2015-02-28 17:41:22,666 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:52,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,666 - pool-3-thread-2 - 1|TestReq|100|55|0|0
+2015-02-28 17:41:22,667 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:53,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,667 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:54,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:22,668 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:55,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:56,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,664 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:57,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,664 - pool-3-thread-1 - TestMsg: uid=1, mid=56, sleepTime=182
+2015-02-28 17:41:23,665 - pool-3-thread-1 - 1|TestReq|100|56|0|1
+2015-02-28 17:41:23,665 - pool-3-thread-1 - TestMsg: uid=1, mid=57, sleepTime=103
+2015-02-28 17:41:23,665 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:56,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,665 - pool-3-thread-1 - 1|TestReq|100|57|0|0
+2015-02-28 17:41:23,665 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:58,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,665 - pool-3-thread-2 - TestMsg: uid=1, mid=58, sleepTime=98
+2015-02-28 17:41:23,665 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:57,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,666 - pool-3-thread-2 - 1|TestReq|100|58|0|1
+2015-02-28 17:41:23,666 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:58,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,667 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:59,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,667 - pool-3-thread-1 - TestMsg: uid=1, mid=59, sleepTime=28
+2015-02-28 17:41:23,667 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:60,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,667 - pool-3-thread-1 - 1|TestReq|100|59|0|0
+2015-02-28 17:41:23,668 - pool-3-thread-1 - TestMsg: uid=1, mid=60, sleepTime=169
+2015-02-28 17:41:23,668 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:59,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:23,668 - pool-3-thread-1 - 1|TestReq|100|60|0|0
+2015-02-28 17:41:23,668 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:60,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,668 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:61,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,668 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:62,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,668 - pool-3-thread-2 - TestMsg: uid=1, mid=61, sleepTime=176
+2015-02-28 17:41:24,669 - pool-3-thread-2 - 1|TestReq|100|61|0|1
+2015-02-28 17:41:24,669 - pool-3-thread-2 - TestMsg: uid=1, mid=62, sleepTime=52
+2015-02-28 17:41:24,669 - pool-3-thread-2 - 1|TestReq|100|62|0|0
+2015-02-28 17:41:24,669 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:61,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:63,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,670 - pool-3-thread-1 - TestMsg: uid=1, mid=63, sleepTime=111
+2015-02-28 17:41:24,670 - pool-3-thread-1 - 1|TestReq|100|63|0|0
+2015-02-28 17:41:24,670 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:64,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,670 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:65,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,671 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:62,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,671 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:63,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,671 - pool-3-thread-2 - TestMsg: uid=1, mid=64, sleepTime=115
+2015-02-28 17:41:24,671 - pool-3-thread-2 - 1|TestReq|100|64|0|0
+2015-02-28 17:41:24,671 - pool-3-thread-2 - TestMsg: uid=1, mid=65, sleepTime=81
+2015-02-28 17:41:24,671 - pool-3-thread-2 - 1|TestReq|100|65|0|0
+2015-02-28 17:41:24,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:64,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:24,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:65,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,668 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:66,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:67,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:68,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:69,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:70,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,670 - pool-3-thread-1 - TestMsg: uid=1, mid=66, sleepTime=49
+2015-02-28 17:41:25,670 - pool-3-thread-1 - 1|TestReq|100|66|0|0
+2015-02-28 17:41:25,670 - pool-3-thread-1 - TestMsg: uid=1, mid=67, sleepTime=62
+2015-02-28 17:41:25,670 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:66,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,670 - pool-3-thread-1 - 1|TestReq|100|67|0|0
+2015-02-28 17:41:25,670 - pool-3-thread-1 - TestMsg: uid=1, mid=68, sleepTime=170
+2015-02-28 17:41:25,670 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:67,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,671 - pool-3-thread-1 - 1|TestReq|100|68|0|1
+2015-02-28 17:41:25,671 - pool-3-thread-1 - TestMsg: uid=1, mid=69, sleepTime=61
+2015-02-28 17:41:25,671 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:68,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,671 - pool-3-thread-1 - 1|TestReq|100|69|0|0
+2015-02-28 17:41:25,671 - pool-3-thread-1 - TestMsg: uid=1, mid=70, sleepTime=123
+2015-02-28 17:41:25,671 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:69,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:25,671 - pool-3-thread-1 - 1|TestReq|100|70|0|0
+2015-02-28 17:41:25,671 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:70,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,668 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:71,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:72,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,669 - pool-3-thread-2 - TestMsg: uid=1, mid=71, sleepTime=91
+2015-02-28 17:41:26,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:73,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:74,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:75,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,669 - pool-3-thread-2 - 1|TestReq|100|71|0|0
+2015-02-28 17:41:26,670 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:71,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,670 - pool-3-thread-2 - TestMsg: uid=1, mid=72, sleepTime=68
+2015-02-28 17:41:26,670 - pool-3-thread-2 - 1|TestReq|100|72|0|0
+2015-02-28 17:41:26,670 - pool-3-thread-2 - TestMsg: uid=1, mid=73, sleepTime=100
+2015-02-28 17:41:26,670 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:72,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,670 - pool-3-thread-2 - 1|TestReq|100|73|0|0
+2015-02-28 17:41:26,670 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:73,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,671 - pool-3-thread-2 - TestMsg: uid=1, mid=74, sleepTime=10
+2015-02-28 17:41:26,671 - pool-3-thread-2 - 1|TestReq|100|74|0|1
+2015-02-28 17:41:26,671 - pool-3-thread-2 - TestMsg: uid=1, mid=75, sleepTime=159
+2015-02-28 17:41:26,671 - pool-3-thread-2 - 1|TestReq|100|75|0|0
+2015-02-28 17:41:26,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:74,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:26,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:75,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:76,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:77,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:78,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:79,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:80,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,670 - pool-3-thread-1 - TestMsg: uid=1, mid=76, sleepTime=107
+2015-02-28 17:41:27,670 - pool-3-thread-1 - 1|TestReq|100|76|0|0
+2015-02-28 17:41:27,671 - pool-3-thread-1 - TestMsg: uid=1, mid=77, sleepTime=34
+2015-02-28 17:41:27,671 - pool-3-thread-1 - 1|TestReq|100|77|0|1
+2015-02-28 17:41:27,671 - pool-3-thread-1 - TestMsg: uid=1, mid=78, sleepTime=96
+2015-02-28 17:41:27,671 - pool-3-thread-1 - 1|TestReq|100|78|0|0
+2015-02-28 17:41:27,671 - pool-3-thread-1 - TestMsg: uid=1, mid=79, sleepTime=93
+2015-02-28 17:41:27,671 - pool-3-thread-1 - 1|TestReq|100|79|0|0
+2015-02-28 17:41:27,671 - pool-3-thread-1 - TestMsg: uid=1, mid=80, sleepTime=9
+2015-02-28 17:41:27,671 - pool-3-thread-1 - 1|TestReq|100|80|0|0
+2015-02-28 17:41:27,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:76,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:77,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:78,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,673 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:79,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:27,673 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:80,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:81,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,669 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:82,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,670 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:83,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,670 - pool-3-thread-2 - TestMsg: uid=1, mid=81, sleepTime=1
+2015-02-28 17:41:28,670 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:84,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,670 - pool-3-thread-2 - 1|TestReq|100|81|0|0
+2015-02-28 17:41:28,670 - pool-3-thread-2 - TestMsg: uid=1, mid=82, sleepTime=115
+2015-02-28 17:41:28,670 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:81,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,671 - pool-3-thread-2 - 1|TestReq|100|82|0|1
+2015-02-28 17:41:28,671 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:85,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,671 - pool-3-thread-2 - TestMsg: uid=1, mid=83, sleepTime=5
+2015-02-28 17:41:28,671 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:82,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,671 - pool-3-thread-2 - 1|TestReq|100|83|0|0
+2015-02-28 17:41:28,671 - pool-3-thread-2 - TestMsg: uid=1, mid=84, sleepTime=32
+2015-02-28 17:41:28,672 - pool-3-thread-2 - 1|TestReq|100|84|0|1
+2015-02-28 17:41:28,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:83,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,672 - pool-3-thread-2 - TestMsg: uid=1, mid=85, sleepTime=71
+2015-02-28 17:41:28,672 - pool-3-thread-2 - 1|TestReq|100|85|0|0
+2015-02-28 17:41:28,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:84,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:28,672 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:85,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,670 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:86,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,671 - pool-3-thread-1 - TestMsg: uid=1, mid=86, sleepTime=9
+2015-02-28 17:41:29,671 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:87,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,671 - pool-3-thread-1 - 1|TestReq|100|86|0|0
+2015-02-28 17:41:29,671 - pool-3-thread-1 - TestMsg: uid=1, mid=87, sleepTime=21
+2015-02-28 17:41:29,671 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:86,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,671 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:87,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,671 - pool-3-thread-1 - 1|TestReq|100|87|0|0
+2015-02-28 17:41:29,672 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:88,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,672 - pool-3-thread-2 - TestMsg: uid=1, mid=88, sleepTime=102
+2015-02-28 17:41:29,672 - pool-3-thread-2 - 1|TestReq|100|88|0|0
+2015-02-28 17:41:29,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:89,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,673 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:88,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:90,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,674 - pool-3-thread-1 - TestMsg: uid=1, mid=89, sleepTime=56
+2015-02-28 17:41:29,674 - pool-3-thread-1 - 1|TestReq|100|89|0|0
+2015-02-28 17:41:29,674 - pool-3-thread-1 - TestMsg: uid=1, mid=90, sleepTime=30
+2015-02-28 17:41:29,674 - pool-3-thread-1 - 1|TestReq|100|90|0|0
+2015-02-28 17:41:29,674 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:89,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:29,674 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:90,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,672 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:91,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,672 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:92,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,673 - pool-3-thread-2 - TestMsg: uid=1, mid=91, sleepTime=40
+2015-02-28 17:41:30,673 - pool-3-thread-2 - 1|TestReq|100|91|0|0
+2015-02-28 17:41:30,673 - pool-3-thread-2 - TestMsg: uid=1, mid=92, sleepTime=153
+2015-02-28 17:41:30,673 - pool-3-thread-2 - 1|TestReq|100|92|0|0
+2015-02-28 17:41:30,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:93,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:94,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:95,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,674 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:91,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,674 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:92,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,674 - pool-3-thread-1 - TestMsg: uid=1, mid=93, sleepTime=23
+2015-02-28 17:41:30,675 - pool-3-thread-1 - 1|TestReq|100|93|0|1
+2015-02-28 17:41:30,675 - pool-3-thread-1 - TestMsg: uid=1, mid=94, sleepTime=167
+2015-02-28 17:41:30,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:93,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:94,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:30,675 - pool-3-thread-1 - 1|TestReq|100|94|0|0
+2015-02-28 17:41:30,676 - pool-3-thread-1 - TestMsg: uid=1, mid=95, sleepTime=93
+2015-02-28 17:41:30,676 - pool-3-thread-1 - 1|TestReq|100|95|0|1
+2015-02-28 17:41:30,676 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:95,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,672 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:96,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,672 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:97,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:98,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:99,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,673 - pool-3-thread-2 - TestMsg: uid=1, mid=96, sleepTime=44
+2015-02-28 17:41:31,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:100,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,673 - pool-3-thread-2 - 1|TestReq|100|96|0|0
+2015-02-28 17:41:31,673 - pool-3-thread-2 - TestMsg: uid=1, mid=97, sleepTime=55
+2015-02-28 17:41:31,673 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:96,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,674 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:97,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,674 - pool-3-thread-2 - 1|TestReq|100|97|0|1
+2015-02-28 17:41:31,674 - pool-3-thread-2 - TestMsg: uid=1, mid=98, sleepTime=12
+2015-02-28 17:41:31,675 - pool-3-thread-2 - 1|TestReq|100|98|0|1
+2015-02-28 17:41:31,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:98,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,675 - pool-3-thread-2 - TestMsg: uid=1, mid=99, sleepTime=56
+2015-02-28 17:41:31,675 - pool-3-thread-2 - 1|TestReq|100|99|0|0
+2015-02-28 17:41:31,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:99,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:31,675 - pool-3-thread-2 - TestMsg: uid=1, mid=100, sleepTime=3
+2015-02-28 17:41:31,676 - pool-3-thread-2 - 1|TestReq|100|100|0|1
+2015-02-28 17:41:31,676 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:100,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:101,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,673 - pool-3-thread-1 - TestMsg: uid=1, mid=101, sleepTime=8
+2015-02-28 17:41:32,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:102,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:103,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,674 - pool-3-thread-1 - 1|TestReq|100|101|0|1
+2015-02-28 17:41:32,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:104,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,674 - pool-3-thread-1 - TestMsg: uid=1, mid=102, sleepTime=128
+2015-02-28 17:41:32,674 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:101,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,674 - pool-3-thread-1 - 1|TestReq|100|102|0|0
+2015-02-28 17:41:32,674 - pool-3-thread-1 - TestMsg: uid=1, mid=103, sleepTime=174
+2015-02-28 17:41:32,674 - pool-3-thread-1 - 1|TestReq|100|103|0|0
+2015-02-28 17:41:32,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:105,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,675 - pool-3-thread-1 - TestMsg: uid=1, mid=104, sleepTime=80
+2015-02-28 17:41:32,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:102,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:103,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,675 - pool-3-thread-1 - 1|TestReq|100|104|0|1
+2015-02-28 17:41:32,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:104,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:32,675 - pool-3-thread-1 - TestMsg: uid=1, mid=105, sleepTime=68
+2015-02-28 17:41:32,676 - pool-3-thread-1 - 1|TestReq|100|105|0|1
+2015-02-28 17:41:32,676 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:105,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,673 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:106,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:107,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:108,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:109,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:110,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,674 - pool-3-thread-2 - TestMsg: uid=1, mid=106, sleepTime=192
+2015-02-28 17:41:33,675 - pool-3-thread-2 - 1|TestReq|100|106|0|1
+2015-02-28 17:41:33,675 - pool-3-thread-2 - TestMsg: uid=1, mid=107, sleepTime=99
+2015-02-28 17:41:33,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:106,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,675 - pool-3-thread-2 - 1|TestReq|100|107|0|0
+2015-02-28 17:41:33,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:107,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,675 - pool-3-thread-2 - TestMsg: uid=1, mid=108, sleepTime=56
+2015-02-28 17:41:33,676 - pool-3-thread-2 - 1|TestReq|100|108|0|1
+2015-02-28 17:41:33,676 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:108,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,676 - pool-3-thread-2 - TestMsg: uid=1, mid=109, sleepTime=197
+2015-02-28 17:41:33,676 - pool-3-thread-2 - 1|TestReq|100|109|0|0
+2015-02-28 17:41:33,676 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:109,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:33,677 - pool-3-thread-2 - TestMsg: uid=1, mid=110, sleepTime=87
+2015-02-28 17:41:33,677 - pool-3-thread-2 - 1|TestReq|100|110|0|1
+2015-02-28 17:41:33,677 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:110,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,674 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:111,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,675 - pool-3-thread-1 - TestMsg: uid=1, mid=111, sleepTime=140
+2015-02-28 17:41:34,675 - pool-3-thread-1 - 1|TestReq|100|111|0|0
+2015-02-28 17:41:34,675 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:112,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,675 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:111,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,675 - pool-3-thread-2 - TestMsg: uid=1, mid=112, sleepTime=115
+2015-02-28 17:41:34,676 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:113,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,676 - pool-3-thread-2 - 1|TestReq|100|112|0|1
+2015-02-28 17:41:34,676 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:114,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,676 - pool-3-thread-2 - TestMsg: uid=1, mid=113, sleepTime=75
+2015-02-28 17:41:34,676 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:115,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,676 - pool-3-thread-2 - 1|TestReq|100|113|0|0
+2015-02-28 17:41:34,676 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:112,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,677 - pool-3-thread-2 - TestMsg: uid=1, mid=114, sleepTime=89
+2015-02-28 17:41:34,677 - pool-3-thread-2 - 1|TestReq|100|114|0|0
+2015-02-28 17:41:34,677 - pool-3-thread-2 - TestMsg: uid=1, mid=115, sleepTime=86
+2015-02-28 17:41:34,677 - pool-3-thread-2 - 1|TestReq|100|115|0|0
+2015-02-28 17:41:34,677 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:113,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,678 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:114,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:34,678 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:115,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,675 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:116,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,676 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:117,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,676 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:118,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,676 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:119,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,676 - pool-3-thread-1 - TestMsg: uid=1, mid=116, sleepTime=155
+2015-02-28 17:41:35,677 - pool-3-thread-1 - 1|TestReq|100|116|0|1
+2015-02-28 17:41:35,677 - pool-3-thread-1 - TestMsg: uid=1, mid=117, sleepTime=88
+2015-02-28 17:41:35,677 - pool-3-thread-1 - 1|TestReq|100|117|0|0
+2015-02-28 17:41:35,677 - pool-3-thread-1 - TestMsg: uid=1, mid=118, sleepTime=170
+2015-02-28 17:41:35,677 - pool-3-thread-1 - 1|TestReq|100|118|0|0
+2015-02-28 17:41:35,677 - pool-3-thread-1 - TestMsg: uid=1, mid=119, sleepTime=40
+2015-02-28 17:41:35,677 - pool-3-thread-1 - 1|TestReq|100|119|0|0
+2015-02-28 17:41:35,678 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:116,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,678 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:117,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,678 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:118,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,679 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:119,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,679 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:120,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:35,681 - pool-3-thread-2 - TestMsg: uid=1, mid=120, sleepTime=1
+2015-02-28 17:41:35,681 - pool-3-thread-2 - 1|TestReq|100|120|0|0
+2015-02-28 17:41:35,681 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:120,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,678 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:121,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,678 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:122,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,678 - pool-3-thread-1 - TestMsg: uid=1, mid=121, sleepTime=82
+2015-02-28 17:41:36,679 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:123,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,679 - pool-3-thread-1 - 1|TestReq|100|121|0|1
+2015-02-28 17:41:36,679 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:121,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,679 - pool-3-thread-1 - TestMsg: uid=1, mid=122, sleepTime=164
+2015-02-28 17:41:36,679 - pool-3-thread-1 - 1|TestReq|100|122|0|0
+2015-02-28 17:41:36,680 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:122,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,680 - pool-3-thread-1 - TestMsg: uid=1, mid=123, sleepTime=57
+2015-02-28 17:41:36,680 - pool-3-thread-1 - 1|TestReq|100|123|0|0
+2015-02-28 17:41:36,680 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:124,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,680 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:123,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,681 - pool-3-thread-2 - TestMsg: uid=1, mid=124, sleepTime=138
+2015-02-28 17:41:36,681 - pool-3-thread-2 - 1|TestReq|100|124|0|0
+2015-02-28 17:41:36,681 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:124,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,682 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:125,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:36,682 - pool-3-thread-1 - TestMsg: uid=1, mid=125, sleepTime=34
+2015-02-28 17:41:36,682 - pool-3-thread-1 - 1|TestReq|100|125|0|0
+2015-02-28 17:41:36,683 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:125,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:37,683 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:126,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:37,684 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:127,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:37,684 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:128,cmd:100,check:0,bodyLength:41}
+2015-02-28 17:41:37,684 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:129,cmd:100,check:0,bodyLength:41}
+2015-02-28 17:41:37,684 - pool-3-thread-2 - TestMsg: uid=1, mid=126, sleepTime=179
+2015-02-28 17:41:37,684 - pool-3-thread-2 - 1|TestReq|100|126|0|0
+2015-02-28 17:41:37,684 - pool-3-thread-2 - TestMsg: uid=1, mid=127, sleepTime=64
+2015-02-28 17:41:37,685 - pool-3-thread-2 - 1|TestReq|100|127|0|1
+2015-02-28 17:41:37,685 - pool-3-thread-2 - TestMsg: uid=1, mid=128, sleepTime=116
+2015-02-28 17:41:37,685 - pool-3-thread-2 - 1|TestReq|100|128|0|0
+2015-02-28 17:41:37,685 - pool-3-thread-2 - TestMsg: uid=1, mid=129, sleepTime=1
+2015-02-28 17:41:37,685 - pool-3-thread-2 - 1|TestReq|100|129|0|0
+2015-02-28 17:41:37,685 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:126,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:37,685 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:127,cmd:100,check:0,bodyLength:40}
+2015-02-28 17:41:37,686 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:128,cmd:100,check:0,bodyLength:41}
+2015-02-28 17:41:37,686 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:129,cmd:100,check:0,bodyLength:41}
+2015-02-28 17:41:37,687 - NioProcessor-2 - UserOrderedThreadPool: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:130,cmd:100,check:0,bodyLength:41}
+2015-02-28 17:41:37,687 - pool-3-thread-1 - TestMsg: uid=1, mid=130, sleepTime=124
+2015-02-28 17:41:37,688 - pool-3-thread-1 - 1|TestReq|100|130|0|1
+2015-02-28 17:41:37,688 - NioProcessor-2 - Server Sent: com.ray.communicate.message.IoHeader: {sid:0,uid:1,code:130,cmd:100,check:0,bodyLength:41}
+2015-02-28 17:41:38,411 - NioProcessor-2 - Error
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:273)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:1)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:690)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:664)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.process(AbstractPollingIoProcessor.java:653)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$10(AbstractPollingIoProcessor.java:650)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:1124)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)

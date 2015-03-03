@@ -1,0 +1,8 @@
+package com.ray.message.proto.client.net;
+
+option java_package = "com.ray.message.java.client.net";
+option java_outer_classname = "HeartBeatMsgProto";
+
+message HeartBeatMsg {
+	required int32 serverTime = 1;//服务器时间
+}

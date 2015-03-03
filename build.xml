@@ -1,0 +1,161 @@
+<project name="fire-communicate" default="run">
+
+    <description>fire-communicate</description>
+
+	<property name="project.name.file" value="communicate"/>
+	<property name="auth" value="Ray"/>
+	<property name="entry" value="com.ray.communicate.client.FireSocketClientImp" />
+	
+    <!-- Global -->
+	<property name="debug" value="on"/>
+	<property name="optimize" value="off"/>
+	<property name="deprecation" value="off"/>
+	<property name="base.dir" location="."/>
+    <property name="lib.dir" location="lib" />
+	<property name="config.dir" location="config" />
+    <property name="mina.dir" location="mina"/>
+    <property name="src.fire.dir" location="fire"/>
+    <property name="src.test.dir" location="test"/>
+	<property name="build.dir" location="build"/>
+	<property name="build.classes.dir" location="${build.dir}/classes"/>
+	<property name="run.dir" location="${build.dir}/run" />
+	<property name="run.config.dir" location="${run.dir}/config" />
+	<property name="run.lib.dir" location="${run.dir}/lib" />
+	<property name="back.dir" location="back"/>
+	<tstamp><format property="today" pattern="yyyy-MM-dd HH:mm:ss" /></tstamp>
+
+	<target name="init"
+			description="init the build task...">
+		
+		<delete dir="${build.dir}"/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.classes.dir}"/>
+		<mkdir dir="${run.dir}"/>
+		<mkdir dir="${run.config.dir}"/>
+		<mkdir dir="${run.lib.dir}"/>
+		<delete dir="${back.dir}"/>
+		<mkdir dir="${back.dir}"/>
+	</target>
+	
+	<target name="run"
+			description="the entry of the project."
+			depends="init,compile,back,makejar">
+		<echo>completly, run ok...</echo>
+	</target>
+	
+	<target name="back"
+			description="back up the source file to the ${back} folder.."
+			depends="init">
+		<copy todir="${back.dir}">
+			<fileset dir="${mina.dir}" >
+				<include name="**/*"/>
+			</fileset>
+			<fileset dir="${src.fire.dir}" >
+				<include name="**/*"/>
+			</fileset>
+			<fileset dir="${src.test.dir}" >
+				<include name="**/*"/>
+			</fileset>
+		</copy>	
+	</target>
+	
+    <target name="compile"
+            description="Compiles source files to build directory.">
+        <!-- javac srcdir="${mina.dir}"
+			   destdir="${build.classes.dir}"
+        	   classpathref="project.classpath"
+        	   fork="yes"
+        	   debug="on"
+        	   -->
+    		<javac srcdir="${mina.dir};${src.fire.dir};${src.test.dir}" destdir="${build.classes.dir}" encoding="utf-8">
+	            <classpath>            		
+					<fileset dir="${lib.dir}">
+					    <include name="**/*.jar"/>
+					</fileset>
+	            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="clean"
+            description="Removes build directory.">
+    	<echo>call clean...</echo>
+    	<delete dir="${build.dir}"/>
+    </target>
+
+	
+	<target name="makejar"
+				description="make .jar package  and make a .war delivery package..">
+
+		<copy todir="${build.classes.dir}">
+			<fileset dir="${mina.dir}">
+				<include name="**/*.properties"/>
+				<include name="**/*.xml"/>
+			</fileset>
+		</copy>
+		
+		<jar jarfile="${build.dir}/fire-client.jar">
+			<manifest>
+				<attribute name="BuildBy" value="${auth}" />
+				<attribute name="Main-Class" value="${entry}" />
+			</manifest>
+			<fileset dir="${build.classes.dir}" />
+		</jar>
+		
+		<copy todir="${run.dir}">
+			<fileset dir="${base.dir}">
+			 	<include name="*.properties" />
+			 	<include name="*.bat" />
+			</fileset>
+			<fileset dir="${mina.dir}">
+			 	<include name="**/*.properties"/>
+			</fileset>
+			<fileset dir="${src.fire.dir}">
+			 	<include name="**/*.properties"/>
+			 	<include name="**/*.ser"/>
+			</fileset>
+			<fileset dir="${src.test.dir}">
+			 	<include name="**/*.properties"/>
+			</fileset>
+		</copy>
+		<copy todir="${run.config.dir}">
+		    <fileset dir="${config.dir}">
+			 	<include name="**/*.properties"/>
+		    	<include name="**/*.xml"/>
+			</fileset>
+		</copy>
+		<copy todir="${run.lib.dir}">
+		     <fileset dir="${lib.dir}">
+			 	<include name="**/*"/>
+			 </fileset>
+			 <fileset dir="${build.dir}">
+				<include name="*.jar" />
+			 </fileset>
+		</copy>
+		
+		<mkdir dir="d:/self/fire-client-1"/>
+		<copy todir="d:/self/fire-client-1">
+		     <fileset dir="${run.dir}">
+			 	<include name="**/*"/>
+			 </fileset>
+		</copy>
+		<mkdir dir="d:/self/fire-client-2"/>
+		<copy todir="d:/self/fire-client-2">
+		     <fileset dir="${run.dir}">
+			 	<include name="**/*"/>
+			 </fileset>
+		</copy>
+		<mkdir dir="d:/self/fire-client-3"/>
+		<copy todir="d:/self/fire-client-3">
+		     <fileset dir="${run.dir}">
+			 	<include name="**/*"/>
+			 </fileset>
+		</copy>
+		<mkdir dir="d:/self/fire-server"/>
+		<copy todir="d:/self/fire-server">
+		     <fileset dir="${run.dir}">
+			 	<include name="**/*"/>
+			 </fileset>
+		</copy>
+	</target>
+</project>

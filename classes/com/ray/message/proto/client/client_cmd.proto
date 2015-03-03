@@ -1,0 +1,462 @@
+package com.ray.message.proto.client;
+option java_package = "com.ray.message.java.client";
+option java_outer_classname = "ClientCmdProto";
+enum ClientCmd {
+	/**测试 100-200*/
+	TEST_COMMUNICATION = 100;            //测试应答|test_msg.proto->test_msg.proto
+
+	SYS_FLUSH = 500;		          //系统推送消息|(服务端主动)null->null
+
+	/**通信 600-700*/
+	NET_HEART_BEAT = 601;            //心跳|null->heart_beat_msg.proto
+
+	/**玩家10000-11000 */
+	PLAYER_LOGIN = 10001;	//登录|login_req.proto->login_resp.proto
+	PLAYER_CONNECT = 10002;   //连接网关|connect_req.proto->connect_resp.proto
+	PLAYER_REGISTER = 10003;   //注册|register_req.proto->connect_resp.proto
+	PLAYER_UPDATE = 10004;	 //更新玩家数据|(服务端主动)null->player_msg.proto
+	PLAYER_MARK_REMOVE = 10005;   //移除标志|mark_msg.proto->null
+	PLAYER_UPDATE_SIMPLE = 10006;   //更新玩家数据|(服务端主动)null->simple_player_msg.proto
+	PLAYER_ATTRIBUTE_UPDATE = 10007;//玩家属性更新|(服务端主动)null->living_attribute_msg.proto
+	PLAYER_INDULGE_UPDATE = 10008;//玩家防沉迷更新|(服务端主动)null->indulge_msg.proto
+	PLAYER_GET_DETAIL = 10009;	//获取玩家详情|ids_msg.proto->player_msg.proto
+	PLAYER_BUY_VIT = 10010;	 //购买体力|null->buy_vit_resp.proto
+	PLAYER_RESET_ATTRIBUTE = 10011;    //重置属性|null->null
+	PLAYER_GET_SETTING = 10012;	    //获取设置|null->setting_msg.proto
+	PLAYER_SAVE_SETTING = 10013;    //保存设置|setting_msg.proto->setting_msg.proto
+	PLAYER_BLESSING_OF_GOD = 10014;   //神之庇护|blessing_of_god_req.proto->blessing_of_god_resp.proto
+	PLAYER_CHANGE_FASHION = 10015;	  //切换形象|change_fashion_req.proto->null
+	PLAYER_GET_SIGNATURE = 10016;	 //获取玩家签名|ids_msg.proto->player_signature_msg.proto
+	PLAYER_STARLIGHT_AUGURY = 10017;   //星光占卜|starlight_augury_req.proto->starlight_augury_resp.proto
+	PLAYER_BLESSING_RECORD = 10018;   //神之庇佑记录|null->get_blessing_records_resp.proto
+	PLAYER_STARLIGHT_AUGURY_RECORD = 10019; //星光占卜记录|null->get_starlight_augury_records_resp.proto
+	PLAYER_OPEN_VIP = 10020;	  //开通vip |ids_msg.proto->open_vip_resp.proto
+	PLAYER_OPEN_OTHER_VIP = 10021;    //为别人开通vip |open_other_vip_req.proto->open_other_vip_resp.proto
+	PLAYER_GET_VIP_GIFT = 10022;	  //领取vip礼包|null->reward_msg.proto
+	PLAYER_UPGRADE_KNIGHT = 10023;   //提升爵位|null->null
+	PLAYER_REVISE_GIGNATURE = 10024;  //修改签名|revise_signature_req.proto->null
+	PLAYER_REWARD_UPDATE = 10025;    //推送奖励|(服务器主动)null->reward_msg.proto
+	PLAYER_RESET_VIP = 10026;		 //玩家重置vip|null->null
+	PLAYER_FUNCTION_OPEN_UPDATE = 10027;//更新玩家功能开放|null->ids_msg.proto
+	PLAYER_UPDATE_DETAIL = 10028;	 //更新玩家数据|(服务端主动，包括pack详细信息)null->player_msg.proto
+
+	/**聊天11001-11100 */
+	CHAT_SEND = 11001;		//发送消息|chat_msg.proto->chat_msg.proto
+
+	/**战斗11101-11200*/
+	BATTLE_TEAM_CREATE = 11101;	//组队|create_team_req.proto->team_msg.proto
+	BATTLE_CREATE = 11102;		//进入战斗|create_battle_req.proto->battle_msg.proto
+	BATTLE_TEAM_JOIN = 11103;	//加入队伍|join_team_req.proto->team_msg.proto
+	BATTLE_TEAM_EXIT = 11104;	//退出队伍|null->team_exit_msg.proto
+	BATTLE_TEAM_UPDATE = 11105;	//玩家加入队伍(服务器主动)|null->team_msg.proto
+	BATTLE_TEAM_LIST_GET = 11107;		//获取组队列表|null->get_team_list_resp.proto
+	BATTLE_TEAM_DISBAND = 11108;		//解散队伍|(服务器主动)null->null
+	BATTLE_TEAM_LIST_UPDATE = 11109;	//更新队伍列表|(服务器主动)null->simple_team_msg.proto
+	BATTLE_TEAM_INVITE = 11110;			//邀请组队|invite_team_req.proto->null
+	BATTLE_TEAM_KICK_OUT = 11111;		//踢出队伍|ids_msg.proto->null
+	BATTLE_TEAM_INVITE_UPDATE = 11112;	//被邀请组队|(服务器主动)->invite_team_msg.proto
+	BATTLE_BOSS_JOIN = 11113;		//加入boss战斗|battle_join_req.proto->battle_msg.proto
+	BATTLE_BOSS_RELIVE = 11114;		//boss战斗复活|null->boss_relive_resp.proto
+	BATTLE_PK_INVITE = 11115;			//邀请PK |ids_msg.proto->null
+	BATTLE_PK_INVITE_UPDATE = 11116;	//被邀请PK|(服务器主动)->invite_pk_msg.proto
+	BATTLE_PK_CREATE = 11117;			//创建PK |ids_msg.proto->null
+	BATTLE_RESULT_GET = 11118;		//战斗结束|get_battle_result_req.proto->battle_result_msg.proto
+	BATTLE_ABYSS_RELIVE = 11119;	//深渊复活|null->abyss_relive_resp.proto
+	BATTLE_CREATE_FIRST = 11120;	//第一场战斗|null->null
+	BATTLE_CREATE_PROTECT = 11121;	//护送|null->null
+	BATTLE_TEAM_SELECT_INSTANCE = 11122;  //队长选择副本|select_instance_req.proto->null
+	BATTLE_TEAM_SELECT_INSTANCE_SIMPLE = 11123;  //队员收到消息|(服务器主动)null->select_instance_resp.proto
+	BATTLE_TEAM_QUICK_JOIN = 11124;	//快速加入|quick_join_team_req.proto->team_msg.proto
+	BATTLE_GET_ZONE_MAP_FULL_STAR_REWARD = 11125;//领取关卡满星奖励|ids_msg.proto->reward_msg.proto
+	BATTLE_EXPERIENCE_RESULT_GET = 11126;//战斗结束|get_battle_experience_result_req.proto->battle_result_msg.proto
+
+	/**地图11201-11300*/
+	MAP_ENTER = 11201;				//进入场景|enter_map_req.proto->enter_map_resp.proto
+	MAP_PLAYER_JOIN = 11202;		//有玩家进入|(服务器主动)null->simple_player_msg.proto
+	MAP_PLAYER_EXIT = 11203;		//离开场景|(服务器主动)null->ids_msg.proto
+	MAP_MOVE = 11204;				//人物移动|move_msg.proto->move_msg.proto
+
+	/**道具背包11301-113400*/
+	ITEM_UPDATE = 11301;			//更新道具|(服务器主动)null->backpack_msg.proto
+	ITEM_SELL = 11302;				//出售道具|sell_item_req.proto->sell_item_resp.proto
+	ITEM_CAPACITY_EXPANSE = 11303;	//背包容易扩充|null->expanse_item_capacity_resp.proto
+	ITEM_SORT = 11304;				//背包整理|null->backpack_msg.proto
+	ITEM_DRESS = 11305;				//穿装备|dress_item_req.proto->dress_item_resp.proto
+	ITEM_UNDRESS = 11306;			//脱装备|undress_item_req.proto->null
+	ITEM_GEM_SYNTHETISE = 11307;	//宝石合成|synthetise_gem_req.proto->synthetise_gem_resp.proto
+	ITEM_GEM_BESET = 11308;			//宝石镶嵌|beset_gem_req.proto->null
+	ITEM_GEM_DISMANTLE = 11309;		//宝石拆卸|dismantle_gem_req.proto->null
+	ITEM_SYNTHETISE_FASHION = 11310;  //合成时装 |synthetise_fashion_req.proto->synthetise_fashion_resp.proto
+	ITEM_STRENGTHEN_EQUIP=11311;     //普通强化|strengthen_equip_req.proto->strengthen_equip_resp.proto
+	ITEM_ADVANCED_EQUIP = 11312;     //装备进阶|advanced_equip_req.proto->advanced_equip_resp.proto
+	ITEM_ONECLICK_STRENGTHEN_EQUIP = 11313;  //一键强化装备|one_click_strengthen_equip_req.proto -> one_click_strengthen_equip_resp.proto
+	ITEM_REFINING_EQUIP = 11314;			//装备精炼|refining_equip_req.proto->refining_equip_resp.proto
+	ITEM_RECAST_EQUIP = 11316;			//装备重铸|recast_equip_req.proto->recast_equip_resp.proto
+	ITEM_GEM_BATCH_SYNTHETISE = 11317;	//批量合成|synthetise_gem_req.proto->batch_synthetise_gem_resp.proto
+	ITEM_OPEN_GIFT = 11318;				//打开礼包|ids_msg.proto->reward_msg.proto
+	ITEM_OPEN_TREASURE = 11319;			//打开宝箱|ids_msg.proto->reward_msg.proto
+	ITEM_CHANGE_GEM = 11320;   //宝石转换|change_gem_req.proto->change_gem_resp.proto
+	ITEM_BATCH_OPEN_TREASURE = 11321;			//批量打开宝箱|id_amount_msg.proto->reward_msg.proto
+	ITEM_SMELT = 11322;	//熔炼道具|ids_amount_msg.proto->reward_msg.proto
+	ITEM_UPGRADE_EQUIP_STAR = 11323;	//装备提品|upgrade_equip_star.proto->upgrade_equip_star_resp.proto
+
+	/**商城11401-11500 */
+	SHOP_BUY_GOODS = 11401;			//购买物品|buy_goods_req.proto->buy_goods_resp.proto
+	SHOP_GET_TIME_GOODS_LIST = 11402;//获取限时商城物品|null->get_time_goods_list_resp.proto
+	SHOP_RUSH_GOODS = 11403;		//抢购限时|ids_msg.proto->rush_goods_resp.proto
+	SHOP_TIME_GOODS_LIST_UPDATE = 11404;//更新限时商城物品|(服务器主动)null->time_goods_msg.proto
+	SHOP_GIVE_ITEM = 11405;			//赠送道具|give_item_req.proto->give_item_resp.proto
+	SHOP_TIME_GOODS_LIST_REFRESH = 11406;//刷新商城数据|(服务器主动)->get_time_goods_list_resp.proto
+	SHOP_CONVERT_GOODS = 11407;    //兑换商品|convert_goods_req.proto->convert_goods_resp.proto
+	SHOP_UPDATE_CONVERT_LIMIT_GOODS = 11408;  //更新兑换商品|null->limit_convert_goods_pack_msg.proto
+
+	/**好友11501-11600 */
+	FRIEND_UPDATE = 11501;        //更新好友列表|(服务器自动)null->friend_pack_msg.proto
+	FRIEND_GET_PACK = 11502;		//获取好友数据|null->friend_pack_msg.proto
+	FRIEND_ADD = 11503;          //添加好友/黑名单|add_friend_req.proto->null
+	FRIEND_REMOVE = 11504;         //删除好友/黑名单|ids_msg.proto->ids_msg.proto
+	FRIEND_ADD_NOTICE = 11505;     //申请通知|(服务器自动)null->add_friend_notice_msg.proto
+	FRIEND_GET_EXP = 11506;			//获取经验|ids_msg.proto->get_friend_exp_resp.proto
+
+	/**副本11601-11700 */
+	INSTANCE_GET_TOLL_GATE = 11601;   //获取关卡信息|get_toll_gate_req.proto->toll_gate_msg.proto
+	INSTANCE_SWEEP_UPDATE = 11602;	  //更新扫荡|(服务器主动)->sweep_instance_msg.proto
+	INSTANCE_SWEEP = 11603;			  //扫荡|sweep_instance_msg.proto->null
+	INSTANCE_GET_SWEEP_RESULT = 11604;//获取战斗扫荡数据|null->reward_msg.proto
+	INSTANCE_STOP_SWEEP = 11605;	  //结束挂机|null->null
+	INSTANCE_BUY_ELITE_NUMBER = 11606;//购买精英次数|null->buy_elite_number_resp.proto
+	INSTANCE_GET_INSTANCE = 11607;	//得到副本记录|ids_msg.proto->get_instance_resp.proto
+
+	/**技能11701-11800 */
+	SKILL_UPGRADE = 11701;          //技能升级|upgrade_skill_req.proto->upgrade_skill_resp.proto
+	SKILL_UPDATE = 11702;			//技能更新|(服务器主动)->skill_pack_msg.proto
+	SKILL_SPECIAL_UPDATE = 11703;	//特殊技能更新|(服务器主动)->skill_pack_msg.proto
+
+	/**任务11801-11900 */
+	MISSION_ACCEPT = 11801;//接受任务|accept_mission_req.proto->ids_msg.proto
+	MISSION_SUBMIT = 11802;//提交任务|submit_mission_req.proto->submit_mission_resp.proto
+	MISSION_UPDATE_COMPLETION = 11803;//更新任务进度|update_mission_completion_req.proto-ids_msg.proto
+	MISSION_UPDATE = 11804;	//更新任务|(服务器自动)null->mission_pack_msg.proto
+	MISSION_GIVEUP = 11805;//放弃任务|IdsMsg->null
+	MISSION_INSTANTLY_COMPLETE = 11806;  //立即完成|instantly_complete_req.proto->instantly_complete_resp.proto
+	MISSION_ONEKEY_COMPLETE = 11807;   //一键完成|one_key_complete_req.proto->one_key_complete_resp.proto
+	MISSION_REFRESH = 11808;      //刷新任务|refresh_mission_req.proto->refresh_mission_resp.proto
+	MISSION_RECEIVE_REWARD = 11809;  //领取环奖励|receive_reward_req.proto->reward_msg.proto
+	MISSION_RECOVER_REFRESH_NUMBER = 11810;  //回复刷新次数|recover_refresh_number_req.proto->null
+	MISSION_REFRESH_PROTECT = 11811;//刷新保护任务|refresh_protect_mission_req.proto->refresh_protect_mission_resp.proto
+
+	/**竞技场11901-12000 */
+	ATHLETICS_GET_PLAYER_LIST = 11901;//获取竞技场玩家数据|null->athletics_player_list_msg.proto
+	ATHLETICS_CHALLENGE = 11902;	  //竞技场挑战|ids_msg.proto->null
+	ATHLETICS_CHALLENGE_END = 11903;  //竞技场挑战结束|get_battle_result_req.proto->battle_result_msg.proto
+	ATHLETICS_ADD_NUMBER = 11904;	  //增加竞技场次数|null->add_athletics_number_resp.proto
+	ATHLETICS_CLEAR_TIME = 11905;	  //清除冷却CD |null->clear_athletics_time_resp.proto
+	ATHLETICS_TEAM_CREATE = 11906;	//组队|create_team_req.proto->team_msg.proto
+	ATHLETICS_TEAM_JOIN = 11907;	//加入队伍|join_team_req.proto->team_msg.proto
+	ATHLETICS_TEAM_EXIT = 11908;	//退出队伍|null->team_exit_msg.proto
+	ATHLETICS_TEAM_UPDATE = 11909;	//玩家加入队伍|(服务器主动)null->team_msg.proto
+	ATHLETICS_TEAM_LIST_GET = 11910;		//获取组队列表|null->get_team_list_resp.proto
+	ATHLETICS_TEAM_DISBAND = 11911;		//解散队伍|(服务器主动)null->null
+	ATHLETICS_TEAM_LIST_UPDATE = 11912;	//更新队伍列表|(服务器主动)null->simple_team_msg.proto
+	ATHLETICS_TEAM_INVITE = 11913;			//邀请组队|invite_team_req.proto->null
+	ATHLETICS_TEAM_KICK_OUT = 11914;		//踢出队伍|ids_msg.proto->null
+	ATHLETICS_TEAM_INVITE_UPDATE = 11915;	//被邀请组队|(服务器主动)->invite_team_msg.proto
+	ATHLETICS_TEAM_QUICKLY_JOIN = 11916;	//快速加入|null->team_msg.proto
+	ATHLETICS_TEAM_MATCH_BATTLE = 11917;	//组队竞技|null->null
+	ATHLETICS_TEAM_BATTLE_END = 11918;		//组队竞技结束|get_battle_result_req.proto->battle_result_msg.proto
+	ATHLETICS_TEAM_MATCH_CANCEL = 11919;	//取消阴队竞技|null->null
+	ATHLETICS_GET_RECORDS = 11920;			//获得竞技记录|null->get_athletics_records_resp.proto
+	ATHLETICS_GET_TOP_PLAYERS = 11921;		//获取竞技场前10排名|null->get_top_athletics_players_resp.proto
+	ATHLETICS_GET_REWARD = 11922;			//个人竞技场领取奖励|null->reward_msg.proto
+	ATHLETICS_GET_TEAM_RANK = 11923;		//组队竞技排名|null->get_athletics_team_rank_resp.proto
+	ATHLETICS_GET_TEAM_REWARD = 11924;			//组队竞技场领取每日段位奖励|null->reward_msg.proto
+
+	/**活动12001-12100 */
+	ACTIVITY_START = 12001;//活动开始|null->ids_msg.proto
+	ACTIVITY_SELECT_ROBOT = 12002;//使用替身机器人|select_robot_req.proto->select_robot_resp.proto
+	ACTIVITY_ROBOT_UPDATE = 12003;//活动机器人更新|(服务器主动)->robot_pack_msg.proto
+	ACTIVITY_END = 12004;		//活动结束|(服务器主动)null->ids_msg.proto
+
+	/**在线奖励12101-12200 */
+	MEDITATE_GET_EXP = 12103; //获取在线奖励经验 |get_meditate_exp_req.proto->get_meditate_exp_resp.proto
+
+	/**邮件12201-12300 */
+	MAIL_UPDATE = 12201;		//邮件更新|(服务器主动)->mail_pack_msg.proto
+	MAIL_LIST_GET = 12202;		//获取邮件列表|null->mail_pack_msg.proto
+	MAIL_GET = 12203;			//获取邮件内容|ids_msg.proto->mail_msg.proto
+	MAIL_RECEIVE_INCOME = 12204;//获取收益|ids_msg.proto->receive_income_resp.proto
+	MAIL_REMOVE = 12205;		//删除邮件|ids_msg.proto->ids_msg.proto
+
+	/**天赋12301-12400 */
+	TALENT_PAGE_UPDATE = 12301;              //更新天赋页|(服务器主动)null->talent_pack_msg.proto
+	TALENT_SAVE_TALENT_PAGE = 12302;   //保存天赋页|save_talent_page_req.proto->null
+	TALENT_RESET_TALENT_POINT = 12303;      //洗点|reset_talent_point_req.proto->reset_talent_point_resp.proto
+	TALENT_ADD_TALENT_PAGE = 12304;         //添加天赋页|null->add_talent_page_resp.proto
+	TALENT_SAVE_PAGE_NAME = 12305;          //保存天赋页名|save_page_name_req.proto->null
+	TALENT_USE_TALENTPAGE = 12306;         //使用天赋页|use_talent_page_req.proto->null
+
+	/**排行12401-12500 */
+	RANK_GET_FIGHTING_FORCE_RANKS = 12401;	//获取战斗排名|get_ranks_req.proto->get_fighting_force_ranks_resp.proto
+	RANK_GET_LEVEL_RANKS = 12402;			//获取等级排名|get_ranks_req.proto->get_level_ranks_resp.proto
+	RANK_GET_PET_RANKS = 12403;				//获取宠物排名|get_ranks_req.proto->get_pet_ranks_resp.proto
+	RANK_GET_WEALTH_RANKS = 12404;			//获取财富排名|get_ranks_req.proto->get_wealth_ranks_resp.proto
+	RANK_GET_CHARM_RANKS = 12405;			//获取魅力排名|get_ranks_req.proto->get_charm_ranks_resp.proto
+	RANK_GET_ATHLETICS_RANKS = 12407;		//获取竞技排名|get_ranks_req.proto->get_athletics_ranks_resp.proto
+	RANK_GET_STEED_RANKS = 12408;			//获取坐骑排名|get_ranks_req.proto->get_steed_ranks_resp.proto
+	RANK_GET_GUILD_RANKS = 12409;     //获取公会排名|get_ranks_req.proto->get_guild_ranks_resp.proto
+
+	/**鲜花12501-12600 */
+	FLOWER_GET_PLAYER_CHARM = 12501;		//得到个人魅力值|ids_msg.proto->simple_player_msg.proto
+	FLOWER_GET_RECORDS = 12502;				//得到鲜花记录|null->get_flower_records_resp.proto
+	FLOWER_GIVE = 12503;					//赠送鲜花|->give_flower_req.proto->null
+	FLOWER_EFFECT = 12504;	//鲜花特殊效果|->give_flower_req.proto->flower_effect_resp.proto
+
+    /**元魂12601-12700 */
+	SOUL_UPDATE = 12601;               //更新元魂|(服务器主动)null->soul_pack_msg.proto
+	SOUL_ABSORBSOUL = 12602;           //摄魂|null->absorb_soul_resp.proto
+	SOUL_GET_ODINS_BLESSING = 12603;   //奥丁的祝福|null->get_odins_blessing_resp.proto
+	SOUL_MOVE = 12604;                 //移动元魂|move_soul_req.proto->move_soul_resp.proto
+	SOUL_ONE_KEY_ENGULF = 12605;       //一键吞噬|one_key_engulf_req.proto->one_key_engulf_resp.proto
+	SOUL_DECOMPOSE = 12606;            //元魂分解|ids_msg_req.proto->decompose_soul_resp.proto
+
+	/**符文12701-12800 */
+	RUNE_UPDATE = 12701;			//符文更新|(服务器主动)null->rune_pack_msg.proto
+	RUNE_PAGE_UPDATE = 12702;		//符文页更新|(服务器主动)null->rune_pack_msg.proto
+	RUNE_ADD_PAGE = 12703;			//增加符文页|null->add_rune_page_resp.proto
+	RUNE_BESET = 12704;				//符文镶嵌|beset_rune_req.proto->null
+	RUNE_AUTO_BESET = 12705;		//符文自动镶嵌|ids_msg.proto->null
+	RUNE_DISMANTLE = 12706;			//符文拆卸|dismatle_rune_req.proto->null
+	RUNE_AUTO_DISMANTLE = 12707;	//符文自动拆卸|ids_msg.proto->null
+	RUNE_FUSE = 12708;				//符文溶合|ids_msg.proto->fuse_rune_resp.proto
+	RUNE_UPGRADE = 12709;			//符文升级|ids_msg.proto->upgrade_rune_resp.proto
+	RUNE_BATCH_UPGRADE = 12710;		//批量升级符文|ids_msg.proto->batch_upgrade_rune_resp.proto
+	RUNE_PAGE_SET = 12711;			//使用符文页|ids_msg.proto->null
+
+    /**幻境冒险12801-12900 */
+    GOLDLAND_OPEN_GOLD_TREASURE = 12801;       //开启黄金宝藏|null->open_gold_treasure_resp.proto
+    GOLDLAND_BATCH_OPEN_GOLD_TREASURE = 12802;    //批量开启黄金宝藏|null->batch_open_treasure_resp.proto
+    GOLDLAND_ADVENTURE = 12803;					//冒险|null->null
+    GOLDLAND_GET_ADVENTURE_RESULT = 12804;		//|get_adventure_result_req.proto->battle_result_msg.proto
+    GOLDLAND_CLEAR_ADVENTURE_TIME = 12805;		//清除幻境冒险CD|->清除幻境冒险clear_adventure_time_resp.proto
+
+    /**宠物12901-13000 */
+	PET_CULTURE_LEVEL = 12901;//培养等级|culture_pet_level_req.proto->culture_pet_level_resp.proto
+	PET_CULTURE_QUALITY = 12902;//培养品质(进阶)|culture_pet_quality_req.proto->culture_pet_quality_resp.proto
+	PET_CULTURE_QUALIFICATION = 12903;//培养资质|culture_pet_qualification_req.proto->culture_pet_qualification_resp.proto
+	PET_GIVEUP_SKILL = 12904;//放弃技能|ids_msg.proto->ids_msg.proto
+	PET_REFRESH_SKILL_ITEM = 12905;//刷新技能书|refresh_pet_skill_item_req.proto->refresh_pet_skill_item_resp.proto
+	PET_GET_SKILL_ITEM = 12906;//获得技能书|get_pet_skill_item_req.proto->get_pet_skill_item_resp.proto
+	PET_SKILL_ITEMS_UPDATE = 12907;//更新技能列表|(服务器主动)null->pet_skill_item_pack_msg.proto
+	PET_UPDATE = 12908;//宠物更新|(服务器主动)->pet_msg.proto
+	PET_UPDATE_SIMPLE = 12909;//更新地图宠物|(服务器主动)->pet_msg.proto
+	PET_SET_NAME = 12910;//设置宠物名字|set_pet_name_req.proto->null
+	PET_SKILL_UPDATE = 12911;//宠物技能更新|(服务器主动)->skill_pack.msg.proto
+	PET_LEARN_SKILL = 12912;//学习宠物技能|ids_msg.proto->result_msg.proto
+	PET_CHANGE_MODEL = 12913;          //改变经典宠物显示形象|change_pet_model_req.proto->null
+	PET_SKIN_ACTIVATE = 12914;//激活皮肤|activate_skin_req.proto->pet_skin_pack_msg.proto
+	PET_SELECT_SKIN = 12915;  //选择幻化皮肤|select_skin_req.proto->null
+	PET_SKIN_UPDATE = 12916;   //更新皮肤|->pet_skin_pack_msg.proto
+	PET_SKIN_STAR_UPGRADE = 12917;	//皮肤升星|upgrade_skin_star_req.proto->upgrade_pet_skin_star_resp.proto
+
+	/**坐骑13001-13100 */
+	STEED_UPDATE = 13001;   //坐骑更新|(服务器主动)->steed_msg.proto
+	STEED_CHANGE_APPEARANCE = 13002;  //切换坐骑形象|change_appearance_req.proto->null
+	STEED_CHANGE_MODEL = 13003;          //改变经典坐骑显示形象|change_model_req.proto->null
+	STEED_CULTURE = 13004;           //坐骑培养|culture_steed_req.proto->culture_steed_resp.proto
+	STEED_RIDE = 13005;          //乘坐坐骑|null->null
+	STEED_SELECT_SKIN = 13006;  //选择幻化皮肤|select_skin_req.proto->null
+	STEED_SKIN_UPDATE = 13007;   //更新皮肤|->steed_skin_pack_msg.proto
+	STEED_UPDATE_SIMPLE = 13008;  //更新地图坐骑|(服务器主动)->steed_msg.proto
+	STEED_SKIN_ACTIVATE = 13009;//激活皮肤|activate_skin_req.proto->steed_skin_pack_msg.proto
+	STEED_SKIN_STAR_UPGRADE = 13010;	//皮肤升星|upgrade_skin_star_req.proto->upgrade_steed_skin_star_resp.proto
+	STEED_LEARN_SKILL = 13011;//学习技能|ids_msg.proto->result_msg.proto
+	STEED_GIVEUP_SKILL = 13012;//放弃技能|ids_msg.proto->ids_msg.proto
+	STEED_SKILL_UPDATE = 13013;//技能更新|(服务器主动)->skill_pack.msg.proto
+
+	/**试炼13101-13200 */
+	TRIAL_CREATE_BATTLE = 13101;//试炼之塔挑战|create_trial_battle_req.proto->null
+	TRIAL_GET_BATTLE_RESULT = 13102;//获得操作结果|get_battle_result_req.proto->battle_result_msg.proto
+	TRIAL_RESET = 13103;	//重置试炼|reset_trial_req.proto-null
+	TRIAL_AUTO_CHALLENGE = 13104;//自动挑战|auto_challenge_trial_req.proto->reward_msg.proto
+	TRIAL_GET_RECORD = 13105;//获得试炼记录|get_trial_record_req.proto->get_trial_record_resp.proto
+	TRIAL_GET_BEST_RECORD = 13106;//得到通关最好记录|null->get_best_trial_record.resp.proto
+	TRIAL_GET_RANKING = 13107;//得到排行榜|null->get_trial_ranking.resp.proto
+	TRIAL_GET_FLOOR_DAILY_REWARD = 13108;//得到每日奖励|null->reward_msg.proto
+
+	/**宠物天堂13201-13300 */
+	PET_HEAVEN_CREATE_BATTLE = 13201;//宠物天堂挑战|create_pet_heaven_battle_req.proto->null
+	PET_HEAVEN_GET_BATTLE_RESULT = 13202;//获得操作结果|get_battle_result_req.proto->battle_result_msg.proto
+	PET_HEAVEN_RESET = 13203;	//重置宠物天堂|reset_pet_heaven_req.proto-null
+	PET_HEAVEN_AUTO_CHALLENGE = 13204;//自动挑战|auto_challenge_pet_heaven_req.proto->reward_msg.proto
+	PET_HEAVEN_GET_RECORD = 13205;//获得试炼记录|get_pet_heaven_record_req.proto->get_pet_heaven_record_resp.proto
+	PET_HEAVEN_GET_BEST_RECORD = 13206;//得到通关最好记录|null->get_best_pet_heaven_record.resp.proto
+	PET_HEAVEN_GET_RANKING = 13207;//得到排行榜|null->get_heaven_get_ranking.resp.proto
+	PET_GET_FLOOR_DAILY_REWARD = 13208;//得到每日奖励|null->reward_msg.proto
+
+	/***恶魔祭坛 13301-13400*/
+	DEMON_ALTAR_CREATE_BATTLE = 13301;//挑战恶魔祭坛|null->null
+	DEMON_ALTAR_GET_BATTLE_RESULT = 13302;//获得恶魔祭坛战斗结果|get_battle_result_req.proto->battle_result_msg.proto
+	DEMON_ALTAR_GET_RECORD = 13303;//获得恶魔祭坛记录|null->get_demon_alter_record_resp.proto
+	DEMON_ALTAR_BUY_NUMBER =  13304;//恶魔祭坛购买次数|null->buy_demon_altar_number_resp.proto
+	DEMON_ALTAR_GET = 13305;	//得到副本记录|ids_msg.proto->get_instance_resp.proto
+
+	/***成就 13401-13500 */
+	ACHIEVEMENT_UPDATE = 13401;   //更新成就|(服务器主动)->achievement_pack_msg.proto
+	ACHIEVEMENT_RECEIVE_REWARD = 13402;  //领取奖励|receive_achievement_reward_req.proto->reward_msg.proto
+
+	/**称号13501-13600 */
+	DESIGNATION_UPDATE = 13501;//称号更新|(服务器主动)->designation_pack_msg.proto
+	DESIGNATION_REMOVE = 13502; //称号移除|(服务器主动)->ids_msg.proto
+	DESIGNATION_SELECT = 13503;	//选择称号|ids_msg.proto->null
+	DESIGNATION_UPDATE_SIMPLE = 13504;//场景上的称号更新|(服务器主动)->designation_pack_msg.proto
+
+	/**每日必做13601-13700*/
+	DAILY_ACTIVITY_UPDATE = 13601;   //活跃任务更新|(服务器主动)->daily_activity_pack_msg.proto
+	DAILY_ACTIVITY_ITEM_UPDATE = 13602;  //活跃道具更新|(服务器主动)->activity_item_pack_msg.proto
+	DAILY_ACTIVITY_CONVERT_ITEM = 13603;   //兑换道具|convert_item_req.proto->convert_item_resp.proto
+	DAILY_ACTIVITY_ONEKEY_REFRESH = 13605;  //一键刷新道具|null->one_key_refresh_resp.proto
+
+	/**星座 13701-13800*/
+	CONSTELLATION_SELECT = 13701;	//选择星座|ids_msg.proto->ids_msg.proto
+	CONSTELLATION_GET_INFO = 13702;	//获取星座信息|null->get_constellations_resp.proto
+
+	/**运营活动13801-13900*/
+	OPERATING_CHECKIN_UPDATE = 13801;  //签到更新|(服务器主动)->checkin_pack_msg.proto
+	OPERATING_REWARD_UPDATE = 13802;  //运营活动奖励更新|(服务器主动)->operating_reward_pack_msg.proto
+	OPERATING_CHECKIN = 13803;      //签到|null->null
+	OPERATING_SUPPLY_CHECKIN = 13804;  //补签|null->supply_checkin_resp.proto
+	OPERATING_CHECKIN_REWARD = 13805;   //签到领取奖励|checkin_reward_req.proto->reward_msg.proto
+	OPERATING_DAILY_ONLINE_REWARD = 13806;  //领取每日在线奖励|receive_operating_id_reward_req.proto->reward_msg.proto
+	OPERATING_LEVEL_REWARD = 13807;   //领取等级奖励礼包|level_reward_req.proto->reward_msg.proto
+	OPERATING_SEVEN_DAY_LOGIN_REWARD = 13808;  //七天登录奖励领取|seven_day_login_reward_req.proto->reward_msg.proto
+	OPERATING_COLLECT_WEB = 13809;    //收藏网站|null->null
+	OPERATING_CONVERT_REDEEM_CODE_REWARD = 13810;   //兑换码兑换奖励|convert_redeem_code_reward_req.proto->reward_msg.proto
+	OPERATING_RECEIVE_COLLECT_WEB_REWARD = 13811;   //领取收藏奖励|null->reward_msg.proto
+	OPERATING_TODAY_BUY_GOLD_REWARD = 13812;    //领取每日充值礼包|receive_today_buy_gold_reward_req.proto->reward_msg.proto
+	OPERATING_TOTAL_GOLD_REWARD = 13813;     //领取充值大礼礼包|receive_total_gold_reward_req.proto->reward_msg.proto
+	OPERATING_WEEK_BUY_GOLD_REWARD = 13814;   //领取每周充值礼包|receive_week_buy_gold_reward_req.proto->reward_msg.proto
+	OPERATING_FIRST_RECHARGE_REWARD = 13815;   //领取首充礼包|null->reward_msg.proto
+	OPERATING_DAILY_ONLINE_STOP_TOTAL_TIME = 13816;   //停止累计|null->null
+	OPERATING_BUY_INVEST_PLAN = 13818;     //购买投资计划|buy_invest_plan_req.proto->reward_msg.proto
+	OPERATING_WECHAT_REWARD = 13819;     //领取微信奖励|convert_redeem_code_reward_req.proto->reward_msg.proto
+	OPERATING_GET_OPEN_SERVER_REWARD = 13820;   //获取开服奖励数据 |null->get_open_server_data_resp.proto
+	OPERATING_BUY_ITEM_LEVEL_LIMIT = 13821;   //等级限购|buy_item_level_limit_req.proto->reward_msg.proto
+	OPERATING_GET_FIRST_RECHARGE_NUMBER = 13822;   //获取首充人数|null->get_first_recharge_number_msg.proto
+	OPERATING_GET_SERVER_BUY_GEM_NUMBER = 13823;   //获取全服购买宝石数量|null->get_server_buy_gem_number_msg.proto
+	OPERATING_GET_VIP_PEOPLE_NUMBER = 13824;   //获取全服各vip人数|null->get_vip_people_number.proto
+	OPERATING_DAILY_BUY_GEM_REWARD = 13825;   //领取每日购买宝石奖励|receive_daily_buy_gem_reward_req.proto->reward_msg.proto
+	OPERATING_EXPEND_GOLD_REWARD = 13826;  //领取消耗钻石奖励|receive_expend_gold_reward_req.proto->reward_msg.proto
+	OPERATING_FIRST_RECHARGE_PEOPLE_REWARD = 13827;  //领取首充全民福利|receive_first_recharge_people_reward_req.proto->reward_msg.proto
+	OPERATING_OPEN_SERVER_SEVEN_REWARD = 13828;    //领取开服七天奖励|receive_open_server_seven_reward_req.proto->reward_msg.proto
+	OPERATING_VIP_EXCLUSIVE_REWARD = 13829;   //领取vip专属奖励|receive_vip_exclusive_reward_req.proto->reward_msg.proto
+	OPERATING_VIP_LEVEL_REWARD = 13830;    //领取vip等级奖励|receive_vip_level_reward_req.proto->reward_msg.proto
+	OPERATING_GET_EXPEND_GOLD = 13831;   //获取全服总消费钻石数|null->get_server_expend_gold_msg.proto
+	OPERATING_LIMIT_BUY_UPDATE = 13832;   //等级限购更新|(服务器主动)null->level_limit_buy_item_pack_msg.proto
+	OPERATING_RECEIVE_ID_REWARD = 13833;   //领取奖励|(id领取奖励)receive_operating_id_reward.proto->reward_msg.proto
+	OPERATING_OPEN_SERVER_TIME = 13834;   //开服时间|null->get_open_server_time_msg.proto
+	OPERATING_REWARD_REMOVE = 13835;	//移除奖励|(服务器主动)null->ids_msg.proto
+	OPERATING_GET_DAILY_ONLINE_REWARD_PACK = 13836;	//查看每日在线奖励状态|null->player_reward_state_pack_msg.proto
+	GET_OPERATING_ACTIVITY_MSG = 13837;	//查看运营活动状态|get_operating_activity_msg.proto->operating_state_list_msg.proto
+	OPERATING_MISSION_TYPE_COUNT_UPDATE = 13838;  //运营活动任务类型次数更新|(服务器主动)->mission_type_count_pack_msg.proto
+	OPERATING_MISSION_TYPE_COUNT_GET = 13839;  //运营活动任务类型次数获取|null->mission_type_count_pack_msg.proto
+	OPERATING_RANK_GET_FIGHTING_FORCE = 13840;	//运营活动获取战斗排名(实时)|get_ranks_req.proto->get_fighting_force_ranks_resp.proto
+	OPERATING_RANK_GET_LEVEL_RANKS = 13841;		//运营活动获取等级排名(实时)|get_ranks_req.proto->get_level_ranks_resp.proto
+
+	/**公会13901-14000*/
+	GUILD_GET_GUILDS = 13901;       //获取公会|null->guilds_msg.proto
+	GUILD_GET_MEMBERS = 13902;      //获取成员|get_members_req.proto->guild_members_msg.proto
+	GUILD_GET_AUDITINGS = 13903;     //获取审核|get_auditings_req.proto->guild_auditings_msg.proto
+	GUILD_BUILD = 13904;             //创建公会|build_guild_req.proto->build_guild_resp.proto
+	GUILD_APPLY = 13905;             //申请加入公会|apply_guild_req.proto->null
+	GUILD_INVITE_ADD = 13906;      //邀请加入公会|invite_add_guild_req.proto->null
+	GUILD_INVITE_NOTICE = 13907;  //邀请加入公会通知|(服务器主动)->invite_add_guild_notice_msg.proto
+	GUILD_ACCEPT_INVITE = 13908;     //接受邀请|accept_invite_req.proto->accept_invite_resp.proto
+	GUILD_AUDITING_MEMBER = 13909;   //审核成员|auditing_member_req.proto->guilds_msg.proto
+	GUILD_ONE_KEY_AUDITING_MEMBER = 13910;  //一键审核|one_key_auditing_member_req.proto->guilds_msg.proto
+	GUILD_EXIT = 13911;             //退出公会|exit_guild_req.proto->null
+	GUILD_DISMISS = 13912;           //解散公会|dismiss_guild_req.proto->null
+	GUILD_ADD_CONTRIBUTION = 13913;  //添加贡献|add_contribution_req.proto->add_contribution_resp.proto
+	GUILD_GET_RECORD = 13914;    //成员日志|get_member_record_req.proto->guild_member_records_msg.proto
+	GUILD_SEARCH = 13915;      //搜索|search_guild_req.proto->guilds_msg.proto
+	GUILD_GET_INFORMATION = 13916;   //获取公会信息|get_guild_information_req.proto->guilds_msg.proto
+	GUILD_SET_AFFICHE = 13917;   //设置公告|set_affiche_req.proto->null
+	GUILD_APPLY_NOTICE = 13918;   //申请通知|(服务器主动)->apply_notice_msg.proto
+	GUILD_KICK_MEMBER = 13919;   //踢成员|ids_msg.proto->kick_member_resp.proto
+	GUILD_MEMBER_TYPE_CHANGE = 13920;  //成员类型更改(传位、升职、降职)|member_type_change_req.proto->guilds_msg.proto
+	GUILD_RESIGN = 13921;  //辞职(副会长)|null->guilds_msg.proto
+	GUILD_SET_TITLE = 13922; //设置称谓|set_title_req.proto->guilds_msg.proto
+	GUILD_GET_IMPEACH_VOTE = 13923;  //获取弹劾会长投票|get_impeach_vote_req.proto->impeach_presidents_msg.proto
+	GUILD_IMPEACH_PRESIDENT = 13924;  //发起弹劾会长投票|null->null
+	GUILD_IMPEACH_VOTE = 13925;  //弹劾会长投票|impeach_vote_req.proto->impeach_presidents_msg.proto
+	GUILD_CANCEL_TITLE = 13926;    //取消称谓|cancel_title_req.proto->guilds_msg.proto
+	GUILD_PRACTICE_UPDATE = 13927;  //个人训练更新|(服务器主动)null->personal_practice_pack_msg.proto
+	GUILD_PRACTICE = 13928;   //训练|personal_practice_req.proto->null
+	GUILD_FAST_RECRUIT = 13929; //快速招募|null->null
+	GUILD_UPDATE = 13930;    //更新公会|(服务器主动)null->guild_msg.proto
+	GUILD_REMOVE_AUDITING_MEMBER = 13931;         //移除成员|(服务器主动)null->ids_msg.proto
+	GUILD_DAILY_MISSION_ONE_KEY_COMPLETE = 13932; //公会日常任务一键完成
+
+	/**公会PK14001-14100 */
+	GUILD_PK_TEAM_LIST_GET = 14001;//获取公会PK列表|null->guild_pk_teams_map_msg.proto
+	GUILD_PK_ROUND_TEAM_GET = 14002;//获取公会某一轮的数据|get_round_team_req.proto->guild_pk_team_msg.proto
+	GUILD_PK_SUBMIT_MEMBER_GET = 14003;//提交PK玩家列表|submit_team_members_req.proto->null
+	GUILD_PK_DAILY_REWARD_GET = 14004;//获取公会个人战每日奖励|null->reward_msg.proto
+	GUILD_PK_CHAMPION_TEAM_GET = 14005;//获取冠军成员信息|null->guild_players_msg.proto
+
+	/**星宫14101-14200*/
+	STAR_CARD_UPDATE = 14101;   //星卡更新|(服务器主动)null->star_card_pack_msg.proto
+	STAR_CARD_UPGRADE = 14102;   //强化星卡|upgrade_star_card_req.proto->upgrade_star_card_resp.proto
+	STAR_CARD_SELECT_BUFF = 14103;   //选择星卡buff|select_star_card_buff_req.proto->null
+	INSTANCE_BUY_STAR_WAR_NUMBER = 14104;   //购买星宫次数|null->buy_star_war_number_resp.proto
+
+	/**翅膀14201-14300*/
+	WING_STATE_CHANGE = 14201;	//翅膀状态改变|change_wing_state_req.proto->player_msg.proto
+	WING_DATA_UPDATE = 14202;	//翅膀数据更新|null->wing_pack_msg.proto
+	WING_STAR_UPGRADE = 14203;	//翅膀升星|upgrade_wing_star_req.proto->upgrade_wing_star_resp.proto
+
+	/**答题14301-14400*/
+	QUESTION_SHEET_MESSAGE = 14301;	//当前题目以及排名信息|null->question_sheet_msg.proto
+	QUESTION_SHEET_ANSWER = 14302;	//提交答案|question_sheet_answer_req.proto->question_sheet_answer_resp.proto
+	QUESTION_SHEET_USE_ITEM = 14303;	//答题使用道具|question_sheet_use_item_req.proto->question_sheet_use_item_resp.proto
+	QUESTION_SHEET_RANK_REWARD = 14304;	//答题排名奖励|null->reward_msg.proto
+	QUESTION_SHEET_CHECK_START_TIME = 14305;	//查询开始时间剩余秒数|question_sheet_start_time_req.proto->question_sheet_start_time_resp.proto
+
+	/**挂机打坐14401-14500*/
+	HANG_ON_REWARD_MESSAGE = 14401;	//打坐挂机奖励|null->hang_on_reward_msg.proto
+	HANG_ON_GET_REWARD = 14402;	//打坐领取挂机奖励|hang_on_get_reward_req.proto->hang_on_reward_msg.proto
+	HANG_ON_TIMEOUT = 14403;	//打坐时间结束|null->hang_on_timeout_msg.proto
+
+	/**摇奖14501-14600*/
+	LOTTERY_RESULT_GET = 14501;	//获得摇奖结果|get_lottery_result_req.proto->lottery_result_msg.proto
+	LOTTERY_NOTICE_MSG = 14502;	//玩家摇奖获得道具通知(高级道具通知其他玩家)|null->lottery_notice_msg.proto
+
+	/**服务器14601-14700*/
+	SERVER_INFO_MSG = 14601;	//服务器信息|null->server_info_msg.proto
+
+	/**QQ40001-50000 */
+	QQ_BUY_GOODS = 40001;//购买QQ物品|ids_msg.proto->qq_buy_goods_resp.proto
+	QQ_GET_YELLOW_VIP_GIFT = 40002;//领取黄钻礼包|ids_msg.proto->reward_msg.proto
+	QQ_LOCAL_UPATE = 40003;//更新黄钻礼包|(服务器主动)null->qq_local_pack_msg.proto
+	QQ_GET_CUSTOM_SIGN = 40004;//获取客户校验码|null->custom_service_sign_msg.proto
+	QQ_CUSTOM_UDPATE = 40005;//通知客服回复|null->null
+
+	/**战斗服务器50001-60000 */
+	/**普通战斗50001-51000 */
+	BATTLE_READY = 50001;	//准备完毕|null->不回发
+	BATTLE_OPERATE = 50002;	//操作|living_state_msg.proto->不回发
+	BATTLE_LOOP = 50003;	//战斗心跳 |(服务器主动)battle_loop_msg.proto
+	BATTLE_EXIT = 50004;	//退出战斗|null->null
+	BATTLE_END_EXIT = 50005;//战斗结束并退出|null->null
+
+	/**boss战斗51001-52000 */
+	BATTLE_ACTION = 51001;	//发送动作指令|action_msg.proto->action_msg.proto
+	BATTLE_FATE = 51002;	//死亡/重生|fate_msg.proto->fate_msg.proto
+	BATTLE_PLAYER_JOIN = 51003;	//玩家加入战斗|(服务器主动)->living_msg.proto
+	BATTLE_BOSS_END = 51004;//boss结束|(服务器主动)->boss_end_msg.proto
+	BATTLE_OUTPUT_RANK = 51005;//输出排行|(服务器主动)->output_rank_msg.proto
+	BATTLE_BOSS_SHOW = 51006;//boss出现|(服务器主动)->boss_msg.proto
+	BATTLE_OUTPUT_UPDATE = 51007;//更新输出|(服务器主动)->output_msg.proto
+	BATTLE_BOSS_UPDATE = 51008;//更新boss血量|(服务器主动)->boss_msg.proto
+	BATTLE_HURT = 51009;//伤害|hurt_req.proto->null
+	BATTLE_PLAYER_EXIT = 51010;//玩家离开|(服务器主动)->ids_msg.proto
+}

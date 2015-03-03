@@ -1,0 +1,9 @@
+package com.ray.message.proto.client.test;
+
+option java_package = "com.ray.message.java.client.test";
+option java_outer_classname = "TestMsgProto";
+
+message TestMsg {
+	optional int32 id = 1;//id
+	optional int32 time = 2;//时间
+}
