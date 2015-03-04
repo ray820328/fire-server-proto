@@ -15,6 +15,7 @@ public class IoHeader implements Cloneable {
 	private int check = 0;//校验码
 	private int bodyLength = 0;//长度
 	
+//	private int gateSessionId = 0;//实际连接通道id
 
 	public IoHeader read(IoBuffer buffer){
 		buffer.getInt();
