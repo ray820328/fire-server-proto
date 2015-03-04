@@ -127,7 +127,7 @@ public class ValueUtil {
 		sb.append("{");
 		Class clazz = object.getClass();
 		Object value = null;
-		if(clazz != Object.class){
+		while(clazz != Object.class){
 			Field[] fields = clazz.getDeclaredFields();
 			for(Field f : fields){
 				if(Modifier.isStatic(f.getModifiers()) && Modifier.isFinal(f.getModifiers())){
