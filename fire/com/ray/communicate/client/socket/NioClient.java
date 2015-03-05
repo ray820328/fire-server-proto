@@ -17,8 +17,8 @@ import org.apache.mina.core.service.IoHandler;
 
 import com.ray.communicate.message.IoMessage;
 import com.ray.communicate.server.ssl.BogusSslContextFactory;
-import com.ray.fire.util.PropertiesUtil;
 import com.ray.server.logic.CommandCache;
+import com.ray.utils.util.PropertiesUtil;
 
 public class NioClient {
 	private NioSocketConnector connector;

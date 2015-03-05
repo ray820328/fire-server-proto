@@ -1,6 +1,5 @@
 package com.ray.test;
 
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,10 +13,11 @@ import com.ray.communicate.message.IoHeader;
 import com.ray.communicate.message.IoMessage;
 import com.ray.communicate.server.logic.FireDecoder;
 import com.ray.communicate.server.logic.FireEncoder;
-import com.ray.fire.util.Log;
 import com.ray.message.java.client.ClientCmdProto.ClientCmd;
 import com.ray.message.java.client.test.TestMsgProto.TestMsg;
 import com.ray.server.logic.CommandCache;
+import com.ray.utils.util.Log;
+import com.ray.utils.util.ThreadManager.FireDefaultThreadFactory;
 
 public class TestClient {
 
@@ -38,7 +38,7 @@ public class TestClient {
 						client.addFirstFilter("codec", new ProtocolCodecFilter(new FireEncoder(), new FireDecoder()));
 //						client.addFirstFilter("executor", new ExecutorFilter(new ScheduledThreadPoolExecutor(2 * Runtime.getRuntime().availableProcessors())));
 						client.addFirstFilter("executor", new ExecutorFilter(new OrderedThreadPoolExecutor(1, 1, 
-					            10, TimeUnit.SECONDS, Executors.defaultThreadFactory(), null)));
+					            10, TimeUnit.SECONDS, new FireDefaultThreadFactory("logic"), null)));
 								
 						NioClientBindComplete bindComplete = new NioClientBindComplete(){
 							public void complete(final NioClient cl){

@@ -1,4 +1,4 @@
-package com.ray.fire.util;
+package com.ray.communicate.util;
 /**
  * <p></p>
  * <p>Copyright (c) 2007 Sample King</p>

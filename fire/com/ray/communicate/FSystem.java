@@ -1,6 +1,6 @@
 package com.ray.communicate;
 
-import com.ray.fire.util.Log;
+import com.ray.utils.util.Log;
 
 public class FSystem {
 

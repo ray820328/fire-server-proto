@@ -1,26 +1,20 @@
 package com.ray.utils;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.RunnableScheduledFuture;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
-import com.ray.fire.util.Log;
+import com.ray.utils.util.DateUtil;
+import com.ray.utils.util.Log;
+import com.ray.utils.util.ThreadManager.FireDefaultThreadFactory;
 
 public class FireTimer {
 
-	private final static ScheduledThreadPoolExecutor timer = new ScheduledThreadPoolExecutor(1, new ThreadFactory(){
-		private AtomicInteger atoInteger = new AtomicInteger(0); 
-	    public Thread newThread(Runnable r) { 
-	        Thread t = new Thread(r); 
-	        t.setName("timer-pool-"+ atoInteger.getAndIncrement()); 
-	        return t; 
-	    } 
-	});
+	private final static ScheduledThreadPoolExecutor timer = 
+			new ScheduledThreadPoolExecutor(1, new FireDefaultThreadFactory("timer"));
 	static{
 //		 如果value为true，则在主线程shutdown()方法后如果还没有执行(未达到delay的时间)，
 //		则延迟任务仍然有机会执行，反之则不会执行，直接退出。（针对b、c方法）
@@ -31,13 +25,31 @@ public class FireTimer {
     }
 	public final static List<IFireTimerTask> taskList = new LinkedList<IFireTimerTask>();//timer.getQueue();//取不到task
 	
+	public static void schedule(IFireTimerTask task, Date datetime, long period){
+		if(datetime == null){
+			throw new RuntimeException("FireTimer.scheduleAtFixedRateAt datetime is empty!");
+		}
+		long initialDelay = DateUtil.getNowMillis() - datetime.getTime();
+		initialDelay = initialDelay<0 ? 0 : initialDelay;
+		switch(task.getType()){
+		case IFireTimerTask.type_one_time:
+			scheduleOneTime(task, initialDelay, TimeUnit.MILLISECONDS);
+			break;
+		case IFireTimerTask.type_period_at_fixed_delay:
+			scheduleAtFixedRate(task, initialDelay, period, TimeUnit.MILLISECONDS);
+			break;
+		case IFireTimerTask.type_period_with_fixed_delay:
+			scheduleWithFixedDelay(task, initialDelay, period, TimeUnit.MILLISECONDS);
+			break;
+		}
+	}
+	
 	/** a，延迟delay时间后开始执行 */
-	public static void schedule(IFireTimerTask task, long delay, TimeUnit unit){
+	public static void scheduleOneTime(IFireTimerTask task, long delay, TimeUnit unit){
 		ScheduledFuture<?> scheduledFuture = timer.schedule(task, delay, unit);
 		task.setScheduledFuture(scheduledFuture);
 		taskList.add(task);
 	}
-	
 	/** b，延迟initialDelay时间后开始执行，并且按照period时间周期性重复调用，
 	 * 如果command运行时间较长、可能会同时执行（周期时间包括task运行时间） */
 	public static void scheduleAtFixedRate(IFireTimerTask task, long initialDelay, long period, TimeUnit unit){
@@ -45,7 +57,6 @@ public class FireTimer {
 		task.setScheduledFuture(scheduledFuture);
 		taskList.add(task);
 	}
-	
 	/** c，延迟initialDelay时间后开始执行，并且按照period时间周期性重复调用，
 	 * 并且保证在上次运行完后才会执行下一次（周期时间不包括task运行时间）*/
 	public static void scheduleWithFixedDelay(IFireTimerTask task, long initialDelay, long delay, TimeUnit unit){
@@ -60,27 +71,34 @@ public class FireTimer {
 		}
 	}
 	
-	public static void printTaskList(){
-		StringBuilder sb = new StringBuilder("Start printing timer tasks-----------------------\n");
+	public static StringBuilder getTaskListAsString(){
+		StringBuilder sb = new StringBuilder();
 		try{
 			synchronized(taskList){
 				for(IFireTimerTask task : taskList){
 //					RunnableScheduledFuture st = (RunnableScheduledFuture)task;
 //					sb.append(st).append(", delay=").append(st.getDelay(TimeUnit.SECONDS)).append("(S)\n");
-					sb.append("delay=").append(task.getScheduledFuture().getDelay(TimeUnit.SECONDS)).append("Sec").
+					sb.append("runDate=").append(DateUtil.formatFullDate(
+							DateUtil.getNowMillis() + task.getScheduledFuture().getDelay(TimeUnit.MILLISECONDS))).
+					append(", delay=").append(task.getScheduledFuture().getDelay(TimeUnit.SECONDS)).append("Sec").
 					append(", detail=").append(task.toString()).append("\n");
 				}
 			}
 		}catch(Exception ex){
 			Log.error("FireTimer.printTaskList", ex);
 		}
+		return sb;
+	}
+	public static void printTaskList(){
+		StringBuilder sb = getTaskListAsString();
+		sb.insert(0, "Start printing timer tasks-----------------------\n");
 		sb.append("End printing timer tasks-----------------------");
 		Log.info(sb.toString());
 	}
 	
 	public static final void main(String[] args){
 //		固定间隔执行
-		IFireTimerTask timerTask = new AbstractFireTimerTask("testTimerTask"){
+		IFireTimerTask timerTask = new AbstractFireTimerTask("testTimerTask", IFireTimerTask.type_period_with_fixed_delay){
 			private int count = 0;
 			public void run(){
 				if(count >= 3){
@@ -102,8 +120,7 @@ public class FireTimer {
 				return null;
 			}
 		};
-//		FireTimer.scheduleAtFixedRate(timerTask, 5, 3, TimeUnit.SECONDS);
-		FireTimer.scheduleWithFixedDelay(timerTask, 5, 3, TimeUnit.SECONDS);
+		FireTimer.schedule(timerTask, DateUtil.getDate(DateUtil.getNowMillis()+5), 3);
 		FireTimer.printTaskList();
 	}
 }

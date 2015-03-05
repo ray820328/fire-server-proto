@@ -3,7 +3,7 @@ package com.ray.communicate.server;
 import com.ray.communicate.message.IoHeader;
 import com.ray.communicate.message.IoMessage;
 import com.ray.communicate.server.bean.IoConnection;
-import com.ray.fire.util.Log;
+import com.ray.utils.util.Log;
 
 public abstract class NioBaseCommand implements IFireNioCommand {
 	

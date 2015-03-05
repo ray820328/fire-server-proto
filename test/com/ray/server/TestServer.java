@@ -8,7 +8,6 @@ package com.ray.server;
  */
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
@@ -21,10 +20,11 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 import com.ray.communicate.server.logic.FireProtocolCodecFactory;
 import com.ray.communicate.server.ssl.BogusSslContextFactory;
-import com.ray.fire.util.Log;
 import com.ray.server.logic.CommandCache;
 import com.ray.server.logic.FireNioHandler;
 import com.ray.server.logic.UserOrderedThreadPoolExecutor;
+import com.ray.utils.util.Log;
+import com.ray.utils.util.ThreadManager.FireDefaultThreadFactory;
 
 public class TestServer {
 
@@ -52,7 +52,7 @@ public class TestServer {
 ////			日志信息
 //			addLogger(chain);
 			executor = new UserOrderedThreadPoolExecutor(4, 100, 
-		            10, TimeUnit.SECONDS, Executors.defaultThreadFactory(), null);//[10,200,5=1h=01]
+		            10, TimeUnit.SECONDS, new FireDefaultThreadFactory("logic"), null);//[10,200,5=1h=01]
 //			executor = new ScheduledThreadPoolExecutor(4);//2 * Runtime.getRuntime().availableProcessors());
 			chain.addLast("executorPool", new ExecutorFilter(executor));
 			 

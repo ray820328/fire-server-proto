@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import com.ray.communicate.server.IFireNioCommand;
-import com.ray.fire.util.PropertiesUtil;
+import com.ray.utils.util.PropertiesUtil;
 
 public class CommandCache {
 	private final static Map<Integer, IFireNioCommand> cache = new HashMap<Integer, IFireNioCommand>();

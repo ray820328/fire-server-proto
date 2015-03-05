@@ -13,7 +13,7 @@ import org.apache.mina.filter.codec.ProtocolDecoderOutput;
 
 import com.ray.communicate.message.IoHeader;
 import com.ray.communicate.message.IoMessage;
-import com.ray.fire.util.Log;
+import com.ray.utils.util.Log;
 
 public class FireDecoder implements ProtocolDecoder {
 	

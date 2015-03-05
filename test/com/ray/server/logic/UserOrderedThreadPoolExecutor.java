@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 import com.ray.communicate.message.IoHeader;
 import com.ray.communicate.message.IoMessage;
 import com.ray.communicate.server.bean.IoConnection;
-import com.ray.fire.util.Log;
+import com.ray.utils.util.Log;
 
 /**
  * A {@link ThreadPoolExecutor} that maintains the order of {@link IoEvent}s.

@@ -2,7 +2,7 @@ package com.ray.communicate.message;
 
 import org.apache.mina.core.buffer.IoBuffer;
 
-import com.ray.fire.util.ValueUtil;
+import com.ray.utils.util.ValueUtil;
 
 public class IoHeader implements Cloneable {
 	public final static int message_begin = 0xffff;

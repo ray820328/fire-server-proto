@@ -1,4 +1,4 @@
-package com.ray.fire.util;
+package com.ray.communicate.util;
 
 import java.util.Set;
 

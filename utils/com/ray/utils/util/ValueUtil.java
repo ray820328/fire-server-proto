@@ -1,4 +1,4 @@
-package com.ray.fire.util;
+package com.ray.utils.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

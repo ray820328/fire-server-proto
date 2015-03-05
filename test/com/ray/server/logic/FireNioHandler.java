@@ -18,7 +18,7 @@ import com.ray.communicate.message.IoMessage;
 import com.ray.communicate.server.NioBaseCommand;
 import com.ray.communicate.server.bean.IoConnection;
 import com.ray.communicate.server.bean.IoUser;
-import com.ray.fire.util.Log;
+import com.ray.utils.util.Log;
 
 public class FireNioHandler extends IoHandlerAdapter {
 

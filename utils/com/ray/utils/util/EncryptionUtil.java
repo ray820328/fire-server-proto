@@ -1,4 +1,4 @@
-package com.ray.fire.util;
+package com.ray.utils.util;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;

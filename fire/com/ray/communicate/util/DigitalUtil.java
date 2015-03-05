@@ -1,4 +1,7 @@
-package com.ray.fire.util;
+package com.ray.communicate.util;
+
+import com.ray.utils.util.EncryptionUtil;
+
 /**
  * <p></p>
  * <p>Copyright (c) 2007 Sample King</p>

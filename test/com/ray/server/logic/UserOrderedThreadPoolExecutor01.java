@@ -43,7 +43,7 @@ import org.slf4j.LoggerFactory;
 import com.ray.communicate.message.IoHeader;
 import com.ray.communicate.message.IoMessage;
 import com.ray.communicate.server.bean.IoUser;
-import com.ray.fire.util.Log;
+import com.ray.utils.util.Log;
 
 public class UserOrderedThreadPoolExecutor01 extends ThreadPoolExecutor {
     /** A logger for this class (commented as it breaks MDCFlter tests) */

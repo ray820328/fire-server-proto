@@ -1,4 +1,4 @@
-package com.ray.fire.util;
+package com.ray.utils.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

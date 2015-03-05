@@ -4,10 +4,10 @@ import com.google.protobuf.Message;
 import com.ray.communicate.message.IoHeader;
 import com.ray.communicate.message.IoMessage;
 import com.ray.communicate.server.bean.IoConnection;
-import com.ray.fire.util.Log;
 import com.ray.message.java.client.net.HeartBeatMsgProto.HeartBeatMsg;
 import com.ray.test.bean.Player;
 import com.ray.test.cmd.resp.AbstractTcpResponse;
+import com.ray.utils.util.Log;
 
 public class HeartBeatResp extends AbstractTcpResponse {
 
