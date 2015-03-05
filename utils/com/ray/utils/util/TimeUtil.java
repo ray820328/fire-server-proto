@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateUtil {
+public class TimeUtil {
 	
 	private static final SimpleDateFormat common_date_format =
 		new SimpleDateFormat("yyyy-MM-dd");

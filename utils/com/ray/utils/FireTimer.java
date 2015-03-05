@@ -7,7 +7,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import com.ray.utils.util.DateUtil;
+import com.ray.utils.util.TimeUtil;
 import com.ray.utils.util.Log;
 import com.ray.utils.util.ThreadManager.FireDefaultThreadFactory;
 
@@ -29,7 +29,7 @@ public class FireTimer {
 		if(datetime == null){
 			throw new RuntimeException("FireTimer.scheduleAtFixedRateAt datetime is empty!");
 		}
-		long initialDelay = DateUtil.getNowMillis() - datetime.getTime();
+		long initialDelay = TimeUtil.getNowMillis() - datetime.getTime();
 		initialDelay = initialDelay<0 ? 0 : initialDelay;
 		switch(task.getType()){
 		case IFireTimerTask.type_one_time:
@@ -78,8 +78,8 @@ public class FireTimer {
 				for(IFireTimerTask task : taskList){
 //					RunnableScheduledFuture st = (RunnableScheduledFuture)task;
 //					sb.append(st).append(", delay=").append(st.getDelay(TimeUnit.SECONDS)).append("(S)\n");
-					sb.append("runDate=").append(DateUtil.formatFullDate(
-							DateUtil.getNowMillis() + task.getScheduledFuture().getDelay(TimeUnit.MILLISECONDS))).
+					sb.append("runDate=").append(TimeUtil.formatFullDate(
+							TimeUtil.getNowMillis() + task.getScheduledFuture().getDelay(TimeUnit.MILLISECONDS))).
 					append(", delay=").append(task.getScheduledFuture().getDelay(TimeUnit.SECONDS)).append("Sec").
 					append(", detail=").append(task.toString()).append("\n");
 				}
@@ -120,7 +120,7 @@ public class FireTimer {
 				return null;
 			}
 		};
-		FireTimer.schedule(timerTask, DateUtil.getDate(DateUtil.getNowMillis()+5), 3);
+		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+5), 3);
 		FireTimer.printTaskList();
 	}
 }
