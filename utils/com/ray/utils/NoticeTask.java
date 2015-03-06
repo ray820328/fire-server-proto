@@ -14,8 +14,8 @@ import com.ray.utils.util.TimeUtil;
 public abstract class NoticeTask extends AbstractFireTimerTask {
 
 	private TimeUnit timeUnit = TimeUnit.SECONDS;//单位
-	private int gapTime;//一次间隔时间
-	private int maxCount;//提前通知的最大次数
+	private int gapTime = 5;//一次间隔时间
+	private int maxCount = 5;//提前通知的最大次数
 	private int count;//当前次数
 	
 	public NoticeTask(String name, int type){
@@ -44,36 +44,29 @@ public abstract class NoticeTask extends AbstractFireTimerTask {
 		if(delay < gapTime){//少于一次通知时间，不需要通知立刻执行
 			return;
 		}
-		int noticeDelay = 0;
+		long noticeDelay = 0;
 		int needCount = 0;
 		while(delay>=noticeDelay && needCount<maxCount){//计算通知次数
 			needCount++;
 			noticeDelay += gapTime;
 		}
 		this.count = needCount;
+		noticeDelay = delay - noticeDelay;//实际通知timer相对当前的延迟时间
 //		通知定时器
 		IFireTimerTask timerTask = new AbstractFireTimerTask("NoticeTimerTask", IFireTimerTask.type_period_with_fixed_delay){
 			public void run(){
+				Log.info("倒计时第 " + count + " 次");
+				count--;
 				if(count <= 0){
-					Log.info("执行已经满足 " + count + " 次，本次任务取消！");
+					Log.info("通知结束！");
 					onEnd(false);
 					FireTimer.printTaskList();
 					return;
 				}
-				Log.info("开始执行第 " + count + " 次");
-				try{
-		            TimeUnit.SECONDS.sleep(4);
-		        } catch(InterruptedException e) {
-		            e.printStackTrace();
-		        }
-				Log.info("结束第 " + count + " 次");
-				count++;
-			}
-			public Object call() throws Exception{
-				return null;
 			}
 		};
-		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+noticeDelay), 5);
+		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+noticeDelay), 
+				TimeUnit.MILLISECONDS.convert(gapTime, timeUnit));
 	}
 
 	public TimeUnit getTimeUnit() {

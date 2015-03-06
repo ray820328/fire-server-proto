@@ -29,7 +29,7 @@ public class FireTimer {
 		if(datetime == null){
 			throw new RuntimeException("FireTimer.scheduleAtFixedRateAt datetime is empty!");
 		}
-		long initialDelay = TimeUtil.getNowMillis() - datetime.getTime();
+		long initialDelay = datetime.getTime() - TimeUtil.getNowMillis();
 		initialDelay = initialDelay<0 ? 0 : initialDelay;
 		switch(task.getType()){
 		case IFireTimerTask.type_one_time:
@@ -123,7 +123,16 @@ public class FireTimer {
 				return null;
 			}
 		};
-		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+5), 3);
+//		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+5000), 3000);
+		
+//		固定间隔执行
+		timerTask = new NoticeTask("testTimerTask", IFireTimerTask.type_one_time){
+			public void run(){
+				Log.info("结束主定时器");
+			}
+		};
+		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+11000), 0);
+		
 		FireTimer.printTaskList();
 	}
 }
