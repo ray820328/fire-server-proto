@@ -10,11 +10,8 @@ public abstract class AbstractFireTimerTask implements IFireTimerTask {
 	private int type;
 	private ScheduledFuture<?> scheduledFuture;
 	
-	public AbstractFireTimerTask(String name){
-		this.name = name;
-	}
 	public AbstractFireTimerTask(String name, int type){
-		this(name);
+		this.name = name;
 		this.type = type;
 	}
 	
@@ -24,7 +21,11 @@ public abstract class AbstractFireTimerTask implements IFireTimerTask {
 	public void setScheduledFuture(ScheduledFuture<?> scheduledFuture) {
 		this.scheduledFuture = scheduledFuture;
 	}
-	
+	@Override
+	public void afterSchedule(){
+		
+	}
+	@Override
 	public void onEnd(boolean mayInterruptIfRunning){
 		if(scheduledFuture != null){
 			if(!scheduledFuture.isDone()){

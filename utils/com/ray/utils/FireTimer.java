@@ -48,6 +48,7 @@ public class FireTimer {
 	public static void scheduleOneTime(IFireTimerTask task, long delay, TimeUnit unit){
 		ScheduledFuture<?> scheduledFuture = timer.schedule(task, delay, unit);
 		task.setScheduledFuture(scheduledFuture);
+		task.afterSchedule();
 		taskList.add(task);
 	}
 	/** b，延迟initialDelay时间后开始执行，并且按照period时间周期性重复调用，
@@ -55,6 +56,7 @@ public class FireTimer {
 	public static void scheduleAtFixedRate(IFireTimerTask task, long initialDelay, long period, TimeUnit unit){
 		ScheduledFuture<?> scheduledFuture = timer.scheduleAtFixedRate(task, initialDelay, period, unit);
 		task.setScheduledFuture(scheduledFuture);
+		task.afterSchedule();
 		taskList.add(task);
 	}
 	/** c，延迟initialDelay时间后开始执行，并且按照period时间周期性重复调用，
@@ -62,6 +64,7 @@ public class FireTimer {
 	public static void scheduleWithFixedDelay(IFireTimerTask task, long initialDelay, long delay, TimeUnit unit){
 		ScheduledFuture<?> scheduledFuture = timer.scheduleWithFixedDelay(task, initialDelay, delay, unit);
 		task.setScheduledFuture(scheduledFuture);
+		task.afterSchedule();
 		taskList.add(task);
 	}
 	

@@ -13,6 +13,9 @@ public interface IFireTimerTask extends Runnable{//,Callable<Object> {
 
 	public void setScheduledFuture(ScheduledFuture<?> scheduledFuture);
 	
+	/** 部署完毕task */
+	void afterSchedule();
+	
 	/**
 	 * 如果任务处于激活状态，结束或取消任务
 	 * @param mayInterruptIfRunning
