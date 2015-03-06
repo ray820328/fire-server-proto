@@ -46,7 +46,7 @@ public abstract class NoticeTask extends AbstractFireTimerTask {
 		}
 		long noticeDelay = 0;
 		int needCount = 0;
-		while(delay>=noticeDelay && needCount<maxCount){//计算通知次数
+		while((delay-noticeDelay)>=gapTime && needCount<maxCount){//计算通知次数
 			needCount++;
 			noticeDelay += gapTime;
 		}

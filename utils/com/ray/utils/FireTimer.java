@@ -128,10 +128,10 @@ public class FireTimer {
 //		固定间隔执行
 		timerTask = new NoticeTask("testTimerTask", IFireTimerTask.type_one_time){
 			public void run(){
-				Log.info("结束主定时器");
+				Log.info("运行主定时器任务");
 			}
 		};
-		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+11000), 0);
+		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+31000), 0);
 		
 		FireTimer.printTaskList();
 	}
