@@ -1,5 +1,7 @@
 package com.ray.utils;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.concurrent.ScheduledFuture;
 
 import com.ray.utils.util.Log;
@@ -29,7 +31,7 @@ public abstract class AbstractFireTimerTask implements IFireTimerTask {
 	public void onEnd(boolean mayInterruptIfRunning){
 		if(scheduledFuture != null){
 			if(!scheduledFuture.isDone()){
-				scheduledFuture.cancel(false);
+				scheduledFuture.cancel(mayInterruptIfRunning);
 			}
 		}
 		FireTimer.removeTask(this);
@@ -41,10 +43,37 @@ public abstract class AbstractFireTimerTask implements IFireTimerTask {
 	public void setType(int type) {
 		this.type = type;
 	}
-
+	
+	@SuppressWarnings("rawtypes")
 	public String toString(){
 		try{
-			return this.getClass().getName() + ": " + ValueUtil.toJsonString(this);
+			StringBuffer sb = new StringBuffer(this.getClass().getName());
+			sb.append(" {");
+			Class clazz = getClass();
+			Object value = null;
+			while(clazz != Object.class){
+				Field[] fields = clazz.getDeclaredFields();
+				for(Field f : fields){
+					if(f.getType().isAssignableFrom(ScheduledFuture.class) || 
+							f.getType().isAssignableFrom(AbstractFireTimerTask.class)){
+						continue;
+					}
+					if(Modifier.isStatic(f.getModifiers()) && Modifier.isFinal(f.getModifiers())){
+						continue;//不显示静态常量
+					}
+					f.setAccessible(true);
+					value = f.get(this);
+					if(value != null){
+						sb.append(f.getName() + ":" + f.get(this).toString() + ",");
+					}
+				}
+				clazz = clazz.getSuperclass();
+			}
+			if(sb.length() > 0){
+				sb.setLength(sb.length() - 1);
+			}
+			sb.append("}");
+			return sb.toString();
 		}catch(Exception ex){
 			Log.error(ex);
 			return super.toString();

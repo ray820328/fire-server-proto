@@ -1,5 +1,6 @@
 package com.ray.utils;
 
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import com.ray.utils.util.Log;
@@ -17,9 +18,15 @@ public abstract class NoticeTask extends AbstractFireTimerTask {
 	private int gapTime = 5;//一次间隔时间
 	private int maxCount = 5;//提前通知的最大次数
 	private int count;//当前次数
+	private IFireTimerTask noticingTask;
 	
 	public NoticeTask(String name, int type){
 		super(name, type);
+	}
+	public NoticeTask(String name, int type, int gapTime, int maxCount){
+		this(name, type);
+		this.gapTime = gapTime;
+		this.maxCount = maxCount;
 	}
 	
 //	@Override
@@ -34,13 +41,19 @@ public abstract class NoticeTask extends AbstractFireTimerTask {
 //	}
 //	/** 处理关闭前通知 */
 //	public void endExecute(){
-//		
+////		重新部署下一次通知
+//		scheduleNoticing();
 //	}
 //	public abstract void exec();
 	
 	@Override
 	public void afterSchedule(){
+		scheduleNoticing();
+	}
+	
+	public void scheduleNoticing(){
 		long delay = getScheduledFuture()==null ? 0 : getScheduledFuture().getDelay(TimeUnit.SECONDS);
+		Log.info("delay= " + getScheduledFuture().getDelay(TimeUnit.SECONDS));
 		if(delay < gapTime){//少于一次通知时间，不需要通知立刻执行
 			return;
 		}
@@ -53,20 +66,37 @@ public abstract class NoticeTask extends AbstractFireTimerTask {
 		this.count = needCount;
 		noticeDelay = delay - noticeDelay;//实际通知timer相对当前的延迟时间
 //		通知定时器
-		IFireTimerTask timerTask = new AbstractFireTimerTask("NoticeTimerTask", IFireTimerTask.type_period_with_fixed_delay){
+		noticingTask = new AbstractFireTimerTask("NoticeTimerTask", IFireTimerTask.type_period_with_fixed_delay){
 			public void run(){
 				Log.info("倒计时第 " + count + " 次");
 				count--;
 				if(count <= 0){
 					Log.info("通知结束！");
-					onEnd(false);
+					noticingTask.onEnd(false);
 					FireTimer.printTaskList();
 					return;
 				}
 			}
 		};
-		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+noticeDelay), 
+		FireTimer.schedule(noticingTask, 
+				TimeUtil.getDate(TimeUtil.getNowMillis()+TimeUnit.MILLISECONDS.convert(noticeDelay, timeUnit)), 
 				TimeUnit.MILLISECONDS.convert(gapTime, timeUnit));
+	}
+	
+	@Override
+	public void onEnd(boolean mayInterruptIfRunning){
+//		结束主task
+		super.onEnd(mayInterruptIfRunning);
+		if(noticingTask == null){
+			return;
+		}
+//		结束通知task
+		if(noticingTask.getScheduledFuture() != null){
+			if(!noticingTask.getScheduledFuture().isDone()){
+				noticingTask.getScheduledFuture().cancel(false);
+			}
+		}
+		FireTimer.removeTask(noticingTask);
 	}
 
 	public TimeUnit getTimeUnit() {

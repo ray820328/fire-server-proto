@@ -13,6 +13,7 @@ import com.ray.utils.util.ThreadManager.FireDefaultThreadFactory;
 
 public class FireTimer {
 
+//	固定大小的线程池
 	private final static ScheduledThreadPoolExecutor timer = 
 			new ScheduledThreadPoolExecutor(1, new FireDefaultThreadFactory("timer"));
 	static{
@@ -126,13 +127,15 @@ public class FireTimer {
 //		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+5000), 3000);
 		
 //		固定间隔执行
-		timerTask = new NoticeTask("testTimerTask", IFireTimerTask.type_one_time){
-			public void run(){
-				Log.info("运行主定时器任务");
-			}
-		};
-		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+31000), 0);
-		
-		FireTimer.printTaskList();
+//		for(int i=0; i< 1000; i++){
+			timerTask = new NoticeTask("testTimerTask", IFireTimerTask.type_period_with_fixed_delay, 2, 5){
+				public void run(){
+					Log.info("运行主定时器任务");
+				}
+			};
+			FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+20000), 20000);
+			
+			FireTimer.printTaskList();
+//		}
 	}
 }
