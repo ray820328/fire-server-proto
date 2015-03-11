@@ -1,4 +1,4 @@
-package com.ray.utils;
+package com.ray.utils.timer;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -142,7 +142,7 @@ public class FireTimer {
 //			FireTimer.schedule(noticeTask);
 ////		}
 			
-		TestActivity activity = new TestActivity();
+		FireActivity activity = new FireActivity();
 		activity.schedule();
 	}
 }

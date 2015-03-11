@@ -137,7 +137,7 @@ public class ValueUtil {
 				boolean exclude = false;
 				if(excludeClasses != null){
 					for(Class excludeClazz : excludeClasses){
-						if(f.getType().isAssignableFrom(excludeClazz)){
+						if(excludeClazz.isAssignableFrom(f.getType())){
 							exclude = true;
 							break;
 						}
@@ -149,7 +149,7 @@ public class ValueUtil {
 				f.setAccessible(true);
 				value = f.get(object);
 				if(value != null){
-					if(f.getType().isAssignableFrom(Date.class)){
+					if(Date.class.isAssignableFrom(f.getType())){
 						sb.append(f.getName() + ":" + TimeUtil.formatFullDate(((Date)value).getTime()) + ",");
 					}else{
 						sb.append(f.getName() + ":" + value.toString() + ",");

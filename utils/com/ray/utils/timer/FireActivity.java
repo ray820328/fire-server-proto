@@ -1,4 +1,4 @@
-package com.ray.utils;
+package com.ray.utils.timer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +17,7 @@ import com.ray.utils.util.ValueUtil;
  * 在部署定时器时，先部署最开始的倒计时定时器，
  * 倒计时逻辑结束后部署目标定时器，依次循环
  */
-public class TestActivity {
+public class FireActivity {
 	public static final int state_notice = 0;
 	public static final int state_progress = 1;
 	public static final int state_end = 2;
@@ -31,7 +31,7 @@ public class TestActivity {
 	private AbstractFireTimerTask mainTask;//主task
 	private CounterTask counterTask;//倒计时通知
 	
-	public TestActivity(){
+	public FireActivity(){
 		this.times = new ArrayList<ActivityTime>();
 		String ts[] = configTimes.split(StringUtils.split_verticalline);
 		for(String t : ts){
@@ -124,14 +124,14 @@ public class TestActivity {
 			time.updateTime();
 		}
 	}
-//	public String toString(){
-//		try{
-//			return ValueUtil.toJsonString(this, new Class[]{IFireTimerTask.class});
-//		}catch(Exception ex){
-//			ex.printStackTrace();
-//			return "";
-//		}
-//	}
+	public String toString(){
+		try{
+			return ValueUtil.toJsonString(this, new Class[]{IFireTimerTask.class});
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return "";
+		}
+	}
 	
 	
 	public static class ActivityTime implements Comparable<ActivityTime>{
@@ -143,9 +143,7 @@ public class TestActivity {
 		private Date lastStartTime;//开始时间
 		private Date lastEndTime;//结束时间
 		
-		public ActivityTime(){
-//			1=17:00:00_17:05:00|3=17:00:00_17:05:00|5=17:00:00_17:05:00
-		}
+		public ActivityTime(){}
 		public ActivityTime(String time){
 			String str[] = time.split(StringUtils.split_equal);
 			day = Integer.parseInt(str[0]);
