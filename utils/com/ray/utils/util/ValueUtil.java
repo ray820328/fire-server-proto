@@ -3,6 +3,7 @@ package com.ray.utils.util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -122,7 +123,7 @@ public class ValueUtil {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public static String toJsonString(Object object) throws Exception{
+	public static String toJsonString(Object object, Class[] excludeClasses) throws Exception{
 		StringBuffer sb = new StringBuffer();
 		sb.append("{");
 		Class clazz = object.getClass();
@@ -133,10 +134,28 @@ public class ValueUtil {
 				if(Modifier.isStatic(f.getModifiers()) && Modifier.isFinal(f.getModifiers())){
 					continue;//不显示静态常量
 				}
+				boolean exclude = false;
+				if(excludeClasses != null){
+					for(Class excludeClazz : excludeClasses){
+						if(f.getType().isAssignableFrom(excludeClazz)){
+							exclude = true;
+							break;
+						}
+					}
+				}
+				if(exclude){
+					continue;
+				}
 				f.setAccessible(true);
 				value = f.get(object);
 				if(value != null){
-					sb.append(f.getName() + ":" + f.get(object).toString() + ",");
+					if(f.getType().isAssignableFrom(Date.class)){
+						sb.append(f.getName() + ":" + TimeUtil.formatFullDate(((Date)value).getTime()) + ",");
+					}else{
+						sb.append(f.getName() + ":" + value.toString() + ",");
+					}
+				}else{
+					sb.append(f.getName() + ":,");
 				}
 			}
 			clazz = clazz.getSuperclass();

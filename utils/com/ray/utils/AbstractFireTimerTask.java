@@ -2,6 +2,7 @@ package com.ray.utils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Date;
 import java.util.concurrent.ScheduledFuture;
 
 import com.ray.utils.util.Log;
@@ -10,6 +11,8 @@ import com.ray.utils.util.ValueUtil;
 public abstract class AbstractFireTimerTask implements IFireTimerTask {
 	private String name;
 	private int type;
+	private Date startTime;
+	private long period;
 	private ScheduledFuture<?> scheduledFuture;
 	
 	public AbstractFireTimerTask(String name, int type){
@@ -28,7 +31,7 @@ public abstract class AbstractFireTimerTask implements IFireTimerTask {
 		
 	}
 	@Override
-	public void onEnd(boolean mayInterruptIfRunning){
+	public void onCancel(boolean mayInterruptIfRunning){
 		if(scheduledFuture != null){
 			if(!scheduledFuture.isDone()){
 				scheduledFuture.cancel(mayInterruptIfRunning);
@@ -37,6 +40,29 @@ public abstract class AbstractFireTimerTask implements IFireTimerTask {
 		FireTimer.removeTask(this);
 	}
 	
+//	@Override
+//	public void run(){
+//		beforeExecute();
+//		exec();
+//		endExecute();
+//	}
+//	/** 处理开启前 */
+//	public void beforeExecute(){
+//		
+//	}
+//	/** 处理关闭前 */
+//	public void endExecute(){
+//		
+//	}
+//	public abstract void exec();
+	
+	public void onEnd(){
+		
+	}
+	public void onStart(){
+		
+	}
+
 	public int getType() {
 		return type;
 	}
@@ -44,36 +70,22 @@ public abstract class AbstractFireTimerTask implements IFireTimerTask {
 		this.type = type;
 	}
 	
-	@SuppressWarnings("rawtypes")
+	public Date getStartTime(){
+		return startTime;
+	}
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+	public void setPeriod(long period) {
+		this.period = period;
+	}
+	public long getPeriod(){
+		return period;
+	}
+	
 	public String toString(){
 		try{
-			StringBuffer sb = new StringBuffer(this.getClass().getName());
-			sb.append(" {");
-			Class clazz = getClass();
-			Object value = null;
-			while(clazz != Object.class){
-				Field[] fields = clazz.getDeclaredFields();
-				for(Field f : fields){
-					if(f.getType().isAssignableFrom(ScheduledFuture.class) || 
-							f.getType().isAssignableFrom(AbstractFireTimerTask.class)){
-						continue;
-					}
-					if(Modifier.isStatic(f.getModifiers()) && Modifier.isFinal(f.getModifiers())){
-						continue;//不显示静态常量
-					}
-					f.setAccessible(true);
-					value = f.get(this);
-					if(value != null){
-						sb.append(f.getName() + ":" + f.get(this).toString() + ",");
-					}
-				}
-				clazz = clazz.getSuperclass();
-			}
-			if(sb.length() > 0){
-				sb.setLength(sb.length() - 1);
-			}
-			sb.append("}");
-			return sb.toString();
+			return ValueUtil.toJsonString(this, new Class[]{ScheduledFuture.class, IFireTimerTask.class});
 		}catch(Exception ex){
 			Log.error(ex);
 			return super.toString();

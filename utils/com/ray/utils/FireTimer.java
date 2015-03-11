@@ -26,23 +26,24 @@ public class FireTimer {
     }
 	public final static List<IFireTimerTask> taskList = new LinkedList<IFireTimerTask>();//timer.getQueue();//取不到task
 	
-	public static void schedule(IFireTimerTask task, Date datetime, long period){
-		if(datetime == null){
-			throw new RuntimeException("FireTimer.scheduleAtFixedRateAt datetime is empty!");
+	public static void schedule(IFireTimerTask task){
+		if(task.getStartTime() == null){
+			throw new RuntimeException("FireTimer.scheduleAtFixedRateAt datetime is empty! \ntask=" + task.toString());
 		}
-		long initialDelay = datetime.getTime() - TimeUtil.getNowMillis();
+		long initialDelay = task.getStartTime().getTime() - TimeUtil.getNowMillis();
 		initialDelay = initialDelay<0 ? 0 : initialDelay;
 		switch(task.getType()){
 		case IFireTimerTask.type_one_time:
 			scheduleOneTime(task, initialDelay, TimeUnit.MILLISECONDS);
 			break;
 		case IFireTimerTask.type_period_at_fixed_delay:
-			scheduleAtFixedRate(task, initialDelay, period, TimeUnit.MILLISECONDS);
+			scheduleAtFixedRate(task, initialDelay, task.getPeriod(), TimeUnit.MILLISECONDS);
 			break;
 		case IFireTimerTask.type_period_with_fixed_delay:
-			scheduleWithFixedDelay(task, initialDelay, period, TimeUnit.MILLISECONDS);
+			scheduleWithFixedDelay(task, initialDelay, task.getPeriod(), TimeUnit.MILLISECONDS);
 			break;
 		}
+		FireTimer.printTaskList();
 	}
 	
 	/** a，延迟delay时间后开始执行 */
@@ -73,6 +74,7 @@ public class FireTimer {
 		synchronized(taskList){
 			taskList.remove(task);
 		}
+		FireTimer.printTaskList();
 	}
 	
 	public static StringBuilder getTaskListAsString(){
@@ -107,7 +109,7 @@ public class FireTimer {
 			public void run(){
 				if(count >= 3){
 					Log.info("执行已经满足 " + count + " 次，本次任务取消！");
-					onEnd(false);
+					onCancel(false);
 					FireTimer.printTaskList();
 					return;
 				}
@@ -126,16 +128,21 @@ public class FireTimer {
 		};
 //		FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+5000), 3000);
 		
-//		固定间隔执行
-//		for(int i=0; i< 1000; i++){
-			timerTask = new NoticeTask("testTimerTask", IFireTimerTask.type_period_with_fixed_delay, 2, 5){
-				public void run(){
-					Log.info("运行主定时器任务");
-				}
-			};
-			FireTimer.schedule(timerTask, TimeUtil.getDate(TimeUtil.getNowMillis()+20000), 20000);
+////		固定间隔执行
+////		for(int i=0; i< 1000; i++){
+//		CounterTask noticeTask = new CounterTask("testCounterTask", IFireTimerTask.type_period_with_fixed_delay, 2, 5){
+////				public Date getStartTime(){
+////					return TimeUtil.getDate(TimeUtil.getNowMillis()+20000);
+////				}
+////				public long getPeriod(){
+////					return 20000;
+////				}
+//			};
+//			noticeTask.init(TimeUnit.SECONDS.convert(20, noticeTask.getTimeUnit()));
+//			FireTimer.schedule(noticeTask);
+////		}
 			
-			FireTimer.printTaskList();
-//		}
+		TestActivity activity = new TestActivity();
+		activity.schedule();
 	}
 }

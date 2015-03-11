@@ -21,6 +21,10 @@ public class TimeUtil {
 		new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private static final SimpleDateFormat full_date_yyyyMMdd =
 			new SimpleDateFormat("yyyy/MM/dd");
+	private static final SimpleDateFormat common_time_format =
+			new SimpleDateFormat("HH:mm:ss");
+	private static final SimpleDateFormat full_time_format =
+			new SimpleDateFormat("HH:mm:ss SS");
 		
 	public final static int second_ = 1;
 	public final static int minute_second = 60 * second_;
@@ -115,6 +119,32 @@ public class TimeUtil {
 		}
 	}
 	
+	/** format for: HH:mm:ss */
+	public static String formatCommonTime(long datetime){
+		return common_time_format.format(new Date(datetime));
+	}
+	/** parse parameter to the date object (HH:mm:ss) */
+	public static Date toCommonTime(String str){
+		try{
+			return common_time_format.parse(str);
+		}catch(Exception e){
+			throw new RuntimeException("The input sample must be like this: HH:mm:ss");
+		}
+	}
+	
+	/** format for: HH:mm:ss */
+	public static String formatFullTime(long datetime){
+		return full_time_format.format(new Date(datetime));
+	}
+	/** parse parameter to the date object (HH:mm:ss SS) */
+	public static Date toFullTime(String str){
+		try{
+			return full_time_format.parse(str);
+		}catch(Exception e){
+			throw new RuntimeException("The input sample must be like this: HH:mm:ss SS");
+		}
+	}
+	
 	/** today as 'MM/dd/yyyy' */
 	public static String todayAsString(){
 		return formatMMddyyyyDate(new Date().getTime());
@@ -135,6 +165,16 @@ public class TimeUtil {
 	/** 参数为时间戳Millis*/
 	public static int getSecond(long time){
 		return (int)(time / second_millis);
+	}
+	/** 某一天对应时间点的结果 */
+	public static Date getDate(Date date, String str){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(TimeUtil.toCommonTime(str));
+		int startHour = calendar.get(Calendar.HOUR_OF_DAY);//24小时制
+		int startMinute = calendar.get(Calendar.MINUTE);
+		int startSecond = calendar.get(Calendar.SECOND);
+		
+		return getDate(date, startHour, startMinute, startSecond, 0);
 	}
 	/** 某一天对应时间点的结果 */
 	public static Date getDate(Date date, int hour, int minute, int second, int millis){
@@ -165,6 +205,15 @@ public class TimeUtil {
 	}
 	
 	/** 一周的星期几对应的日期，注意一周从上周日开始算，依次为1-7 */
+	public static Date getDateOfWeek(int day, String str){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(TimeUtil.toCommonTime(str));
+		int startHour = calendar.get(Calendar.HOUR_OF_DAY);//24小时制
+		int startMinute = calendar.get(Calendar.MINUTE);
+		int startSecond = calendar.get(Calendar.SECOND);
+		return getDateOfWeek(day, startHour, startMinute, startSecond);
+	}
+	/** 一周的星期几对应的日期，注意一周从上周日开始算，依次为1-7 */
 	public static Date getDateOfWeek(int day, int hour, int minute, int second){
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.DAY_OF_WEEK, day);
@@ -174,6 +223,15 @@ public class TimeUtil {
 		return calendar.getTime();
 	}
 	
+	/** 一周的星期几对应的日期,如果目标时间已经过了,返回下一周的day,注意一周从上周日开始算,依次为1-7 */
+	public static Date getDateOfNextWeek(int day, String str){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(TimeUtil.toCommonTime(str));
+		int startHour = calendar.get(Calendar.HOUR_OF_DAY);//24小时制
+		int startMinute = calendar.get(Calendar.MINUTE);
+		int startSecond = calendar.get(Calendar.SECOND);
+		return getDateOfNextWeek(day, startHour, startMinute, startSecond);
+	}
 	/** 一周的星期几对应的日期,如果目标时间已经过了,返回下一周的day,注意一周从上周日开始算,依次为1-7 */
 	public static Date getDateOfNextWeek(int day, int hour, int minute, int second){
 		Calendar calendar = Calendar.getInstance();

@@ -98,7 +98,7 @@ public class IoHeader implements Cloneable {
 	
 	public String toString(){
 		try{
-			return this.getClass().getName() + ": " + ValueUtil.toJsonString(this);
+			return this.getClass().getName() + ": " + ValueUtil.toJsonString(this, null);
 		}catch(Exception ex){
 			return super.toString();
 		}

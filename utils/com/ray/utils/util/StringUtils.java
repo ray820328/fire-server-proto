@@ -20,7 +20,19 @@ import java.util.Iterator;
 import java.util.List;
 
 public class StringUtils {
-
+	/******************************* 分隔符 ********************************/
+	public static final String split_equal = "=";
+	public static final String split_verticalline = "\\|";//转义作为分隔符，直接用于split
+	public static final String split_underline = "\\_";
+	public static final String split_and = "&";
+	public static final String split_semicolon = ";";
+	public static final String join_equal = "=";
+	public static final String join_verticalline = "|";
+	public static final String join_underline = "_";
+	public static final String join_and = "&";
+	public static final String join_semicolon = ";";
+	public static final String multiple_sign = "×";
+	
 	private StringUtils() {
 	}
 
