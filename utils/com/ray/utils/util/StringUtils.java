@@ -14,10 +14,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.BitSet;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class StringUtils {
 	/******************************* 分隔符 ********************************/
@@ -64,14 +66,8 @@ public class StringUtils {
 			"＿", "＝", "＋", "＼", "｜", "【", "】", "；", "：", "'", "\"", "，", "〈",
 			"。", "〉", "／", "？" };
 
-	/**
-	 * 将指定String转化为String[]
-	 * 
-	 * @param s
-	 * @param tag
-	 * @return
-	 */
-	public static String[] stringtoArray(String s, String tag) {
+	/**将指定String转化为String[] */
+	public static String[] string2array(String s, String tag) {
 		StringBuffer buf = new StringBuffer(s);
 		int arraysize = 1;
 		for (int i = 0; i < buf.length(); i++) {
@@ -105,15 +101,48 @@ public class StringUtils {
 		buf = null;
 		return elements;
 	}
+	public static Integer[] string2ints(String[] datas){
+		Integer[] intDatas = new Integer[datas.length];
+		for(int i=0; i<datas.length; i++){
+			intDatas[i] = Integer.valueOf(datas[i]);
+		}
+		return intDatas;
+	}
+	public static <T> List<T> array2list(T[] datas){
+		List<T> dest = new ArrayList<T>();
+		for(int i=0; i<datas.length; i++){
+			dest.add(datas[i]);
+		}
+		return dest;
+	}
+	/**将指定String转化为String[][]依次按标志0, 1 */
+	public static String[][] string2arrays(String s, String tag0, String tag1) {
+		String[][] datas = null;
+		String[] rows = string2array(s, tag0);
+		if(rows != null){
+			datas = new String[rows.length][];
+			for(int i=0; i<rows.length; i++){
+				String row = rows[i];
+				if(row == null){
+					continue;
+				}
+				String[] cols = string2array(row, tag1);
+				datas[i] = cols;
+			}
+		}
+		return datas;
+	}
+	/**数据必须是{{k, v}}形式 */
+	public static Map<Integer, Integer> string2map(String[][] datas) {
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for(int i=0; i<datas.length; i++){
+			map.put(Integer.valueOf(datas[i][0]), Integer.valueOf(datas[i][1]));
+		}
+		return map;
+	}
 
-	/**
-	 * 将指定数组转化为String
-	 * 
-	 * @param args
-	 * @param separator
-	 * @return
-	 */
-	public static String arrayToString(Object[] args, String separator) {
+	/** 将指定数组转化为String */
+	public static String array2string(Object[] args, String separator) {
 		if (args == null || separator == null) {
 			return null;
 		}
@@ -127,15 +156,41 @@ public class StringUtils {
 		}
 		return result.toString();
 	}
+	/**将指定数组转化为String依次按标志1, 0,仅适用一定情况，造成空记录将被忽略 */
+	public static String arrays2string(Object[][] args, String separator0, String separator1) {
+		if (args==null || separator0==null || separator1==null) {
+			return null;
+		}
+		StringBuffer result = new StringBuffer();
+		if (args.length > 0) {
+			for (int i = 0; i < args.length; i++) {
+				if (args[i]==null || args[i].length==0) {
+					result.append(separator0);
+					continue;
+				}
+				if(args[i][0] == null){
+					result.append(separator1);
+				}else{
+					result.append(args[i][0]);
+				}
+				for (int j = 1; j < args[i].length; j++) {
+					result.append(separator1);
+					if(args[i][j] != null){
+						result.append(args[i][j]);
+					}
+				}
+				result.append(separator0);
+			}
+			if(result.length() > 0){
+				result.deleteCharAt(result.length() - 1);
+			}
+		}
+		return result.toString();
+	}
 
-	/**
-	 * 将指定数组转化为String
-	 * 
-	 * @param args
-	 * @return
-	 */
+	/** 将指定数组转化为String 分隔符为 ","*/
 	public static String arrayToString(Object[] args) {
-		return arrayToString(args, ",");
+		return array2string(args, ",");
 	}
 
 	/**
@@ -1244,12 +1299,7 @@ public class StringUtils {
 		return stringbuffer.toString();
 	}
 
-	/**
-	 * 过滤特殊字符
-	 * 
-	 * @param str
-	 * @return
-	 */
+	/** 过滤特殊字符 */
 	public static final String filterString(String str) {
 		String message = str;
 		message = message.replace('<', '_');
@@ -1268,14 +1318,7 @@ public class StringUtils {
 		return message;
 	}
 
-	/**
-	 * 过滤首字符
-	 * 
-	 * @param str
-	 * @param pattern
-	 * @param replace
-	 * @return
-	 */
+	/** 过滤首字符 */
 	public static final String replaceFirst(String str, String pattern,
 			String replace) {
 		int s = 0;
@@ -1291,13 +1334,7 @@ public class StringUtils {
 		return result.toString();
 	}
 
-	/**
-	 * 以" "充满指定字符串
-	 * 
-	 * @param str
-	 * @param length
-	 * @return
-	 */
+	/** 以" "充满指定字符串 */
 	public static String fillSpace(String str, int length) {
 		int strLength = str.length();
 		if (strLength >= length) {
@@ -1310,13 +1347,7 @@ public class StringUtils {
 		return str + spaceBuffer.toString();
 	}
 
-	/**
-	 * 得到定字节长的字符串，位数不足右补空格
-	 * 
-	 * @param str
-	 * @param length
-	 * @return
-	 */
+	/** 得到定字节长的字符串，位数不足右补空格 */
 	public static String fillSpaceByByte(String str, int length) {
 		byte[] strbyte = str.getBytes();
 		int strLength = strbyte.length;
@@ -1330,13 +1361,7 @@ public class StringUtils {
 		return str.concat(spaceBuffer.toString());
 	}
 
-	/**
-	 * 得到定长的字符串，位数不足前补0
-	 * 
-	 * @param param
-	 * @param length
-	 * @return
-	 */
+	/** 得到定长的字符串，位数不足前补0 */
 	public static String getZero(String param, int length) {
 		String temp = param.trim();
 		for (int i = 0; temp.length() < length; i++) {
@@ -1345,23 +1370,12 @@ public class StringUtils {
 		return temp.substring(0, length);
 	}
 
-	/**
-	 * 返回String
-	 * 
-	 * @param Parame
-	 * @return
-	 */
+	/** 返回String */
 	public static String getString(String param) {
 		return (param == null) ? "" : param;
 	}
 
-	/**
-	 * 转码为指定格式
-	 * 
-	 * @param Parame
-	 * @param encoding
-	 * @return
-	 */
+	/** 转码为指定格式 */
 	public static String getString(String param, String initcoding,
 			String encoding) {
 		String result = getString(param);
@@ -1378,12 +1392,7 @@ public class StringUtils {
 		return (param == null) ? "" : param;
 	}
 
-	/**
-	 * 返回指定字符串长度
-	 * 
-	 * @param s
-	 * @return
-	 */
+	/** 返回指定字符串长度 */
 	public static int length(String s) {
 		if (s == null)
 			return 0;
@@ -1391,13 +1400,7 @@ public class StringUtils {
 			return s.getBytes().length;
 	}
 
-	/**
-	 * 将字符串的数字取出到一个字符串中
-	 * 
-	 * @param s
-	 *            String
-	 * @return String
-	 */
+	/** 将字符串的数字取出到一个字符串中 */
 	public static String getDigitsOnly(String s) {
 		StringBuffer digitsOnly = new StringBuffer();
 		char c;
@@ -1410,13 +1413,7 @@ public class StringUtils {
 		return digitsOnly.toString();
 	}
 
-	/**
-	 * 获得特定字符总数
-	 * 
-	 * @param str
-	 * @param chr
-	 * @return
-	 */
+	/** 获得特定字符总数 */
 	public static int charCount(String str, char chr) {
 		int count = 0;
 		if (str != null) {
@@ -1431,14 +1428,7 @@ public class StringUtils {
 		return count;
 	}
 
-	/**
-	 * 返回指定字符位置前数据
-	 * 
-	 * @param str
-	 * @param chr
-	 * @param max
-	 * @return
-	 */
+	/** 返回指定字符位置前数据  */
 	public static String charSubstring(String str, char chr, int max) {
 		int count = 0;
 		StringBuffer sbr = new StringBuffer();
@@ -1458,12 +1448,7 @@ public class StringUtils {
 		return sbr.toString();
 	}
 
-	/**
-	 * 清除字符串数组中空格
-	 * 
-	 * @param strings
-	 * @return
-	 */
+	/** 清除字符串数组中空格  */
 	public static String[] trim(String[] s) {
 		if (s == null) {
 			return null;
@@ -1524,25 +1509,12 @@ public class StringUtils {
 			return s;
 	}
 
-	/**
-	 * hash等值判定
-	 * 
-	 * @param source
-	 * @param obj
-	 * @return
-	 */
+	/** hash等值判定 */
 	public static final boolean hashEqules(Object source, Object obj) {
 		return (hash(source) == hash(obj));
 	}
 
-	/**
-	 * 查找在open和end中间字符串，并返回List。
-	 * 
-	 * @param in
-	 * @param open
-	 * @param end
-	 * @return
-	 */
+	/** 查找在open和end中间字符串，并返回List。 */
 	public static List subString(String in, String open, String end) {
 		List list = new ArrayList();
 		while (true) {
@@ -1560,12 +1532,7 @@ public class StringUtils {
 
 	}
 
-	/**
-	 * hash化
-	 * 
-	 * @param x
-	 * @return
-	 */
+	/** hash化 */
 	private static int hash(Object x) {
 		int h = x.hashCode();
 		h += ~(h << 9);
@@ -1577,9 +1544,7 @@ public class StringUtils {
 
 	/**
 	 * 获得字符串中所有字的首字母
-	 * 
-	 * @param res
-	 *            String 如果是中文,则显示首字母,否则显示原有的字符
+	 * @param res String 如果是中文,则显示首字母,否则显示原有的字符
 	 * @return String
 	 */
 	public static String getBeginCharacter(String res) {
@@ -1758,16 +1723,10 @@ public class StringUtils {
 	}
 	
 	/** 
-     * @descrption 将给定的字符串按着给定的截取长度截取 <br> 
-     *             注意一个汉字占2个字节 
-     * @author xdwang 
-     * @create 2012-6-29下午03:32:25 
-     * @param text 
-     *            需要截取的字符串 
-     * @param length 
-     *            截取的长度，这里的是汉字length的长度，中英文长度和汉字length长度一致 
-     * @param endWith 
-     *            截取后字符串后缀，一般以...结束 
+     * 将给定的字符串按着给定的截取长度截取  注意一个汉字占2个字节 
+     * @param text 需要截取的字符串 
+     * @param length 截取的长度，这里的是汉字length的长度，中英文长度和汉字length长度一致 
+     * @param endWith 截取后字符串后缀，一般以...结束 
      * @return 截取后的字符串 
      */  
     public static String subStrHelper(String text, int length, String endWith) {  
@@ -1784,7 +1743,7 @@ public class StringUtils {
             returnStr.append(str_i);  
         }  
         try {  
-            // getBytes("GBK")每个汉字长2，getBytes("UTF-8")每个汉字长度为3  
+            // getBytes("GBK")每个汉字长2，getBytes("UTF-8")每个汉字长度为2或者3
             if (byteLength < text.getBytes("GBK").length) {  
                 returnStr.append(endWith);  
             }  
@@ -1793,6 +1752,114 @@ public class StringUtils {
         }  
         return returnStr.toString();  
     }
+    
+    public static StringBuilder outputArray(Object[] datas){
+    	StringBuilder sb = new StringBuilder();
+    	if(datas == null){
+    		return sb;
+    	}
+    	for(Object obj : datas){
+    		if(obj!=null && obj instanceof Object[]){
+    			sb.append("(").append(outputArray((Object[])obj)).append(")\n");
+    		}else{
+    			sb.append(obj==null ? "" : obj.toString()).append("\n");
+    		}
+    	}
+    	if(sb.length() > 0){
+    		sb.deleteCharAt(sb.length() - 1);
+    	}
+    	return sb;
+    }
+    
+    
+    
+    
+//  sy begin **********************************************
+    public static int parseIpToInt32(String ip){
+		List<Integer> list = parseList(ip, "\\.");
+		return (list.get(0) << 24) | (list.get(1) << 16) | (list.get(2) << 8) | list.get(3);
+	}
+	public static Map<Integer, Integer> parseMap(String str, String split1, String split2){
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		String ss[] = str.split(split1);
+		for(String s : ss){
+			if(s.length() > 0){
+				String p[] = s.split(split2);
+				map.put(Integer.parseInt(p[0]), Integer.parseInt(p[1]));
+			}
+		}
+		return map;
+	}
+	
+	public static List<List<Integer>> parseLists(String str, String split1, String split2){
+		List<List<Integer>> list = new ArrayList<List<Integer>>();
+		if(str.length() > 0){
+			String ss[] = str.split(split1);
+			for(String s : ss){
+				String ps[] = s.split(split2);
+				List<Integer> list1 = new ArrayList<Integer>();
+				for(String p : ps){
+					if(p.length() > 0){
+						list1.add(Integer.parseInt(p));
+					}
+				}
+				list.add(list1);
+			}
+		}
+		return list;
+	}
+	
+	public static List<Integer> parseList(String str, String split){
+		List<Integer> list = new ArrayList<Integer>();
+		String ss[] = str.split(split);
+		for(String s : ss){
+			if(s.length() > 0){
+				list.add(Integer.parseInt(s));
+			}
+		}
+		return list;
+	}
+	public static String parseString(Collection<Integer> list, String split){
+		StringBuffer sb = new StringBuffer();
+		for(Integer id : list){
+			sb.append(id).append(split);
+		}
+		if(sb.length() > 0)
+			return sb.substring(0, sb.length() - split.length());
+		return sb.toString();
+	}
+	public static String parseString(List<List<Integer>> lists, String join1, String join2){
+		StringBuffer sb = new StringBuffer();
+		for(List<Integer> list : lists){
+			sb.append(parseString(list, join2)).append(join1);
+		}
+		if(sb.length() > 0)
+			return sb.substring(0, sb.length() - join1.length());
+		return sb.toString();
+	}
+	public static String parseString(Map<Integer, Integer> map, String split1, String split2){
+		StringBuffer sb = new StringBuffer();
+		for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+			sb.append(entry.getKey()).append(split2).append(entry.getValue()).append(split1);
+		}
+		if(sb.length() > 0)
+			return sb.substring(0, sb.length() - split1.length());
+		return sb.toString();
+	}
+	public static String replace(String content, Map<String, String> map){
+		String s1 = "{";
+		String s2 = "}";
+		int begin = content.indexOf(s1);
+		int end = content.indexOf(s2);
+		while(begin >= 0 && end > begin){
+			String str = content.substring(begin + 1, end);
+			content = content.substring(0, begin) + map.get(str) + content.substring(end + 1, content.length());
+			begin = content.indexOf(s1, begin + 1);
+			end = content.indexOf(s2, begin + 1);
+		}
+		return content;
+	}
+//	sy end **********************************************
 
 	public static void main(String[] args) {
 //		String src = "1112233333322244444";
@@ -1803,9 +1870,15 @@ public class StringUtils {
 //			System.out.println(item);
 //		}
 		
-		String content = "中国一个aa大幅度";
+		String sourceStr = "1_100|aa_a00|28_2800|kick_kick00";
+		System.out.println("sourceStr=\n" + sourceStr);
 		
-		System.out.println(getCharacterCount(content));
+		String[][] datas = string2arrays(sourceStr, "|", "_");
+		System.out.println("string2array=\n" + outputArray(datas));
+		
+		String destStr = arrays2string(datas, "|", "_");
+		System.out.println("arrays2string=\n" + destStr);
+		
 	}
 	
 }

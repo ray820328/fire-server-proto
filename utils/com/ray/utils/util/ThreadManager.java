@@ -1,6 +1,11 @@
 package com.ray.utils.util;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -62,6 +67,15 @@ public class ThreadManager {
 	public ThreadGroup getThreadGroup() {
 		return threadGroup;
 	}
+	
+	public static ExecutorService newThreadPool(int coreThreads, int maxThreads, 
+			long keepAliveTime, String subname, BlockingQueue<Runnable> workQueue) {
+		ThreadFactory threadFactory = new FireDefaultThreadFactory(subname);
+        return new ThreadPoolExecutor(coreThreads, maxThreads,
+        							keepAliveTime, TimeUnit.MILLISECONDS,
+                                    workQueue==null ? new LinkedBlockingQueue<Runnable>() : workQueue,
+                                    threadFactory);
+    }
 
 	/**
 	 * The default thread factory
@@ -90,4 +104,5 @@ public class ThreadManager {
 			return t;
 		}
 	}
+	
 }

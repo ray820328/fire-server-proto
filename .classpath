@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="fire"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="utils"/>
+	<classpathentry kind="src" path="game"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
